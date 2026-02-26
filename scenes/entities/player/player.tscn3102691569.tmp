@@ -1,0 +1,108 @@
+[gd_scene format=3 uid="uid://c123dryb8t1p3"]
+
+[ext_resource type="Script" uid="uid://dx65jn2teblra" path="res://scenes/entities/player/player.gd" id="1_g2els"]
+[ext_resource type="Script" uid="uid://cjnu8sjnp6oul" path="res://scenes/entities/player/idle_state.gd" id="3_58kc7"]
+[ext_resource type="Script" uid="uid://cpiwesfavvuxg" path="res://scenes/entities/player/state_machine.gd" id="3_bj7e2"]
+[ext_resource type="Script" uid="uid://clwoq40nqh02u" path="res://scenes/entities/player/run_state.gd" id="4_8akj5"]
+[ext_resource type="Script" uid="uid://c4ofukvubvfkf" path="res://scenes/entities/player/jump_state.gd" id="5_bj7e2"]
+[ext_resource type="Script" uid="uid://ch0n3ihne6a6" path="res://scenes/entities/player/fall_state.gd" id="6_1murt"]
+[ext_resource type="Texture2D" uid="uid://bqm4aytw5vfcm" path="res://assets/sprites/rat_spritesheet.png" id="7_bj7e2"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_dqkch"]
+radius = 7.0
+
+[sub_resource type="Animation" id="Animation_bj7e2"]
+resource_name = "Idle"
+length = 0.8
+loop_mode = 1
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [0, 1, 2, 3]
+}
+
+[sub_resource type="Animation" id="Animation_1murt"]
+resource_name = "Jump"
+length = 1.4
+loop_mode = 2
+step = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.4, 0.6, 0.8, 1, 1.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1, 1, 1),
+"update": 1,
+"values": [7, 8, 9, 10, 11, 12, 13]
+}
+
+[sub_resource type="Animation" id="Animation_5sj0x"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Sprite:frame")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [0]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_ovg4i"]
+_data = {
+&"Idle": SubResource("Animation_bj7e2"),
+&"Jump": SubResource("Animation_1murt"),
+&"RESET": SubResource("Animation_5sj0x")
+}
+
+[node name="Player" type="CharacterBody2D" unique_id=198051033]
+script = ExtResource("1_g2els")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1818609616]
+texture = ExtResource("7_bj7e2")
+offset = Vector2(0, -11)
+hframes = 7
+vframes = 2
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1509042990]
+position = Vector2(2, -8)
+shape = SubResource("CircleShape2D_dqkch")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1986017344]
+libraries/ = SubResource("AnimationLibrary_ovg4i")
+
+[node name="StateMachine" type="Node" parent="." unique_id=1525467261]
+script = ExtResource("3_bj7e2")
+
+[node name="Idle" type="Node" parent="StateMachine" unique_id=1130454729]
+script = ExtResource("3_58kc7")
+
+[node name="Run" type="Node" parent="StateMachine" unique_id=1489747896]
+script = ExtResource("4_8akj5")
+
+[node name="Jump" type="Node" parent="StateMachine" unique_id=1356293500]
+script = ExtResource("5_bj7e2")
+
+[node name="Fall" type="Node" parent="StateMachine" unique_id=1678561036]
+script = ExtResource("6_1murt")
+
+[node name="Label" type="Label" parent="." unique_id=1375450326]
+offset_left = -20.0
+offset_top = -47.0
+offset_right = 20.0
+offset_bottom = -24.0
+text = "State"
