@@ -46,7 +46,6 @@ func init( _player : Player) -> void:
 	for node in get_children():
 		if node is PlayerState:
 			states.append(node)
-	print("Init found ", states.size(), " states: ", states)
 	
 	if states.size() == 0:
 		return

@@ -6,6 +6,7 @@ const JUMP_VELOCITY = -400.0
 @onready var player_state_machine = $StateMachine
 @onready var sprite = $Sprite
 @onready var anim_player = $AnimationPlayer
+@onready var audio_player = $AudioStreamPlayer2D
 
 func _ready() -> void:
 	player_state_machine.init( self )
@@ -22,3 +23,13 @@ func gravity( _delta: float ):
 
 func update_velocity( _velocity: float, _acceleration: float) -> void:
 	velocity.x = move_toward(velocity.x, _velocity, _acceleration) 
+	
+func update_animation_direction():
+	if self.velocity.x < 0 : sprite.flip_h = true
+	if self.velocity.x > 0 : sprite.flip_h = false
+
+func play_audio( audio : AudioStream ):
+	if audio == null:
+		return
+	audio_player.stream = audio
+	audio_player.play()
