@@ -4,6 +4,8 @@ class_name PlayerFallState extends PlayerState
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 8
 @export var coyote_time : float = 0.125
 
+@export var flight_laugh : AudioStream
+
 var coyote_timer : float
 
 func init():
@@ -11,12 +13,14 @@ func init():
 
 func enter():
 	player.anim_player.play( "Fall" )
+	player.play_audio(flight_laugh)
 	coyote_timer = coyote_time
 	if state_machine.prev_state == jump:
 		coyote_timer = 0
 	pass
 
 func exit():
+	player.audio_player.stop()
 	pass
 
 func handle_input(_event: InputEvent) -> PlayerState:
