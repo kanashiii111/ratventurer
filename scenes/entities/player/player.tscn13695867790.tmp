@@ -129,7 +129,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=198051033]
-floor_snap_length = 10.0
+floor_max_angle = 0.75049156
 script = ExtResource("1_g2els")
 
 [node name="Sprite" type="Sprite2D" parent="." unique_id=1818609616]

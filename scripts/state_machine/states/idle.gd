@@ -23,7 +23,10 @@ func process( _delta: float ) -> PlayerState:
 
 func physics_process( _delta: float ) -> PlayerState:
 	player.update_animation_direction()
+	player.update_animation_rotation()
 	player.update_velocity( 0, deceleration )
+	
 	if not player.is_on_floor():
 		return fall
+		
 	return null 

@@ -11,6 +11,7 @@ func enter():
 	player.play_audio(jump_audio)
 	player.global_position.y -= 1
 	player.velocity.y = -jump_velocity
+	player.sprite.rotation = 0
 	pass
 
 func exit():
@@ -28,6 +29,7 @@ func process(_delta: float) -> PlayerState:
 func physics_process(_delta: float) -> PlayerState:
 	player.update_animation_direction()
 	player.update_velocity( direction.x * speed, acceleration )
+	
 	if player.is_on_floor():
 		return idle
 	elif player.velocity.y >= 0:

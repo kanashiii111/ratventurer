@@ -4,7 +4,7 @@ class_name PlayerFallState extends PlayerState
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 8
 @export var coyote_time : float = 0.125
 
-@export var flight_laugh : AudioStream
+@export var fall_audio : AudioStream
 
 var coyote_timer : float
 
@@ -12,9 +12,10 @@ func init():
 	pass
 
 func enter():
+	player.rotation = 0
 	player.anim_player.play( "Fall" )
-	player.play_audio(flight_laugh)
-	coyote_timer = coyote_time
+	player.play_audio( fall_audio )
+	coyote_timer = coyote_time 
 	if state_machine.prev_state == jump:
 		coyote_timer = 0
 	pass
@@ -23,9 +24,9 @@ func exit():
 	player.audio_player.stop()
 	pass
 
-func handle_input(_event: InputEvent) -> PlayerState:
+func handle_input( _event: InputEvent ) -> PlayerState:
 	if coyote_timer > 0:
-		if _event.is_action_pressed("Jump"):
+		if _event.is_action_pressed( "Jump" ):
 			return jump 
 	return null
 
@@ -36,6 +37,7 @@ func physics_process(_delta: float) -> PlayerState:
 	player.update_animation_direction()
 	coyote_timer -= _delta
 	player.update_velocity( direction.x * speed, acceleration )
+	
 	if player.is_on_floor():
 		return idle
 	return null
