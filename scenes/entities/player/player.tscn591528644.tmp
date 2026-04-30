@@ -186,10 +186,13 @@ script = ExtResource("3_58kc7")
 [node name="Idle" type="Node2D" parent="StateMachine" unique_id=454109760]
 unique_name_in_owner = true
 script = ExtResource("4_nh4ur")
+deceleration = null
 
 [node name="Run" type="Node2D" parent="StateMachine" unique_id=484747963]
 unique_name_in_owner = true
 script = ExtResource("5_bjvvg")
+speed = null
+acceleration = null
 run_audio = ExtResource("7_5sj0x")
 
 [node name="Jump" type="Node2D" parent="StateMachine" unique_id=2103292242]
@@ -204,6 +207,7 @@ script = ExtResource("7_1murt")
 [node name="Slide" type="Node2D" parent="StateMachine" unique_id=1568579618]
 unique_name_in_owner = true
 script = ExtResource("10_ovg4i")
+slide_time = null
 
 [node name="Latch" type="Node2D" parent="StateMachine" unique_id=346300336]
 unique_name_in_owner = true

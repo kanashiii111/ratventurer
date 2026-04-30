@@ -28,9 +28,6 @@ func physics_process( _delta: float ) -> PlayerState:
 	player.update_animation_direction()
 	player.update_animation_rotation()
 	
-	if player.is_on_wall_only() && player.velocity.y > 0:
-		return slide
-	
 	if not player.is_on_floor():
 		return fall
 		

@@ -9,6 +9,7 @@ static var direction: Vector2
 @onready var jump: PlayerJumpState = %Jump
 @onready var fall: PlayerFallState = %Fall
 @onready var slide: PlayerSlideState = %Slide
+@onready var latch: PlayerLatchState = %Latch
 
 func _ready() -> void:
 	pass 

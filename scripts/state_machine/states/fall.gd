@@ -1,7 +1,7 @@
 class_name PlayerFallState extends PlayerState
 
-@export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var speed: float = 150
-@export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 8
+@export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var speed: float = 200
+@export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 20
 @export var coyote_time : float = 0.125
 
 @export var fall_audio : AudioStream
@@ -25,6 +25,10 @@ func exit():
 	pass
 
 func handle_input( _event: InputEvent ) -> PlayerState:
+	if player.is_on_wall():
+		if _event.is_action_pressed("Jump"):
+			return latch
+	
 	if coyote_timer > 0:
 		if _event.is_action_pressed( "Jump" ):
 			return jump 
@@ -36,6 +40,7 @@ func process(_delta: float) -> PlayerState:
 func physics_process(_delta: float) -> PlayerState:
 	player.update_animation_direction()
 	coyote_timer -= _delta
+	
 	player.update_velocity( direction.x * speed, acceleration )
 	
 	if player.is_on_floor():

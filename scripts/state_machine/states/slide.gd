@@ -39,16 +39,22 @@ func physics_process(_delta: float) -> PlayerState:
 	
 	var input_dir = Input.get_axis("MoveLeft", "MoveRight")
 	
+	player.gravity(_delta)
+	
 	if player.is_on_floor():
 		var normal = player.get_floor_normal()
 		var gravity_dir = player.get_gravity().normalized()
 		var downhill = gravity_dir.slide(normal).normalized()
 		var moving_up = player.velocity.dot(downhill) < 0
+		var moving_down = player.velocity.dot(downhill) > 0
 		
 		var same_dir = (player.velocity.x > 0 and input_dir > 0) or (player.velocity.x < 0 and input_dir < 0)
 		
 		if same_dir and moving_up:
 			slide_timer -= _delta
+			
+		if moving_down:
+			player.velocity.x = move_toward(player.velocity.x, player.velocity.x * 1.5, 100 * _delta)
 		
 		if input_dir == 0 and moving_up:
 			player.velocity.x = move_toward(player.velocity.x, 0, 500 * _delta)

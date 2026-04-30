@@ -1,7 +1,7 @@
 class_name PlayerJumpState extends PlayerState
 
 @export var jump_velocity : float = 350.0
-@export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var speed: float = 150
+@export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var speed: float = 200
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 8
 
 @export var jump_audio : AudioStream
@@ -9,8 +9,8 @@ class_name PlayerJumpState extends PlayerState
 func enter():
 	player.anim_player.play( "Jump" )
 	player.play_audio(jump_audio)
-	player.global_position.y -= 1
-	player.velocity.y = -jump_velocity
+	#player.global_position.y -= 1
+	player.velocity.y += -jump_velocity
 	player.sprite.rotation = 0
 	pass
 
