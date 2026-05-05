@@ -18,6 +18,11 @@ func exit():
 	pass
 
 func handle_input(_event: InputEvent) -> PlayerState:
+	if _event.is_action_pressed("Dash"):
+		return dash
+	if player.is_on_wall():
+		if player.is_at_ledge() and _event.is_action_pressed("Jump"):
+			return vault
 	if _event.is_action_released("Jump"):
 		player.velocity.y *= 0.5
 		return fall 
@@ -27,8 +32,19 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
+	#player.update_animation_direction()
+	#player.update_velocity( player.velocity.x, acceleration ) # direction.x *
+	
 	player.update_animation_direction()
-	player.update_velocity( direction.x * speed, acceleration )
+	var target_vel = direction.x * speed
+	
+	if abs(player.velocity.x) > speed and direction.x != 0:
+		target_vel = player.velocity.x
+	
+	if direction.x != 0 and sign(direction.x) == sign(player.velocity.x) and abs(player.velocity.x) > speed:
+		target_vel = player.velocity.x 
+	
+	player.update_velocity(target_vel, acceleration)
 	
 	if player.is_on_floor():
 		return idle

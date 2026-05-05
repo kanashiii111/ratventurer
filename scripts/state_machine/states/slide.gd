@@ -53,8 +53,9 @@ func physics_process(_delta: float) -> PlayerState:
 		if same_dir and moving_up:
 			slide_timer -= _delta
 			
-		if moving_down:
-			player.velocity.x = move_toward(player.velocity.x, player.velocity.x * 1.5, 100 * _delta)
+		if moving_down: #player.velocity.x = move_toward(player.velocity.x, player.velocity.x * 1.5, 100 * _delta)
+			var slope_acceleration = 200.0 
+			player.velocity.x = move_toward(player.velocity.x, direction.x * 600, slope_acceleration * _delta)
 		
 		if input_dir == 0 and moving_up:
 			player.velocity.x = move_toward(player.velocity.x, 0, 500 * _delta)
