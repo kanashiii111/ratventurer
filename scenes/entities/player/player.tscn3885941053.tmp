@@ -13,7 +13,6 @@
 [ext_resource type="Script" uid="uid://d076tkk4s2i6v" path="res://scripts/state_machine/states/latch.gd" id="11_7wli1"]
 [ext_resource type="Script" uid="uid://fgqcqk0ffni5" path="res://scripts/state_machine/states/vault.gd" id="12_j0oqr"]
 [ext_resource type="Script" uid="uid://80d50gjsmvq4" path="res://scripts/state_machine/states/dash.gd" id="13_xy2vv"]
-[ext_resource type="Script" uid="uid://c2r35yje035pn" path="res://scripts/state_machine/states/crouch.gd" id="14_r4dfn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xy2vv"]
 size = Vector2(10, 19)
@@ -163,7 +162,7 @@ vframes = 6
 region_rect = Rect2(0, 0, 224, 186)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1509042990]
-position = Vector2(3, 1.75)
+position = Vector2(3, 2)
 shape = SubResource("RectangleShape2D_xy2vv")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1986017344]
@@ -202,14 +201,6 @@ offset_right = 21.0
 offset_bottom = -42.0
 text = "prev_state"
 
-[node name="WallDetector" type="RayCast2D" parent="." unique_id=210708464]
-target_position = Vector2(33, 0)
-
-[node name="LedgeDetector" type="RayCast2D" parent="." unique_id=2145148695]
-position = Vector2(15, -36)
-target_position = Vector2(0, 16)
-hit_from_inside = true
-
 [node name="StateMachine" type="Node2D" parent="." unique_id=227961872]
 script = ExtResource("3_58kc7")
 
@@ -234,6 +225,7 @@ script = ExtResource("7_1murt")
 [node name="Slide" type="Node2D" parent="StateMachine" unique_id=1568579618]
 unique_name_in_owner = true
 script = ExtResource("10_ovg4i")
+slide_time = null
 
 [node name="Latch" type="Node2D" parent="StateMachine" unique_id=346300336]
 unique_name_in_owner = true
@@ -247,6 +239,10 @@ script = ExtResource("12_j0oqr")
 unique_name_in_owner = true
 script = ExtResource("13_xy2vv")
 
-[node name="Crouch" type="Node2D" parent="StateMachine" unique_id=108638333]
-unique_name_in_owner = true
-script = ExtResource("14_r4dfn")
+[node name="WallDetector" type="RayCast2D" parent="." unique_id=210708464]
+target_position = Vector2(33, 0)
+
+[node name="LedgeDetector" type="RayCast2D" parent="." unique_id=2145148695]
+position = Vector2(15, -36)
+target_position = Vector2(0, 16)
+hit_from_inside = true

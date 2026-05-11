@@ -4,19 +4,17 @@ class_name PlayerSlideState extends PlayerState
 
 var slide_timer : float
 
-func init():
-	pass
-
 func enter():
 	player.anim_player.play( "Slide" )
-	if (player.velocity.x > 0):
-		player.velocity.x += 50
-	elif (player.velocity.x < 0):
-		player.velocity.x -= 50
+	player.velocity.x += direction.x * 50
 	slide_timer = slide_time
+	player.player_collider.shape.size.y = player.SLIDE_SHAPE_SIZE_Y
+	player.player_collider.position.y = player.SLIDE_POSITION_Y
 	
 func exit():
 	player.sprite.rotation = 0
+	player.player_collider.shape.size.y = player.AFTER_SLIDE_SHAPE_SIZE_Y
+	player.player_collider.position.y = player.AFTER_SLIDE_POSITION_Y
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState: 
@@ -28,7 +26,10 @@ func process( _delta: float ) -> PlayerState:
 	if slide_timer <= 0:
 		return run
 	if abs(player.velocity.x) < 0.1:
-		return idle
+		if not player.is_ceiling_above():
+			return idle
+		else:
+			return crouch
 	if not player.is_on_floor():
 		return fall
 	return slide
@@ -65,5 +66,5 @@ func physics_process(_delta: float) -> PlayerState:
 
 		if player.velocity.x < 0 and input_dir > 0:
 			player.velocity.x = move_toward(player.velocity.x, 0, 2500 * _delta)
-			
+	
 	return null

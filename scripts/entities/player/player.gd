@@ -8,6 +8,14 @@ class_name Player extends CharacterBody2D
 @onready var ledge_detector = $LedgeDetector
 @onready var player_collider : CollisionShape2D = $CollisionShape
 
+var has_dash: bool = true
+
+const SLIDE_SHAPE_SIZE_Y: int = 12
+const SLIDE_POSITION_Y: float = 5.95
+
+const AFTER_SLIDE_SHAPE_SIZE_Y: int = 19
+const AFTER_SLIDE_POSITION_Y: float = 1.75
+
 func _ready() -> void:
 	player_state_machine.init( self )
 	pass
@@ -19,6 +27,12 @@ func _physics_process( _delta: float ) -> void:
 	$Label4.text = "prev: " + player_state_machine.prev_state.name
 	gravity(_delta)
 	move_and_slide()
+
+func is_ceiling_above() -> bool:
+	# Проверяем, впишется ли ВЫСОКИЙ коллайдер в пространство над нами
+	# Смещаем проверку чуть вверх от текущей позиции
+	var check_distance = abs(AFTER_SLIDE_POSITION_Y - SLIDE_POSITION_Y) + 2
+	return test_move(global_transform, Vector2(0, -check_distance))
 
 func is_at_ledge() -> bool:	
 	return wall_detector.is_colliding() and not ledge_detector.is_colliding()
@@ -39,10 +53,12 @@ func update_velocity( _to_velocity: float, _acceleration: float) -> void:
 	
 func update_animation_direction():
 	if self.velocity.x < 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == -1:
+		player_collider.position.x = -4
 		ledge_detector.position.x = -15
 		wall_detector.rotation = PI
 		sprite.flip_h = true
 	if self.velocity.x > 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == 1:
+		player_collider.position.x = 4
 		ledge_detector.position.x = 15
 		wall_detector.rotation = 0
 		sprite.flip_h = false

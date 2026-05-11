@@ -7,12 +7,15 @@ func init():
 
 func enter():
 	player.anim_player.play( "Idle" )
+	player.has_dash = true
 	pass
 
 func exit():
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState: 
+	if _event.is_action_pressed("Slide"):
+		return crouch
 	if _event.is_action_pressed( "Jump" ):
 		return jump
 	return null
