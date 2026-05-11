@@ -26,10 +26,10 @@ func process( _delta: float ) -> PlayerState:
 	if slide_timer <= 0:
 		return run
 	if abs(player.velocity.x) < 0.1:
-		if not player.is_ceiling_above():
-			return idle
-		else:
+		if player.is_ceiling_above():
 			return crouch
+		else:
+			return idle
 	if not player.is_on_floor():
 		return fall
 	return slide

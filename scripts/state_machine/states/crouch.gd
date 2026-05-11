@@ -23,11 +23,11 @@ func exit():
 func handle_input(_event: InputEvent) -> PlayerState: 
 	#if not _event.is_action_pressed("Slide"):
 		#return idle
+	if state_machine.prev_state.name == "Slide" and not player.is_ceiling_above():
+		return idle
 	if not player.is_ceiling_above() and need_no_uncrouch:
-		if _event.is_action_pressed("Slide"):
-			return null
-		else: 
-			return idle
+		need_no_uncrouch = false
+		return idle
 	if _event.is_action_released("Slide"):
 		if player.is_ceiling_above():
 			need_no_uncrouch = true
