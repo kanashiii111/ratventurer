@@ -20,9 +20,9 @@ func exit():
 func handle_input(_event: InputEvent) -> PlayerState:
 	if _event.is_action_pressed("Dash"):
 		return dash
-	if player.is_on_wall():
-		if player.is_at_ledge() and _event.is_action_pressed("Jump"):
-			return vault
+	#if player.is_on_wall():
+	if player.is_at_ledge() and _event.is_action_pressed("Jump"):
+		return vault
 	if _event.is_action_released("Jump"):
 		player.velocity.y *= 0.5
 		return fall 

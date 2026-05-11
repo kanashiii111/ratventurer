@@ -12,11 +12,13 @@ func init():
 	pass
 
 func enter():
-	player.anim_player.play("Dash") # Если есть анимация
-	# Фиксируем направление в момент нажатия
+	player.anim_player.play("Dash")
 	dash_direction = direction if direction.x != 0 else Vector2(player.sprite.scale.x, 0)
-	player.velocity.x = dash_direction.x * dash_speed
-	player.velocity.y = 0 # Замораживаем вертикальную скорость
+	if abs(player.velocity.x) > dash_speed:
+		player.velocity.x += player.velocity.x / 10
+	else:
+		player.velocity.x = dash_direction.x * dash_speed
+	player.velocity.y = 0
 	dash_timer = dash_duration
 	
 func exit():
@@ -24,32 +26,22 @@ func exit():
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState: 
-	# "Dash-Jump": если нажать прыжок во время деша, получаем огромный импульс
 	if _event.is_action_pressed("Jump"):
-		player.velocity.x *= 1.2 # Дополнительный буст к инерции
+		player.velocity.x *= 1.2
 		return jump
 	return null
 
 func process( _delta: float ) -> PlayerState:
 	if abs(player.velocity.x) < 0.1:
 		return idle
-	#if not player.is_on_floor():
-		#return fall
-	return dash
+	return null
 	
 func physics_process(_delta: float) -> PlayerState:
-	#player.update_animation_direction()
-	#player.update_animation_rotation()
-	
 	dash_timer -= _delta
-	
-	# Сохраняем скорость деша стабильной во время действия
-	player.velocity.x = dash_direction.x * dash_speed
-	player.velocity.y = 0 
+	player.velocity.y = 0
 
 	if dash_timer <= 0:
 		if player.is_on_floor():
-			player.velocity.x = direction.x * 200
 			return run
 		return fall
 	

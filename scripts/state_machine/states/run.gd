@@ -36,13 +36,10 @@ func physics_process( _delta: float ) -> PlayerState:
 	if direction.x == 0: return idle
 	
 	var target_vel = direction.x * speed
-	# Если мы бежим быстрее 'speed' (например, после слайда), 
-	# плавно замедляемся или держим скорость, пока зажата кнопка
 	if sign(direction.x) == sign(player.velocity.x) and abs(player.velocity.x) > speed:
-		# Здесь можно либо target_vel = player.velocity.x (вечный полет),
-		# либо использовать меньшее ускорение для постепенного торможения до speed
-		target_vel = player.velocity.x
+		target_vel = speed
+		player.update_velocity(target_vel, 5)
+		return null
 	
 	player.update_velocity(target_vel, acceleration)
-	#player.update_velocity( direction.x * speed, acceleration )
 	return null

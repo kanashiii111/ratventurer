@@ -1,14 +1,12 @@
 class_name Player extends CharacterBody2D
 
-const SPEED = 150.0
-const JUMP_VELOCITY = -400.0
-
 @onready var player_state_machine : StateMachine = $StateMachine
 @onready var sprite = $Sprite
 @onready var anim_player = $AnimationPlayer
 @onready var audio_player = $AudioStreamPlayer2D
 @onready var wall_detector = $WallDetector
 @onready var ledge_detector = $LedgeDetector
+@onready var player_collider : CollisionShape2D = $CollisionShape
 
 func _ready() -> void:
 	player_state_machine.init( self )
@@ -36,8 +34,8 @@ func gravity( _delta: float ):
 	if not is_on_floor():
 		velocity.y += get_gravity().y * _delta
 
-func update_velocity( _velocity: float, _acceleration: float) -> void:
-	velocity.x = move_toward(velocity.x, _velocity, _acceleration)
+func update_velocity( _to_velocity: float, _acceleration: float) -> void:
+	velocity.x = move_toward(velocity.x, _to_velocity, _acceleration)
 	
 func update_animation_direction():
 	if self.velocity.x < 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == -1:
