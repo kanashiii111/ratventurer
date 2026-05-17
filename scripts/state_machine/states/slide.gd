@@ -28,7 +28,7 @@ func process( _delta: float ) -> PlayerState:
 		return run
 	if abs(player.velocity.x) < 0.1:
 		if player.is_ceiling_above():
-			return crouch
+			return crouch_idle
 		else:
 			return idle
 	if not player.is_on_floor():

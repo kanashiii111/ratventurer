@@ -1,6 +1,4 @@
-class_name PlayerCrouchState extends PlayerState
-
-var want_to_uncrouch: bool = false
+class_name PlayerCrouchWalkState extends PlayerState
 
 func _ready() -> void:
 	pass 
@@ -12,13 +10,14 @@ func init():
 	pass
 
 func enter():
+	player.anim_player.play("CrouchWalk")
 	player.player_collider.shape.size.y = player.SLIDE_SHAPE_SIZE_Y
 	player.player_collider.position.y = player.SLIDE_POSITION_Y
 	
-	if state_machine.prev_state.name == "Slide" and not Input.is_action_pressed("Slide"):
-		want_to_uncrouch = true
+	if state_machine.prev_state.name == "CrouchIdle" and not Input.is_action_pressed("Slide"):
+		player.want_to_uncrouch = true
 	else:
-		want_to_uncrouch = false
+		player.want_to_uncrouch = false
 
 func exit():
 	player.sprite.rotation = 0
@@ -27,10 +26,10 @@ func exit():
 
 func handle_input(_event: InputEvent) -> PlayerState:
 	if _event.is_action_released("Slide"):
-		want_to_uncrouch = true
+		player.want_to_uncrouch = true
 	
 	if _event.is_action_pressed("Slide"):
-		want_to_uncrouch = false
+		player.want_to_uncrouch = false
 	
 	return null
 	#if _event.is_action_released("Slide"):
@@ -53,8 +52,10 @@ func physics_process(_delta: float) -> PlayerState:
 	player.update_animation_direction()
 	player.update_animation_rotation()
 	
-	if want_to_uncrouch and not player.is_ceiling_above():
-		want_to_uncrouch = false
+	if direction.x == 0: return crouch_idle
+	
+	if player.want_to_uncrouch and not player.is_ceiling_above():
+		player.want_to_uncrouch = false
 		return idle
 	
 	var target_speed = direction.x * 100

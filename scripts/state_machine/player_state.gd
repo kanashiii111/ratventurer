@@ -12,7 +12,8 @@ static var direction: Vector2
 @onready var latch: PlayerLatchState = %Latch
 @onready var vault: PlayerVaultState = %Vault
 @onready var dash: PlayerDashState = %Dash
-@onready var crouch: PlayerCrouchState = %Crouch
+@onready var crouch_idle: PlayerCrouchIdleState = %CrouchIdle
+@onready var crouch_walk: PlayerCrouchWalkState = %CrouchWalk
 @onready var wall_jump: PlayerWallJumpState = %WallJump
 
 func _ready() -> void:

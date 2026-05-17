@@ -9,6 +9,7 @@ class_name Player extends CharacterBody2D
 @onready var player_collider : CollisionShape2D = $CollisionShape
 
 var has_dash: bool = true
+var want_to_uncrouch: bool = false
 
 const SLIDE_SHAPE_SIZE_Y: int = 12
 const SLIDE_POSITION_Y: float = 5.2

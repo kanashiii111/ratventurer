@@ -14,7 +14,7 @@ func exit():
 
 func handle_input( _event: InputEvent) -> PlayerState: 
 	if _event.is_action_pressed("Slide"):
-		return crouch
+		return crouch_idle
 	if _event.is_action_pressed( "Jump" ):
 		return jump
 	return null
