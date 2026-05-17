@@ -11,7 +11,7 @@ class_name Player extends CharacterBody2D
 var has_dash: bool = true
 
 const SLIDE_SHAPE_SIZE_Y: int = 12
-const SLIDE_POSITION_Y: float = 5.95
+const SLIDE_POSITION_Y: float = 5.2
 
 const AFTER_SLIDE_SHAPE_SIZE_Y: int = 19
 const AFTER_SLIDE_POSITION_Y: float = 1.75
@@ -57,7 +57,7 @@ func update_animation_direction():
 		ledge_detector.position.x = -15
 		wall_detector.rotation = PI
 		sprite.flip_h = true
-	if self.velocity.x > 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == 1:
+	if sign(Input.get_axis("MoveLeft", "MoveRight")) == 1 or self.velocity.x > 0: # or self.velocity.x > 0 or
 		player_collider.position.x = 4
 		ledge_detector.position.x = 15
 		wall_detector.rotation = 0

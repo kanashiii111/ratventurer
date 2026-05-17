@@ -19,6 +19,7 @@ func exit():
 
 func handle_input( _event: InputEvent) -> PlayerState: 
 	if _event.is_action_pressed( "Jump" ):
+		player.velocity.x *= 1.1
 		return jump
 	return null
 

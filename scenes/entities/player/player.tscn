@@ -14,6 +14,7 @@
 [ext_resource type="Script" uid="uid://fgqcqk0ffni5" path="res://scripts/state_machine/states/vault.gd" id="12_j0oqr"]
 [ext_resource type="Script" uid="uid://80d50gjsmvq4" path="res://scripts/state_machine/states/dash.gd" id="13_xy2vv"]
 [ext_resource type="Script" uid="uid://c2r35yje035pn" path="res://scripts/state_machine/states/crouch.gd" id="14_r4dfn"]
+[ext_resource type="Script" uid="uid://dpmngdwx6fr1f" path="res://scripts/state_machine/states/wall_jump.gd" id="15_70kwc"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xy2vv"]
 size = Vector2(10, 19)
@@ -250,3 +251,7 @@ script = ExtResource("13_xy2vv")
 [node name="Crouch" type="Node2D" parent="StateMachine" unique_id=108638333]
 unique_name_in_owner = true
 script = ExtResource("14_r4dfn")
+
+[node name="WallJump" type="Node2D" parent="StateMachine" unique_id=992792567]
+unique_name_in_owner = true
+script = ExtResource("15_70kwc")

@@ -7,7 +7,6 @@ func init():
 
 func enter():
 	player.anim_player.play( "Idle" )
-	player.has_dash = true
 	pass
 
 func exit():
