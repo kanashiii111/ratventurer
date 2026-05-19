@@ -33,7 +33,7 @@ func process( _delta: float ) -> PlayerState:
 			return idle
 	if not player.is_on_floor():
 		return fall
-	return slide
+	return null
 	
 func physics_process(_delta: float) -> PlayerState:
 	player.update_animation_direction()

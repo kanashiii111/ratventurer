@@ -15,6 +15,7 @@ static var direction: Vector2
 @onready var crouch_idle: PlayerCrouchIdleState = %CrouchIdle
 @onready var crouch_walk: PlayerCrouchWalkState = %CrouchWalk
 @onready var wall_jump: PlayerWallJumpState = %WallJump
+@onready var attack: PlayerAttackState = %Attack
 
 func _ready() -> void:
 	pass 

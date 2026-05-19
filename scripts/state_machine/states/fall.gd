@@ -16,7 +16,7 @@ func enter():
 	player.anim_player.play( "Fall" )
 	player.play_audio( fall_audio )
 	coyote_timer = coyote_time 
-	if state_machine.prev_state == jump:
+	if state_machine.prev_state == jump or state_machine.prev_state == wall_jump:
 		coyote_timer = 0
 	pass
 

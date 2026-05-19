@@ -27,7 +27,11 @@ func _unhandled_input( _event: InputEvent ) -> void:
 	change_state( new_state )
 	
 func change_state( new_state : PlayerState ) -> void:
-	if new_state == null || new_state == curr_state: return
+	if new_state == null: return
+	if new_state == curr_state:
+		curr_state.exit()
+		curr_state.enter()
+		return
 	curr_state.exit()
 	states.push_back( curr_state )
 	states.push_front( new_state )

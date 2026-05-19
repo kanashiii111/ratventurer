@@ -1,12 +1,13 @@
 class_name Player extends CharacterBody2D
 
 @onready var player_state_machine : StateMachine = $StateMachine
-@onready var sprite = $Sprite
-@onready var anim_player = $AnimationPlayer
+@onready var sprite: Sprite2D = $Sprite
+@onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_player = $AudioStreamPlayer2D
 @onready var wall_detector = $WallDetector
 @onready var ledge_detector = $LedgeDetector
 @onready var player_collider : CollisionShape2D = $CollisionShape
+@onready var attack_marker: Marker2D = $AttackSpawn
 
 var has_dash: bool = true
 var want_to_uncrouch: bool = false

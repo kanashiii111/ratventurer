@@ -12,7 +12,9 @@ func enter():
 func exit():
 	pass
 
-func handle_input( _event: InputEvent) -> PlayerState: 
+func handle_input( _event: InputEvent) -> PlayerState:
+	if _event.is_action_pressed("Attack"):
+		return attack
 	if _event.is_action_pressed("Slide"):
 		return crouch_idle
 	if _event.is_action_pressed( "Jump" ):
