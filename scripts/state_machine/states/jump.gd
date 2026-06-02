@@ -49,8 +49,8 @@ func physics_process(_delta: float) -> PlayerState:
 	
 	player.update_velocity(target_vel, acceleration)
 	
-	if player.is_on_floor():
-		return idle
-	elif player.velocity.y >= 0:
+	#if player.is_on_floor():
+		#return idle
+	if player.velocity.y >= 0:
 		return fall
 	return null
