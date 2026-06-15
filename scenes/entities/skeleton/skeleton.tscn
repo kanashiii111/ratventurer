@@ -1,0 +1,127 @@
+[gd_scene format=3 uid="uid://bddf7n1fdsah6"]
+
+[ext_resource type="Texture2D" uid="uid://4y21lfum24kt" path="res://assets/sprites/entities/skeleton/skeleton_boiler.png" id="1_py50p"]
+[ext_resource type="Script" uid="uid://c3xlic42xitcg" path="res://scripts/entities/skeleton/skeleton.gd" id="1_u58mj"]
+[ext_resource type="Script" uid="uid://38540218grpy" path="res://scripts/entities/skeleton/state_machine/skeleton_state_machine.gd" id="3_rb0rj"]
+[ext_resource type="Script" uid="uid://lxfx5p0d83l4" path="res://scripts/entities/skeleton/state_machine/states/idle.gd" id="3_yvqff"]
+[ext_resource type="Script" uid="uid://c1urotshfiju3" path="res://scripts/entities/skeleton/state_machine/states/walk.gd" id="4_rb0rj"]
+[ext_resource type="Script" uid="uid://crbl5kykatbjb" path="res://scripts/entities/skeleton/state_machine/states/chase.gd" id="5_d4gqi"]
+[ext_resource type="Script" uid="uid://hb2bv67vl160" path="res://scripts/entities/skeleton/state_machine/states/attack.gd" id="6_n7mv8"]
+[ext_resource type="Script" uid="uid://b6a46a6k4detf" path="res://scripts/entities/skeleton/state_machine/states/fall.gd" id="8_d4gqi"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_py50p"]
+size = Vector2(14, 30)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_u58mj"]
+size = Vector2(37.333336, 5.166667)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_thk0v"]
+size = Vector2(5.3333335, 3.3333333)
+
+[node name="Skeleton" type="CharacterBody2D" unique_id=836459823]
+collision_layer = 2
+collision_mask = 1
+script = ExtResource("1_u58mj")
+
+[node name="Sprite" type="Sprite2D" parent="." unique_id=1076964994]
+texture = ExtResource("1_py50p")
+
+[node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=2075356365]
+position = Vector2(2, 1)
+shape = SubResource("RectangleShape2D_py50p")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1142814620]
+
+[node name="VerticalVelocityLabel" type="Label" parent="." unique_id=675077586]
+offset_left = -40.0
+offset_top = -109.0
+offset_right = 39.0
+offset_bottom = -85.0
+text = "y vel"
+
+[node name="HorizontalVelocityLabel" type="Label" parent="." unique_id=1798350027]
+offset_left = -40.0
+offset_top = -86.0
+offset_bottom = -63.0
+text = "x vel"
+
+[node name="PrevStateLabel" type="Label" parent="." unique_id=1590741989]
+offset_left = -40.0
+offset_top = -65.0
+offset_right = 39.0
+offset_bottom = -39.0
+text = "Prev State"
+
+[node name="CurrStateLabel" type="Label" parent="." unique_id=825697242]
+offset_left = -39.0
+offset_top = -44.0
+offset_right = 40.0
+offset_bottom = -21.0
+text = "Curr State"
+
+[node name="PlayerDetectionArea" type="Area2D" parent="." unique_id=1696324121]
+visible = false
+scale = Vector2(3, 3)
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerDetectionArea" unique_id=965882749]
+position = Vector2(0, 0.16666667)
+scale = Vector2(2, 2)
+shape = SubResource("RectangleShape2D_u58mj")
+disabled = true
+debug_color = Color(0.99521154, 0, 0.21698755, 0.41960785)
+
+[node name="PlayerAttackArea" type="Area2D" parent="." unique_id=1799414712]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttackArea" unique_id=1607296068]
+position = Vector2(2.0000002, 1)
+scale = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_thk0v")
+debug_color = Color(0.27417794, 0.6325208, 1.92523e-07, 0.41960785)
+
+[node name="StateMachine" type="Node2D" parent="." unique_id=48309751]
+script = ExtResource("3_rb0rj")
+
+[node name="Idle" type="Node2D" parent="StateMachine" unique_id=2012475320]
+unique_name_in_owner = true
+script = ExtResource("3_yvqff")
+
+[node name="Walk" type="Node2D" parent="StateMachine" unique_id=1545445381]
+unique_name_in_owner = true
+script = ExtResource("4_rb0rj")
+
+[node name="Chase" type="Node2D" parent="StateMachine" unique_id=707874838]
+unique_name_in_owner = true
+script = ExtResource("5_d4gqi")
+
+[node name="Attack" type="Node2D" parent="StateMachine" unique_id=429606831]
+unique_name_in_owner = true
+script = ExtResource("6_n7mv8")
+
+[node name="Fall" type="Node2D" parent="StateMachine" unique_id=2104975681]
+unique_name_in_owner = true
+script = ExtResource("8_d4gqi")
+
+[node name="RightWallRay" type="RayCast2D" parent="." unique_id=1919270545]
+position = Vector2(12, 0)
+target_position = Vector2(8, 0)
+
+[node name="LeftWallRay" type="RayCast2D" parent="." unique_id=1142769514]
+position = Vector2(-8, 0)
+target_position = Vector2(-8, 0)
+
+[node name="RightRay" type="RayCast2D" parent="." unique_id=828647421]
+position = Vector2(11, 15)
+target_position = Vector2(0, 5)
+hit_from_inside = true
+
+[node name="LeftRay" type="RayCast2D" parent="." unique_id=1045509171]
+position = Vector2(-7, 15)
+target_position = Vector2(0, 5)
+hit_from_inside = true
+
+[connection signal="body_entered" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_entered"]
+[connection signal="body_exited" from="PlayerDetectionArea" to="." method="_on_player_detection_area_body_exited"]
+[connection signal="body_entered" from="PlayerAttackArea" to="." method="_on_player_attack_area_body_entered"]
+[connection signal="body_exited" from="PlayerAttackArea" to="." method="_on_player_attack_area_body_exited"]

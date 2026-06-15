@@ -3,6 +3,7 @@ class_name PlayerFallState extends PlayerState
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var speed: float = 200
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 20
 @export var coyote_time : float = 0.125
+@export var ground_slam_time : float = 0.1
 
 @export var fall_audio : AudioStream
 
@@ -28,6 +29,12 @@ func handle_input( _event: InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("Dash"):
 		return dash
 	#if player.is_on_wall():
+	if _event.is_action_pressed("GroundSlam"):
+		if player.ground_slam_timer.is_stopped():
+			player.ground_slam_timer.start(ground_slam_time)
+		else:
+			player.ground_slam_timer.stop()
+			return ground_slam
 	if player.is_on_wall() and _event.is_action_pressed("Jump"):
 		return wall_jump
 	if player.is_at_ledge() and _event.is_action_pressed("Jump"):

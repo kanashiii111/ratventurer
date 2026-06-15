@@ -1,7 +1,7 @@
 class_name PlayerState extends Node
 
 static var player: Player
-static var state_machine: StateMachine
+var state_machine: PlayerStateMachine
 static var direction: Vector2
 
 @onready var idle: PlayerIdleState = %Idle
@@ -16,6 +16,7 @@ static var direction: Vector2
 @onready var crouch_walk: PlayerCrouchWalkState = %CrouchWalk
 @onready var wall_jump: PlayerWallJumpState = %WallJump
 @onready var attack: PlayerAttackState = %Attack
+@onready var ground_slam: PlayerGroundSlamState = %GroundSlam
 
 func _ready() -> void:
 	pass 

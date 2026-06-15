@@ -1,6 +1,6 @@
 class_name Player extends CharacterBody2D
 
-@onready var player_state_machine : StateMachine = $StateMachine
+@onready var player_state_machine : PlayerStateMachine = $StateMachine
 @onready var sprite: Sprite2D = $Sprite
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_player = $AudioStreamPlayer2D
@@ -8,6 +8,8 @@ class_name Player extends CharacterBody2D
 @onready var ledge_detector = $LedgeDetector
 @onready var player_collider : CollisionShape2D = $CollisionShape
 @onready var attack_marker: Marker2D = $AttackSpawn
+@onready var ground_slam_timer: Timer = $GroundSlamTimer
+@onready var attack_collision_area: Area2D = $AttackCollisionArea
 
 var has_dash: bool = true
 var want_to_uncrouch: bool = false
@@ -20,8 +22,11 @@ const AFTER_SLIDE_POSITION_Y: float = 1.75
 
 func _ready() -> void:
 	player_state_machine.init( self )
-	pass
 
+#func _on_attack_collision_area_body_entered(body: Node2D) -> void:
+	#if body is Skeleton and player_state_machine.is_state(%Attack):
+		#print("yo")
+		
 func _physics_process( _delta: float ) -> void:
 	$Label.text = "curr: " + player_state_machine.curr_state.name
 	$Label2.text = str(player_state_machine.player.velocity.x)
@@ -55,11 +60,15 @@ func update_velocity( _to_velocity: float, _acceleration: float) -> void:
 	
 func update_animation_direction():
 	if self.velocity.x < 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == -1:
+		attack_collision_area.scale.x = -1
+		attack_collision_area.position.x = -3
 		player_collider.position.x = -4
 		ledge_detector.position.x = -15
 		wall_detector.rotation = PI
 		sprite.flip_h = true
-	if sign(Input.get_axis("MoveLeft", "MoveRight")) == 1 or self.velocity.x > 0: # or self.velocity.x > 0 or
+	elif sign(Input.get_axis("MoveLeft", "MoveRight")) == 1 or self.velocity.x > 0: # or self.velocity.x > 0 or
+		attack_collision_area.scale.x = 1
+		attack_collision_area.position.x = 3
 		player_collider.position.x = 4
 		ledge_detector.position.x = 15
 		wall_detector.rotation = 0

@@ -3,6 +3,7 @@ class_name PlayerJumpState extends PlayerState
 @export var jump_velocity : float = 350.0
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var speed: float = 200
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 8
+@export var ground_slam_time : float = 0.1
 
 @export var jump_audio : AudioStream
 
@@ -24,6 +25,12 @@ func handle_input(_event: InputEvent) -> PlayerState:
 		player.has_dash = false
 		return dash
 	#if player.is_on_wall():
+	if _event.is_action_pressed("GroundSlam"):
+		if player.ground_slam_timer.is_stopped():
+			player.ground_slam_timer.start(ground_slam_time)
+		else:
+			player.ground_slam_timer.stop()
+			return ground_slam
 	if player.is_at_ledge() and _event.is_action_pressed("Jump"):
 		return vault
 	if _event.is_action_released("Jump"):
