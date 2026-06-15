@@ -3,6 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://c123dryb8t1p3" path="res://scenes/entities/player/player.tscn" id="1_uwrxv"]
 [ext_resource type="Texture2D" uid="uid://bevjhjs2qics0" path="res://assets/sprites/world/CastleTiles.png" id="2_yqjtg"]
 [ext_resource type="Texture2D" uid="uid://fh1rjgqupefu" path="res://assets/sprites/world/tileset_.png" id="3_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://bddf7n1fdsah6" path="res://scenes/entities/skeleton/skeleton.tscn" id="5_lbhrr"]
+[ext_resource type="PackedScene" uid="uid://c30kx0wo5x7pj" path="res://scenes/menus/pause_menu/pause_menu.tscn" id="6_fg3d2"]
 
 [sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_yqjtg"]
 texture = ExtResource("2_yqjtg")
@@ -365,14 +367,14 @@ sources/0 = SubResource("TileSetAtlasSource_lbhrr")
 
 [node name="Game" type="Node2D" unique_id=1950023242]
 
-[node name="player" parent="." unique_id=198051033 instance=ExtResource("1_uwrxv")]
+[node name="Player" parent="." unique_id=198051033 instance=ExtResource("1_uwrxv")]
 top_level = true
 z_index = 67
 position = Vector2(1, -11)
 
-[node name="camera" type="Camera2D" parent="player" unique_id=217313846]
+[node name="camera" type="Camera2D" parent="Player" unique_id=217313846]
 position = Vector2(0, -8)
-zoom = Vector2(3, 3)
+zoom = Vector2(2, 2)
 
 [node name="ground" type="TileMapLayer" parent="." unique_id=189159397]
 position = Vector2(0, 1)
@@ -381,3 +383,8 @@ tile_set = SubResource("TileSet_lnu2h")
 
 [node name="deco" type="TileMapLayer" parent="." unique_id=1559264206]
 tile_set = SubResource("TileSet_iywne")
+
+[node name="Skeleton2" parent="." unique_id=836459823 instance=ExtResource("5_lbhrr")]
+position = Vector2(188, -46)
+
+[node name="PauseMenu" parent="." unique_id=1535112975 instance=ExtResource("6_fg3d2")]

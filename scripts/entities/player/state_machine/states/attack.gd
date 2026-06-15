@@ -15,21 +15,17 @@ func init():
 	pass
 
 func enter():
-	# Каждый раз, когда мы входим в состояние (или спамим атаку):
-	# 1. Перезапускаем анимацию взмаха тела персонажа с самого начала
 	player.anim_player.play("Attack")
-	
-	# 2. Спавним независимый слэш в мире
 	spawn_slash_effect()
+
+	for body in player.attack_collision_area.get_overlapping_bodies():
+		if body is Skeleton:
+			body.queue_free()
 
 func exit():
 	pass
 
 func handle_input(_event: InputEvent) -> PlayerState:
-	# ВОТ ЗДЕСЬ МАГИЯ СПАМА:
-	# Если мы уже атакуем, но игрок СНОВА нажал кнопку атаки — 
-	# мы принудительно возвращаем это же состояние атаки.
-	# Стейт-машина вызовет exit() и сразу же enter(), перезапустив удар!
 	if _event.is_action_pressed("Attack"):
 		return self
 	if _event.is_action_pressed("Dash"):

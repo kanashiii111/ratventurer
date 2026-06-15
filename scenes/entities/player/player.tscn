@@ -3,23 +3,27 @@
 [ext_resource type="Script" uid="uid://dx65jn2teblra" path="res://scripts/entities/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://bmb31odjfetgw" path="res://assets/sprites/entities/player/rat_test.png" id="2_yywfu"]
 [ext_resource type="AudioStream" uid="uid://bqvi8yvbewvro" path="res://assets/sounds/entities/player/jump.wav" id="3_1murt"]
-[ext_resource type="Script" uid="uid://bggjbte0gfmhi" path="res://scripts/state_machine/player_state_machine.gd" id="3_58kc7"]
-[ext_resource type="Script" uid="uid://bpi7im8tdak3l" path="res://scripts/state_machine/states/idle.gd" id="4_nh4ur"]
-[ext_resource type="Script" uid="uid://cpq3xq3f7j3fr" path="res://scripts/state_machine/states/run.gd" id="5_bjvvg"]
-[ext_resource type="Script" uid="uid://d0l86bot5yoyr" path="res://scripts/state_machine/states/jump.gd" id="6_8akj5"]
-[ext_resource type="Script" uid="uid://bgik34ntre3jp" path="res://scripts/state_machine/states/fall.gd" id="7_1murt"]
+[ext_resource type="Script" uid="uid://bggjbte0gfmhi" path="res://scripts/entities/player/state_machine/player_state_machine.gd" id="3_58kc7"]
+[ext_resource type="Script" uid="uid://bpi7im8tdak3l" path="res://scripts/entities/player/state_machine/states/idle.gd" id="4_nh4ur"]
+[ext_resource type="Script" uid="uid://cpq3xq3f7j3fr" path="res://scripts/entities/player/state_machine/states/run.gd" id="5_bjvvg"]
+[ext_resource type="Script" uid="uid://d0l86bot5yoyr" path="res://scripts/entities/player/state_machine/states/jump.gd" id="6_8akj5"]
+[ext_resource type="Script" uid="uid://bgik34ntre3jp" path="res://scripts/entities/player/state_machine/states/fall.gd" id="7_1murt"]
 [ext_resource type="AudioStream" uid="uid://cpbsccphwwby4" path="res://assets/sounds/entities/player/run.mp3" id="7_5sj0x"]
-[ext_resource type="Script" uid="uid://bi6ouun6gg38e" path="res://scripts/state_machine/states/slide.gd" id="10_ovg4i"]
-[ext_resource type="Script" uid="uid://d076tkk4s2i6v" path="res://scripts/state_machine/states/latch.gd" id="11_7wli1"]
-[ext_resource type="Script" uid="uid://fgqcqk0ffni5" path="res://scripts/state_machine/states/vault.gd" id="12_j0oqr"]
-[ext_resource type="Script" uid="uid://80d50gjsmvq4" path="res://scripts/state_machine/states/dash.gd" id="13_xy2vv"]
-[ext_resource type="Script" uid="uid://c2r35yje035pn" path="res://scripts/state_machine/states/crouch_idle.gd" id="14_r4dfn"]
-[ext_resource type="Script" uid="uid://dpmngdwx6fr1f" path="res://scripts/state_machine/states/wall_jump.gd" id="15_70kwc"]
-[ext_resource type="Script" uid="uid://djc8ujd4gu4od" path="res://scripts/state_machine/states/crouch_walk.gd" id="16_yywfu"]
-[ext_resource type="Script" uid="uid://bscor7s8robuv" path="res://scripts/state_machine/states/attack.gd" id="18_w3p2j"]
+[ext_resource type="Script" uid="uid://bi6ouun6gg38e" path="res://scripts/entities/player/state_machine/states/slide.gd" id="10_ovg4i"]
+[ext_resource type="Script" uid="uid://d076tkk4s2i6v" path="res://scripts/entities/player/state_machine/states/latch.gd" id="11_7wli1"]
+[ext_resource type="Script" uid="uid://fgqcqk0ffni5" path="res://scripts/entities/player/state_machine/states/vault.gd" id="12_j0oqr"]
+[ext_resource type="Script" uid="uid://80d50gjsmvq4" path="res://scripts/entities/player/state_machine/states/dash.gd" id="13_xy2vv"]
+[ext_resource type="Script" uid="uid://c2r35yje035pn" path="res://scripts/entities/player/state_machine/states/crouch_idle.gd" id="14_r4dfn"]
+[ext_resource type="Script" uid="uid://dpmngdwx6fr1f" path="res://scripts/entities/player/state_machine/states/wall_jump.gd" id="15_70kwc"]
+[ext_resource type="Script" uid="uid://djc8ujd4gu4od" path="res://scripts/entities/player/state_machine/states/crouch_walk.gd" id="16_yywfu"]
+[ext_resource type="Script" uid="uid://7887ikqd3jd8" path="res://scripts/entities/player/state_machine/states/ground_slam.gd" id="18_knby6"]
+[ext_resource type="Script" uid="uid://bscor7s8robuv" path="res://scripts/entities/player/state_machine/states/attack.gd" id="18_w3p2j"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xy2vv"]
 size = Vector2(10, 19)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_w3p2j"]
+size = Vector2(36, 20)
 
 [sub_resource type="Animation" id="Animation_pcd0u"]
 resource_name = "Attack"
@@ -210,6 +214,7 @@ _data = {
 }
 
 [node name="Player" type="CharacterBody2D" unique_id=198051033]
+collision_layer = 4
 floor_snap_length = 10.0
 script = ExtResource("1_g2els")
 
@@ -228,6 +233,15 @@ position = Vector2(20, 0)
 position = Vector2(3, 1.75)
 shape = SubResource("RectangleShape2D_xy2vv")
 
+[node name="AttackCollisionArea" type="Area2D" parent="." unique_id=1276401076]
+position = Vector2(3, 1.75)
+collision_mask = 3
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="AttackCollisionArea" unique_id=1616076684]
+position = Vector2(13, 0)
+shape = SubResource("RectangleShape2D_w3p2j")
+debug_color = Color(0.9947129, 0, 0.22507519, 0.41960785)
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=1986017344]
 libraries/ = SubResource("AnimationLibrary_ovg4i")
 autoplay = &"Idle"
@@ -235,6 +249,8 @@ autoplay = &"Idle"
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1879214983]
 stream = ExtResource("3_1murt")
 volume_db = -15.0
+
+[node name="GroundSlamTimer" type="Timer" parent="." unique_id=667600937]
 
 [node name="Label" type="Label" parent="." unique_id=1375450326]
 offset_left = -20.0
@@ -265,10 +281,12 @@ offset_bottom = -42.0
 text = "prev_state"
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=210708464]
+enabled = false
 target_position = Vector2(33, 0)
 
 [node name="LedgeDetector" type="RayCast2D" parent="." unique_id=2145148695]
 position = Vector2(15, -36)
+enabled = false
 target_position = Vector2(0, 16)
 hit_from_inside = true
 
@@ -324,3 +342,9 @@ script = ExtResource("16_yywfu")
 [node name="Attack" type="Node2D" parent="StateMachine" unique_id=873882073]
 unique_name_in_owner = true
 script = ExtResource("18_w3p2j")
+
+[node name="GroundSlam" type="Node2D" parent="StateMachine" unique_id=2103208001]
+unique_name_in_owner = true
+script = ExtResource("18_knby6")
+
+[connection signal="body_entered" from="AttackCollisionArea" to="." method="_on_attack_collision_area_body_entered"]
