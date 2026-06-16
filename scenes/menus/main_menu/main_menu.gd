@@ -31,10 +31,8 @@ func _remove_settings() -> void:
 		s.queue_free()
 
 func _on_play_pressed() -> void:
-	if first_level_scene != "":
-		get_tree().change_scene_to_file(first_level_scene)
-	else:
-		push_error("Путь к первому уровню не задан в MainMenu!")
+	GameManager.current_level = "level_1"
+	get_tree().change_scene_to_file("res://scenes/game.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

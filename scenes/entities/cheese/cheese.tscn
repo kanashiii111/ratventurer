@@ -1,0 +1,13 @@
+[gd_scene format=4]
+
+[ext_resource type="Script" path="res://scripts/entities/cheese/cheese.gd" id="1_s4flo"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ys7p2"]
+size = Vector2(12, 12)
+
+[node name="Cheese" type="Area2D"]
+collision_mask = 5
+script = ExtResource("1_s4flo")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_ys7p2")

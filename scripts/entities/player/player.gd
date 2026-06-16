@@ -21,6 +21,7 @@ const AFTER_SLIDE_SHAPE_SIZE_Y: int = 19
 const AFTER_SLIDE_POSITION_Y: float = 1.75
 
 func _ready() -> void:
+	add_to_group("player")
 	player_state_machine.init( self )
 
 #func _on_attack_collision_area_body_entered(body: Node2D) -> void:

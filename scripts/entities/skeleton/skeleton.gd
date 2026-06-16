@@ -11,7 +11,7 @@ class_name Skeleton extends CharacterBody2D
 @onready var walk_state: SkeletonState = $StateMachine/Walk
 @onready var death_state: SkeletonState = $StateMachine/Death
 
-@onready var player : CharacterBody2D = get_parent().get_node("Player")
+@onready var player : CharacterBody2D = get_tree().get_first_node_in_group("player")
 
 @onready var sprite : Sprite2D = $Sprite
 
