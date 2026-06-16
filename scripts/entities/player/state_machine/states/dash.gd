@@ -12,7 +12,7 @@ func init():
 func enter():
 	player.anim_player.play("Dash")
 	
-	dash_direction = direction if direction.x != 0 else Vector2(player.sprite.scale.x, 0)
+	dash_direction = direction if direction.x != 0 else Vector2(-1 if player.sprite.flip_h else 1, 0)
 	if abs(player.velocity.x) > dash_speed:
 		player.velocity.x += dash_direction.x * player.velocity.x / 10
 	else:
@@ -25,6 +25,8 @@ func exit():
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState: 
+	if _event.is_action_pressed("Attack"):
+		return attack
 	if _event.is_action_pressed("Jump"):
 		player.velocity.x *= 1.2
 		return jump

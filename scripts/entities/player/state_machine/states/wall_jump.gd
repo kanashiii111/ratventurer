@@ -29,6 +29,9 @@ func handle_input( _event: InputEvent ) -> PlayerState:
 			player.ground_slam_timer.stop()
 			return ground_slam
 	if _event.is_action_pressed("Dash"):
+		if not player.has_dash:
+			return null
+		player.has_dash = false
 		return dash
 	if _event.is_action_released("Jump"):
 		player.velocity.y *= 0.5

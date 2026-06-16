@@ -19,6 +19,8 @@ func exit():
 	pass
 
 func handle_input(_event: InputEvent) -> PlayerState:
+	if _event.is_action_pressed("Attack"):
+		return attack
 	if _event.is_action_pressed("Dash"):
 		if not player.has_dash:
 			return null
@@ -31,8 +33,6 @@ func handle_input(_event: InputEvent) -> PlayerState:
 		else:
 			player.ground_slam_timer.stop()
 			return ground_slam
-	if player.is_at_ledge() and _event.is_action_pressed("Jump"):
-		return vault
 	if _event.is_action_released("Jump"):
 		player.velocity.y *= 0.5
 		return fall 

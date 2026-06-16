@@ -23,11 +23,6 @@ default_bus_layout="res://audio/default_bus_layout.tres"
 
 SettingsManager="*res://scripts/settings/settings_manager.gd"
 
-[display]
-
-window/size/viewport_width=1920
-window/size/viewport_height=1080
-
 [editor]
 
 version_control/plugin_name="GitPlugin"
@@ -64,6 +59,10 @@ Slide={
 "deadzone": 0.2,
 "events": [Object(InputEventKey,"resource_local_to_scene":false,"resource_name":"","device":-1,"window_id":0,"alt_pressed":false,"shift_pressed":false,"ctrl_pressed":false,"meta_pressed":false,"pressed":false,"keycode":0,"physical_keycode":67,"key_label":0,"unicode":99,"location":0,"echo":false,"script":null)
 ]
+}
+Restart={
+"deadzone": 0.2,
+"events": []
 }
 Dash={
 "deadzone": 0.2,

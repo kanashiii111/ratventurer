@@ -9,7 +9,7 @@ class_name Player extends CharacterBody2D
 @onready var player_collider : CollisionShape2D = $CollisionShape
 @onready var attack_marker: Marker2D = $AttackSpawn
 @onready var ground_slam_timer: Timer = $GroundSlamTimer
-@onready var attack_collision_area: Area2D = $AttackCollisionArea
+@onready var ground_slam_hitbox: Area2D = $GroundSlamHitbox
 
 var has_dash: bool = true
 var want_to_uncrouch: bool = false
@@ -34,6 +34,8 @@ func _physics_process( _delta: float ) -> void:
 	$Label4.text = "prev: " + player_state_machine.prev_state.name
 	gravity(_delta)
 	move_and_slide()
+	if is_on_floor():
+		has_dash = true
 
 func is_ceiling_above() -> bool:
 	# Проверяем, впишется ли ВЫСОКИЙ коллайдер в пространство над нами
@@ -56,19 +58,20 @@ func gravity( _delta: float ):
 		velocity.y += get_gravity().y * _delta
 
 func update_velocity( _to_velocity: float, _acceleration: float) -> void:
-	velocity.x = move_toward(velocity.x, _to_velocity, _acceleration)
+	#velocity.x = move_toward(velocity.x, _to_velocity, _acceleration)
+	if sign(_to_velocity) != 0 and sign(velocity.x) != sign(_to_velocity):
+		# резкое торможение при развороте (acceleration * 5)
+		velocity.x = move_toward(velocity.x, _to_velocity, _acceleration * 5)
+	else:
+		velocity.x = move_toward(velocity.x, _to_velocity, _acceleration)
 	
 func update_animation_direction():
 	if self.velocity.x < 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == -1:
-		attack_collision_area.scale.x = -1
-		attack_collision_area.position.x = -3
 		player_collider.position.x = -4
 		ledge_detector.position.x = -15
 		wall_detector.rotation = PI
 		sprite.flip_h = true
 	elif sign(Input.get_axis("MoveLeft", "MoveRight")) == 1 or self.velocity.x > 0: # or self.velocity.x > 0 or
-		attack_collision_area.scale.x = 1
-		attack_collision_area.position.x = 3
 		player_collider.position.x = 4
 		ledge_detector.position.x = 15
 		wall_detector.rotation = 0

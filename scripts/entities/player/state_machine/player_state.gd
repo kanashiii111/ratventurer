@@ -9,8 +9,6 @@ static var direction: Vector2
 @onready var jump: PlayerJumpState = %Jump
 @onready var fall: PlayerFallState = %Fall
 @onready var slide: PlayerSlideState = %Slide
-@onready var latch: PlayerLatchState = %Latch
-@onready var vault: PlayerVaultState = %Vault
 @onready var dash: PlayerDashState = %Dash
 @onready var crouch_idle: PlayerCrouchIdleState = %CrouchIdle
 @onready var crouch_walk: PlayerCrouchWalkState = %CrouchWalk

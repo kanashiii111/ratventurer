@@ -1,5 +1,10 @@
 key,en,ru
+play,Play,Играть
 settings,Settings,Настройки
+quit,Quit,Выход
+resume,Resume,Продолжить
+restart,Restart,Заново
+main_menu,Main Menu,Главное меню
 sound,Sound,Звук
 general,General,Основные
 language,Language,Язык

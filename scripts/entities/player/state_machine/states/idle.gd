@@ -19,6 +19,8 @@ func handle_input( _event: InputEvent) -> PlayerState:
 		return crouch_idle
 	if _event.is_action_pressed( "Jump" ):
 		return jump
+	if _event.is_action_pressed("Dash"):
+		return dash
 	return null
 
 func process( _delta: float ) -> PlayerState:
