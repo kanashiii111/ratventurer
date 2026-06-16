@@ -8,6 +8,7 @@ var state_machine: SkeletonStateMachine
 @onready var chase = %Chase
 @onready var attack = %Attack
 @onready var fall = %Fall
+@onready var death = %Death
 
 func _ready() -> void:
 	pass 

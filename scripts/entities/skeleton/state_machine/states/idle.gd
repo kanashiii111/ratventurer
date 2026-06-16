@@ -5,6 +5,9 @@ var deceleration: int = 20
 func _ready() -> void:
 	pass
 
+func enter() -> void:
+	skeleton.animation_player.play( "Idle" )
+
 func process(_delta: float) -> SkeletonState:
 	return null
 

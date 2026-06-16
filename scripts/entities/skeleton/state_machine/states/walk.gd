@@ -12,6 +12,9 @@ func _ready() -> void:
 	if direction == 0:
 		direction = 1
 
+func enter() -> void:
+	skeleton.animation_player.play( "Walk" )
+
 func process(_delta: float) -> SkeletonState:
 	return null
 

@@ -23,11 +23,12 @@ func exit():
 
 func handle_input( _event: InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("GroundSlam"):
-		if player.ground_slam_timer.is_stopped():
-			player.ground_slam_timer.start(ground_slam_time)
-		else:
-			player.ground_slam_timer.stop()
-			return ground_slam
+		return ground_slam
+		#if player.ground_slam_timer.is_stopped():
+			#player.ground_slam_timer.start(ground_slam_time)
+		#else:
+			#player.ground_slam_timer.stop()
+			#return ground_slam
 	if _event.is_action_pressed("Dash"):
 		if not player.has_dash:
 			return null
@@ -42,7 +43,11 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	player.update_animation_direction()
+	var face_left = player.velocity.x < 0
+	player.sprite.flip_h = face_left
+	player.player_collider.position.x = -4 if face_left else 4
+	player.ledge_detector.position.x = -15 if face_left else 15
+	player.wall_detector.rotation = PI if face_left else 0.0
 	
 	var target_vel = direction.x * speed
 	

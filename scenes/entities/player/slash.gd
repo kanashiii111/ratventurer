@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _on_hitbox_body_entered(body: Node2D) -> void:
 	if body is Skeleton:
-		body.queue_free()
+		body.die()
 
 func _process(_delta: float) -> void:
 	pass

@@ -11,6 +11,13 @@ func enter():
 	player.player_collider.shape.size.y = player.SLIDE_SHAPE_SIZE_Y
 	player.player_collider.position.y = player.SLIDE_POSITION_Y
 	
+	if player.velocity.x != 0:
+		var face_left = player.velocity.x < 0
+		player.player_collider.position.x = -4 if face_left else 4
+		player.ledge_detector.position.x = -15 if face_left else 15
+		player.wall_detector.rotation = PI if face_left else 0.0
+		player.sprite.flip_h = face_left
+	
 func exit():
 	player.sprite.rotation = 0
 	player.player_collider.shape.size.y = player.AFTER_SLIDE_SHAPE_SIZE_Y
@@ -39,6 +46,7 @@ func process( _delta: float ) -> PlayerState:
 	
 func physics_process(_delta: float) -> PlayerState:
 	player.update_animation_direction()
+	player.sprite.flip_h = player.velocity.x < 0
 	player.update_animation_rotation()
 	
 	var input_dir = Input.get_axis("MoveLeft", "MoveRight")
@@ -59,15 +67,16 @@ func physics_process(_delta: float) -> PlayerState:
 			
 		if moving_down: #player.velocity.x = move_toward(player.velocity.x, player.velocity.x * 1.5, 100 * _delta)
 			var slope_acceleration = 200.0 
-			player.velocity.x = move_toward(player.velocity.x, direction.x * 600, slope_acceleration * _delta)
+			if input_dir != 0:
+				player.velocity.x = move_toward(player.velocity.x, direction.x * 600, slope_acceleration * _delta)
 		
 		if input_dir == 0 and moving_up:
 			player.velocity.x = move_toward(player.velocity.x, 0, 500 * _delta)
 		
-		if player.velocity.x > 0 and input_dir < 0:
+		if player.velocity.x > 0 and input_dir < 0 and not moving_down:
 			player.velocity.x = move_toward(player.velocity.x, 0, 2500 * _delta)
 
-		if player.velocity.x < 0 and input_dir > 0:
+		if player.velocity.x < 0 and input_dir > 0 and not moving_down:
 			player.velocity.x = move_toward(player.velocity.x, 0, 2500 * _delta)
 	
 	return null

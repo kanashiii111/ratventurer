@@ -35,11 +35,12 @@ func handle_input( _event: InputEvent ) -> PlayerState:
 		return dash
 	#if player.is_on_wall():
 	if _event.is_action_pressed("GroundSlam"):
-		if player.ground_slam_timer.is_stopped():
-			player.ground_slam_timer.start(ground_slam_time)
-		else:
-			player.ground_slam_timer.stop()
-			return ground_slam
+		return ground_slam
+		#if player.ground_slam_timer.is_stopped():
+			#player.ground_slam_timer.start(ground_slam_time)
+		#else:
+			#player.ground_slam_timer.stop()
+			#return ground_slam
 	if player.is_on_wall() and _event.is_action_pressed("Jump"):
 		return wall_jump
 	if coyote_timer > 0:

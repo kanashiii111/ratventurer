@@ -21,7 +21,7 @@
 size = Vector2(10, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yywfu"]
-size = Vector2(52, 1)
+size = Vector2(59, 5.75)
 
 [sub_resource type="Animation" id="Animation_pcd0u"]
 resource_name = "Attack"
@@ -235,7 +235,7 @@ shape = SubResource("RectangleShape2D_xy2vv")
 collision_mask = 2
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="GroundSlamHitbox" unique_id=1732389167]
-position = Vector2(2, 9.5)
+position = Vector2(1.5, 8.875)
 shape = SubResource("RectangleShape2D_yywfu")
 debug_color = Color(0.99816936, 0, 0.15981787, 0.41960785)
 

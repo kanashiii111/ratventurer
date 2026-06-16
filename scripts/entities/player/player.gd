@@ -66,16 +66,30 @@ func update_velocity( _to_velocity: float, _acceleration: float) -> void:
 		velocity.x = move_toward(velocity.x, _to_velocity, _acceleration)
 	
 func update_animation_direction():
-	if self.velocity.x < 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == -1:
-		player_collider.position.x = -4
-		ledge_detector.position.x = -15
-		wall_detector.rotation = PI
-		sprite.flip_h = true
-	elif sign(Input.get_axis("MoveLeft", "MoveRight")) == 1 or self.velocity.x > 0: # or self.velocity.x > 0 or
-		player_collider.position.x = 4
-		ledge_detector.position.x = 15
-		wall_detector.rotation = 0
-		sprite.flip_h = false
+	#if self.velocity.x < 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == -1:
+		#player_collider.position.x = -4
+		#ledge_detector.position.x = -15
+		#wall_detector.rotation = PI
+		#sprite.flip_h = true
+	#elif sign(Input.get_axis("MoveLeft", "MoveRight")) == 1 or self.velocity.x > 0: # or self.velocity.x > 0 or
+		#player_collider.position.x = 4
+		#ledge_detector.position.x = 15
+		#wall_detector.rotation = 0
+		#sprite.flip_h = false
+	var input_dir = sign(Input.get_axis("MoveLeft", "MoveRight"))
+	
+	var face_left: bool
+	if input_dir != 0:
+		face_left = input_dir < 0
+	elif self.velocity.x != 0:
+		face_left = self.velocity.x < 0
+	else:
+		return
+
+	player_collider.position.x = -4 if face_left else 4
+	ledge_detector.position.x = -15 if face_left else 15
+	wall_detector.rotation = PI if face_left else 0.0
+	sprite.flip_h = face_left
 
 func update_animation_rotation():
 	if is_on_floor():

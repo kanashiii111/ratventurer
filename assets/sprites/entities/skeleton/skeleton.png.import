@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://4y21lfum24kt"
-path="res://.godot/imported/skeleton_boiler.png-390a2070463f874b28b381d23025eb7c.ctex"
+uid="uid://batsd5pbcwktv"
+path="res://.godot/imported/skeleton.png-458dc4930e5597dd31b339913b729c0d.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/entities/skeleton/skeleton_boiler.png"
-dest_files=["res://.godot/imported/skeleton_boiler.png-390a2070463f874b28b381d23025eb7c.ctex"]
+source_file="res://assets/sprites/entities/skeleton/skeleton.png"
+dest_files=["res://.godot/imported/skeleton.png-458dc4930e5597dd31b339913b729c0d.ctex"]
 
 [params]
 

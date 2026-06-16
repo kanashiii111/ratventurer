@@ -2,13 +2,14 @@ class_name Skeleton extends CharacterBody2D
 
 @onready var skeleton_state_machine : SkeletonStateMachine = $StateMachine
 @onready var skeleton_collider : CollisionShape2D = $CollisionShape
-@onready var player_detection_area : Area2D = $PlayerDetectionArea
 @onready var player_attack_area : Area2D = $PlayerAttackArea
+@onready var animation_player: AnimationPlayer = $AnimationPlayer
 
 @onready var chase_state: SkeletonState = $StateMachine/Chase
 @onready var idle_state: SkeletonState = $StateMachine/Idle
 @onready var attack_state: SkeletonState = $StateMachine/Attack
 @onready var walk_state: SkeletonState = $StateMachine/Walk
+@onready var death_state: SkeletonState = $StateMachine/Death
 
 @onready var player : CharacterBody2D = get_parent().get_node("Player")
 
@@ -22,21 +23,28 @@ func _ready() -> void:
 	#player_attack_area.body_entered.connect(_on_player_attack_area_body_entered)
 	#player_attack_area.body_exited.connect(_on_player_attack_area_body_exited)
 
-func _on_player_detection_area_body_entered(body: Node2D) -> void:
-	if body == player:
-		skeleton_state_machine.change_state(chase_state)
-
 func _on_player_detection_area_body_exited(body: Node2D) -> void:
 	if body == player:
+		if skeleton_state_machine.curr_state == death_state:
+			return
 		skeleton_state_machine.change_state(walk_state)
 
 func _on_player_attack_area_body_entered(body: Node2D) -> void:
 	if body == player:
+		if skeleton_state_machine.curr_state == death_state:
+			return
 		skeleton_state_machine.change_state(attack_state)
 
 func _on_player_attack_area_body_exited(body: Node2D) -> void:
 	if body == player:
-		skeleton_state_machine.change_state(chase_state)
+		if skeleton_state_machine.curr_state == death_state:
+			return
+		skeleton_state_machine.change_state(walk_state)
+
+func die():
+	if skeleton_state_machine.curr_state == death_state:
+		return
+	skeleton_state_machine.change_state(death_state)
 
 func _physics_process( _delta: float ) -> void:
 	gravity(_delta)
@@ -56,5 +64,7 @@ func update_velocity( _to_velocity: float, _acceleration: float) -> void:
 func update_animation_direction():
 	if self.velocity.x > 0:
 		sprite.flip_h = true
+		player_attack_area.scale.x = -1
 	if self.velocity.x < 0:
+		player_attack_area.scale.x = 1
 		sprite.flip_h = false
