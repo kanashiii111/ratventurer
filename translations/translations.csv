@@ -21,3 +21,12 @@ best,Best,Лучшее
 rank,Rank,Ранг
 new_record,NEW RECORD!,НОВЫЙ РЕКОРД!
 next_level,Next Level,Следующий уровень
+tutorial_move,Move with WASD,Двигайся WASD
+tutorial_jump,Press Space to jump,Пробел — прыжок
+tutorial_slide,Press C to slide,C — скольжение
+tutorial_dash,Press V to dash,V — рывок
+tutorial_attack,Press E to attack,E — атака
+tutorial_cheese,Collect cheese!,Собери сыр!
+level_select,Level Select,Выбор уровня
+locked,Locked,Заблокировано
+no_record,No record,Нет рекорда

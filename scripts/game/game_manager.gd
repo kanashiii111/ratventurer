@@ -31,17 +31,17 @@ const LEVEL_DATA := {
 		"name": "Sewers",
 		"next": "level_3",
 		"scene": "res://scenes/levels/level_2.tscn",
-		"time_s": 50.0,
-		"time_a": 90.0,
-		"time_b": 120.0
+		"time_s": 45.0,
+		"time_a": 80.0,
+		"time_b": 110.0
 	},
 	"level_3": {
 		"name": "Castle Keep",
 		"next": "",
 		"scene": "res://scenes/levels/level_3.tscn",
-		"time_s": 45.0,
-		"time_a": 80.0,
-		"time_b": 110.0
+		"time_s": 35.0,
+		"time_a": 65.0,
+		"time_b": 95.0
 	}
 }
 

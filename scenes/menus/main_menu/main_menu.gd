@@ -31,8 +31,7 @@ func _remove_settings() -> void:
 		s.queue_free()
 
 func _on_play_pressed() -> void:
-	GameManager.current_level = "level_1"
-	get_tree().change_scene_to_file("res://scenes/game.tscn")
+	get_tree().change_scene_to_file("res://scenes/menus/level_select/level_select.tscn")
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

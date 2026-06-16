@@ -5,6 +5,7 @@ extends Node2D
 @onready var hud: CanvasLayer = $HUD
 @onready var level_complete: CanvasLayer = $LevelComplete
 @onready var pause_menu: CanvasLayer = $PauseMenu
+@onready var tutorial_popup: Control = $TutorialPopup
 
 func _ready() -> void:
 	var level_id: String = GameManager.current_level
@@ -29,6 +30,18 @@ func _ready() -> void:
 	var exit_zone: Area2D = level.get_node_or_null("ExitZone")
 	if exit_zone:
 		exit_zone.body_entered.connect(_on_exit_zone_body_entered)
+
+	_connect_tutorial_triggers(level)
+
+func _connect_tutorial_triggers(level: Node) -> void:
+	var triggers: Array[Node] = level.get_tree().get_nodes_in_group("tutorial_trigger")
+	for trigger in triggers:
+		if trigger is Area2D:
+			trigger.body_entered.connect(_on_tutorial_trigger_entered.bind(trigger))
+
+func _on_tutorial_trigger_entered(body: Node2D, trigger: Area2D) -> void:
+	if body == player and trigger.has_meta("message_key"):
+		tutorial_popup.show_text(trigger.get_meta("message_key"), 3.0)
 
 func _on_exit_zone_body_entered(body: Node2D) -> void:
 	if body == player:

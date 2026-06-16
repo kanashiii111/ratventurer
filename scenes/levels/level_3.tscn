@@ -1,0 +1,151 @@
+[gd_scene format=4]
+
+[ext_resource type="Texture2D" path="res://assets/sprites/world/CastleTiles.png" id="tex_castle"]
+[ext_resource type="Texture2D" path="res://assets/sprites/world/tileset_.png" id="tex_extra"]
+[ext_resource type="PackedScene" path="res://scenes/entities/skeleton/skeleton.tscn" id="res_skeleton"]
+[ext_resource type="PackedScene" path="res://scenes/entities/cheese/cheese.tscn" id="res_cheese"]
+
+
+[sub_resource type="RectangleShape2D" id="RectShape_exit"]
+size = Vector2(48, 64)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_castle"]
+texture = ExtResource("tex_castle")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:0/0 = 0
+4:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:0/0 = 0
+5:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:0/0 = 0
+6:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:0/0 = 0
+7:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:1/0 = 0
+4:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:1/0 = 0
+5:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:1/0 = 0
+6:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:1/0 = 0
+7:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:2/0 = 0
+0:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:2/0 = 0
+1:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:2/0 = 0
+2:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:2/0 = 0
+3:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:2/0 = 0
+4:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:2/0 = 0
+5:2/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:3/0 = 0
+0:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:3/0 = 0
+1:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:3/0 = 0
+2:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:3/0 = 0
+3:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+4:3/0 = 0
+4:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+5:3/0 = 0
+5:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+6:3/0 = 0
+6:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+7:3/0 = 0
+7:3/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSetAtlasSource" id="TileSetAtlasSource_extra"]
+texture = ExtResource("tex_extra")
+0:0/0 = 0
+0:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:0/0 = 0
+1:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:0/0 = 0
+2:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:0/0 = 0
+3:0/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+0:1/0 = 0
+0:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+1:1/0 = 0
+1:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+2:1/0 = 0
+2:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+3:1/0 = 0
+3:1/0/physics_layer_0/polygon_0/points = PackedVector2Array(-8, -8, 8, -8, 8, 8, -8, 8)
+
+[sub_resource type="TileSet" id="TileSet_ground"]
+physics_layer_0/collision_layer = 1
+sources/0 = SubResource("TileSetAtlasSource_castle")
+sources/1 = SubResource("TileSetAtlasSource_extra")
+
+[node name="Level3" type="Node2D"]
+
+[node name="PlayerSpawn" type="Marker2D" parent="."]
+position = Vector2(48, -48)
+
+[node name="ExitZone" type="Area2D" parent="."]
+collision_mask = 4
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="ExitZone"]
+position = Vector2(860, -55)
+shape = SubResource("RectShape_exit")
+
+[node name="Cheese1" parent="." instance=ExtResource("res_cheese")]
+position = Vector2(32, -28)
+
+[node name="Cheese2" parent="." instance=ExtResource("res_cheese")]
+position = Vector2(80, -56)
+
+[node name="Cheese3" parent="." instance=ExtResource("res_cheese")]
+position = Vector2(160, -28)
+
+[node name="Cheese4" parent="." instance=ExtResource("res_cheese")]
+position = Vector2(280, -56)
+
+[node name="Cheese5" parent="." instance=ExtResource("res_cheese")]
+position = Vector2(336, -28)
+
+[node name="Cheese6" parent="." instance=ExtResource("res_cheese")]
+position = Vector2(480, -68)
+
+[node name="Cheese7" parent="." instance=ExtResource("res_cheese")]
+position = Vector2(560, -56)
+
+[node name="Cheese8" parent="." instance=ExtResource("res_cheese")]
+position = Vector2(760, -68)
+
+[node name="Skeleton1" parent="." instance=ExtResource("res_skeleton")]
+position = Vector2(100, -16)
+
+[node name="Skeleton2" parent="." instance=ExtResource("res_skeleton")]
+position = Vector2(280, -16)
+
+[node name="Skeleton3" parent="." instance=ExtResource("res_skeleton")]
+position = Vector2(500, -16)
+
+[node name="Skeleton4" parent="." instance=ExtResource("res_skeleton")]
+position = Vector2(720, -16)
+
+[node name="ground" type="TileMapLayer" parent="."]
+position = Vector2(0, 1)
+tile_map_data = PackedByteArray("AAADAAAAAAABAAAAAQADAAAAAAABAAAAAgADAAAAAAABAAAAAwADAAAAAAABAAAABAADAAAAAAABAAAABQADAAAAAAABAAAABgADAAAAAAABAAAABwADAAAAAAABAAAACAADAAAAAAABAAAACQADAAAAAAABAAAACgADAAAAAAABAAAADwADAAAAAAABAAAAEAADAAAAAAABAAAAEQADAAAAAAABAAAAEgADAAAAAAABAAAAEwADAAAAAAABAAAAFAADAAAAAAABAAAAFQADAAAAAAABAAAAFgADAAAAAAABAAAAGwADAAAAAAABAAAAHAADAAAAAAABAAAAHQADAAAAAAABAAAAHgADAAAAAAABAAAAHwADAAAAAAABAAAAIAADAAAAAAABAAAAIQADAAAAAAABAAAAIgADAAAAAAABAAAAIwADAAAAAAABAAAAJAADAAAAAAABAAAAJQADAAAAAAABAAAAJgADAAAAAAABAAAAJwADAAAAAAABAAAAKAADAAAAAAABAAAALAADAAAAAAABAAAALQADAAAAAAABAAAALgADAAAAAAABAAAALwADAAAAAAABAAAAMAADAAAAAAABAAAAMQADAAAAAAABAAAAMgADAAAAAAABAAAAMwADAAAAAAABAAAANAADAAAAAAABAAAANQADAAAAAAABAAAANgADAAAAAAABAAAANwADAAAAAAABAAAAAAAEAAAAAAACAAAAAQAEAAAAAAACAAAAAgAEAAAAAAACAAAAAwAEAAAAAAACAAAABAAEAAAAAAACAAAABQAEAAAAAAACAAAABgAEAAAAAAACAAAABwAEAAAAAAACAAAACAAEAAAAAAACAAAACQAEAAAAAAACAAAACgAEAAAAAAACAAAAAAAFAAAAAAACAAAAAQAFAAAAAAACAAAAAgAFAAAAAAACAAAAAwAFAAAAAAACAAAABAAFAAAAAAACAAAABQAFAAAAAAACAAAABgAFAAAAAAACAAAABwAFAAAAAAACAAAACAAFAAAAAAACAAAACQAFAAAAAAACAAAACgAFAAAAAAACAAAAAAAGAAAAAAACAAAAAQAGAAAAAAACAAAAAgAGAAAAAAACAAAAAwAGAAAAAAACAAAABAAGAAAAAAACAAAABQAGAAAAAAACAAAABgAGAAAAAAACAAAABwAGAAAAAAACAAAACAAGAAAAAAACAAAACQAGAAAAAAACAAAACgAGAAAAAAACAAAADwAEAAAAAAACAAAAEAAEAAAAAAACAAAAEQAEAAAAAAACAAAAEgAEAAAAAAACAAAAEwAEAAAAAAACAAAAFAAEAAAAAAACAAAAFQAEAAAAAAACAAAAFgAEAAAAAAACAAAADwAFAAAAAAACAAAAEAAFAAAAAAACAAAAEQAFAAAAAAACAAAAEgAFAAAAAAACAAAAEwAFAAAAAAACAAAAFAAFAAAAAAACAAAAFQAFAAAAAAACAAAAFgAFAAAAAAACAAAADwAGAAAAAAACAAAAEAAGAAAAAAACAAAAEQAGAAAAAAACAAAAEgAGAAAAAAACAAAAEwAGAAAAAAACAAAAFAAGAAAAAAACAAAAFQAGAAAAAAACAAAAFgAGAAAAAAACAAAAGwAEAAAAAAACAAAAHAAEAAAAAAACAAAAHQAEAAAAAAACAAAAHgAEAAAAAAACAAAAHwAEAAAAAAACAAAAIAAEAAAAAAACAAAAIQAEAAAAAAACAAAAIgAEAAAAAAACAAAAIwAEAAAAAAACAAAAJAAEAAAAAAACAAAAJQAEAAAAAAACAAAAJgAEAAAAAAACAAAAJwAEAAAAAAACAAAAKAAEAAAAAAACAAAAGwAFAAAAAAACAAAAHAAFAAAAAAACAAAAHQAFAAAAAAACAAAAHgAFAAAAAAACAAAAHwAFAAAAAAACAAAAIAAFAAAAAAACAAAAIQAFAAAAAAACAAAAIgAFAAAAAAACAAAAIwAFAAAAAAACAAAAJAAFAAAAAAACAAAAJQAFAAAAAAACAAAAJgAFAAAAAAACAAAAJwAFAAAAAAACAAAAKAAFAAAAAAACAAAAGwAGAAAAAAACAAAAHAAGAAAAAAACAAAAHQAGAAAAAAACAAAAHgAGAAAAAAACAAAAHwAGAAAAAAACAAAAIAAGAAAAAAACAAAAIQAGAAAAAAACAAAAIgAGAAAAAAACAAAAIwAGAAAAAAACAAAAJAAGAAAAAAACAAAAJQAGAAAAAAACAAAAJgAGAAAAAAACAAAAJwAGAAAAAAACAAAAKAAGAAAAAAACAAAALAAEAAAAAAACAAAALQAEAAAAAAACAAAALgAEAAAAAAACAAAALwAEAAAAAAACAAAAMAAEAAAAAAACAAAAMQAEAAAAAAACAAAAMgAEAAAAAAACAAAAMwAEAAAAAAACAAAANAAEAAAAAAACAAAANQAEAAAAAAACAAAANgAEAAAAAAACAAAANwAEAAAAAAACAAAALAAFAAAAAAACAAAALQAFAAAAAAACAAAALgAFAAAAAAACAAAALwAFAAAAAAACAAAAMAAFAAAAAAACAAAAMQAFAAAAAAACAAAAMgAFAAAAAAACAAAAMwAFAAAAAAACAAAANAAFAAAAAAACAAAANQAFAAAAAAACAAAANgAFAAAAAAACAAAANwAFAAAAAAACAAAALAAGAAAAAAACAAAALQAGAAAAAAACAAAALgAGAAAAAAACAAAALwAGAAAAAAACAAAAMAAGAAAAAAACAAAAMQAGAAAAAAACAAAAMgAGAAAAAAACAAAAMwAGAAAAAAACAAAANAAGAAAAAAACAAAANQAGAAAAAAACAAAANgAGAAAAAAACAAAANwAGAAAAAAACAAAABAAAAAAAAAAAAAAABQAAAAAAAAAAAAAABgAAAAAAAAAAAAAAEAAAAAAAAAAAAAAAEQAAAAAAAAAAAAAAEgAAAAAAAAAAAAAAFAAAAAAAAAAAAAAAFQAAAAAAAAAAAAAAHAD//wAAAAAAAAAAHQD//wAAAAAAAAAAHgD//wAAAAAAAAAAIgAAAAAAAAAAAAAAIwAAAAAAAAAAAAAAJAAAAAAAAAAAAAAALgD//wAAAAAAAAAALwD//wAAAAAAAAAAMAD//wAAAAAAAAAACAD+/wAAAAAAAAAACQD+/wAAAAAAAAAAIAD9/wAAAAAAAAAAIQD9/wAAAAAAAAAAMgD+/wAAAAAAAAAAMwD+/wAAAAAAAAAACwACAAAAAAAAAAAADAABAAAAAAAAAAAADQAAAAAAAAAAAAAAFwACAAAAAAAAAAAAGAABAAAAAAAAAAAAGQAAAAAAAAAAAAAAKQACAAAAAAAAAAAAKgABAAAAAAAAAAAAKwAAAAAAAAAAAAAAAAD+/wAAAgAAAAAAAAD//wAAAgAAAAAAAAAAAAAAAgAAAAAAAAABAAAAAgAAAAAAAAACAAAAAgAAAAAANwD+/wAAAgAAAAAANwD//wAAAgAAAAAANwAAAAAAAgAAAAAANwABAAAAAgAAAAAANwACAAAAAgAAAAAACwABAAAAAAAAAAAAFwABAAAAAAAAAAAAJgACAAAAAAAAAAAAMAACAAAAAAAAAAAA")
+tile_set = SubResource("TileSet_ground")
+
