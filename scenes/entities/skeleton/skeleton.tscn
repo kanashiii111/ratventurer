@@ -6,12 +6,12 @@
 [ext_resource type="Script" uid="uid://lxfx5p0d83l4" path="res://scripts/entities/skeleton/state_machine/states/idle.gd" id="3_yvqff"]
 [ext_resource type="Script" uid="uid://c1urotshfiju3" path="res://scripts/entities/skeleton/state_machine/states/walk.gd" id="4_rb0rj"]
 [ext_resource type="Script" uid="uid://crbl5kykatbjb" path="res://scripts/entities/skeleton/state_machine/states/chase.gd" id="5_d4gqi"]
-[ext_resource type="AudioStream" uid="uid://bs2n03l2w4r1s" path="res://audio/skeleton_walk.mp3" id="6_brsed"]
+[ext_resource type="AudioStream" uid="uid://ba7yxg24d05d4" path="res://assets/sounds/entities/skeleton/skeleton_walk.mp3" id="6_6gwcx"]
 [ext_resource type="Script" uid="uid://hb2bv67vl160" path="res://scripts/entities/skeleton/state_machine/states/attack.gd" id="6_n7mv8"]
 [ext_resource type="Script" uid="uid://b6a46a6k4detf" path="res://scripts/entities/skeleton/state_machine/states/fall.gd" id="8_d4gqi"]
-[ext_resource type="AudioStream" uid="uid://b7wi3rq86ym2j" path="res://audio/skeleton_attack.mp3" id="9_6gwcx"]
 [ext_resource type="Script" uid="uid://dj8qdg4kikbrf" path="res://scripts/entities/skeleton/state_machine/states/death.gd" id="9_n7mv8"]
-[ext_resource type="AudioStream" uid="uid://hc3owvyfi6sw" path="res://audio/bone_break.mp3" id="10_rurc7"]
+[ext_resource type="AudioStream" uid="uid://cx476paa8n42m" path="res://assets/sounds/entities/skeleton/skeleton_attack.mp3" id="9_pn5cg"]
+[ext_resource type="AudioStream" uid="uid://rmxqlw45sfhe" path="res://assets/sounds/entities/skeleton/skeleton_death.mp3" id="12_d3msf"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_py50p"]
 size = Vector2(14, 30)
@@ -182,7 +182,7 @@ script = ExtResource("3_yvqff")
 [node name="Walk" type="Node2D" parent="StateMachine" unique_id=1545445381]
 unique_name_in_owner = true
 script = ExtResource("4_rb0rj")
-walk_audio = ExtResource("6_brsed")
+walk_audio = ExtResource("6_6gwcx")
 
 [node name="Chase" type="Node2D" parent="StateMachine" unique_id=707874838]
 unique_name_in_owner = true
@@ -191,7 +191,7 @@ script = ExtResource("5_d4gqi")
 [node name="Attack" type="Node2D" parent="StateMachine" unique_id=429606831]
 unique_name_in_owner = true
 script = ExtResource("6_n7mv8")
-attack_audio = ExtResource("9_6gwcx")
+attack_audio = ExtResource("9_pn5cg")
 
 [node name="Fall" type="Node2D" parent="StateMachine" unique_id=2104975681]
 unique_name_in_owner = true
@@ -200,7 +200,7 @@ script = ExtResource("8_d4gqi")
 [node name="Death" type="Node2D" parent="StateMachine" unique_id=476980779]
 unique_name_in_owner = true
 script = ExtResource("9_n7mv8")
-death_audio = ExtResource("10_rurc7")
+death_audio = ExtResource("12_d3msf")
 
 [node name="RightWallRay" type="RayCast2D" parent="." unique_id=1919270545]
 position = Vector2(12, 0)

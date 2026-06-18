@@ -2,7 +2,7 @@
 
 [ext_resource type="Script" uid="uid://c0vojex3efpaq" path="res://scripts/entities/cheese/cheese.gd" id="1_s4flo"]
 [ext_resource type="Texture2D" uid="uid://do6o6boasx7f1" path="res://assets/sprites/entities/cheese/cheese.png" id="2_esay7"]
-[ext_resource type="AudioStream" uid="uid://1lwt7yosj7sl" path="res://audio/cheese_pickup.mp3" id="2_om0uh"]
+[ext_resource type="AudioStream" uid="uid://c4jiq4m73pmro" path="res://assets/sounds/entities/cheese/cheese_pickup.mp3" id="2_om0uh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_ys7p2"]
 

@@ -2,28 +2,28 @@
 
 [ext_resource type="Script" uid="uid://dx65jn2teblra" path="res://scripts/entities/player/player.gd" id="1_g2els"]
 [ext_resource type="Texture2D" uid="uid://dhthj334qi1qw" path="res://assets/sprites/entities/player/rat.png" id="2_w3p2j"]
-[ext_resource type="AudioStream" uid="uid://bqvi8yvbewvro" path="res://assets/sounds/entities/player/jump.wav" id="3_1murt"]
 [ext_resource type="Script" uid="uid://bggjbte0gfmhi" path="res://scripts/entities/player/state_machine/player_state_machine.gd" id="3_58kc7"]
 [ext_resource type="Script" uid="uid://bpi7im8tdak3l" path="res://scripts/entities/player/state_machine/states/idle.gd" id="4_nh4ur"]
 [ext_resource type="FontFile" uid="uid://cqotfm2u0qadt" path="res://assets/fonts/Pixel_sans.ttf" id="4_pcd0u"]
 [ext_resource type="Script" uid="uid://cpq3xq3f7j3fr" path="res://scripts/entities/player/state_machine/states/run.gd" id="5_bjvvg"]
 [ext_resource type="Script" uid="uid://d0l86bot5yoyr" path="res://scripts/entities/player/state_machine/states/jump.gd" id="6_8akj5"]
 [ext_resource type="Script" uid="uid://bgik34ntre3jp" path="res://scripts/entities/player/state_machine/states/fall.gd" id="7_1murt"]
-[ext_resource type="AudioStream" uid="uid://cpbsccphwwby4" path="res://assets/sounds/entities/player/run.mp3" id="7_5sj0x"]
+[ext_resource type="AudioStream" uid="uid://dgy2coxf4no7j" path="res://assets/sounds/entities/player/player_run.mp3" id="7_wghkl"]
+[ext_resource type="AudioStream" uid="uid://ehjkckj8qv3q" path="res://assets/sounds/entities/player/player_jump.wav" id="9_yk2xr"]
 [ext_resource type="Script" uid="uid://bi6ouun6gg38e" path="res://scripts/entities/player/state_machine/states/slide.gd" id="10_ovg4i"]
-[ext_resource type="AudioStream" uid="uid://ccnxj1n20ugjd" path="res://audio/slide.mp3" id="12_fg2wu"]
-[ext_resource type="AudioStream" uid="uid://8hkx8fs0di24" path="res://audio/dash.mp3" id="13_knby6"]
+[ext_resource type="AudioStream" uid="uid://rc80p3jh2jdf" path="res://assets/sounds/entities/player/player_slide.mp3" id="12_vs62q"]
 [ext_resource type="Script" uid="uid://80d50gjsmvq4" path="res://scripts/entities/player/state_machine/states/dash.gd" id="13_xy2vv"]
+[ext_resource type="AudioStream" uid="uid://pt104cdiayyv" path="res://assets/sounds/entities/player/player_dash.mp3" id="14_qko2e"]
 [ext_resource type="Script" uid="uid://c2r35yje035pn" path="res://scripts/entities/player/state_machine/states/crouch_idle.gd" id="14_r4dfn"]
 [ext_resource type="Script" uid="uid://dpmngdwx6fr1f" path="res://scripts/entities/player/state_machine/states/wall_jump.gd" id="15_70kwc"]
 [ext_resource type="Script" uid="uid://djc8ujd4gu4od" path="res://scripts/entities/player/state_machine/states/crouch_walk.gd" id="16_yywfu"]
-[ext_resource type="AudioStream" uid="uid://d0uj5gkgpudxe" path="res://audio/dagger_swoosh.mp3" id="17_w3p2j"]
 [ext_resource type="Script" uid="uid://7887ikqd3jd8" path="res://scripts/entities/player/state_machine/states/ground_slam.gd" id="18_knby6"]
 [ext_resource type="Script" uid="uid://bscor7s8robuv" path="res://scripts/entities/player/state_machine/states/attack.gd" id="18_w3p2j"]
-[ext_resource type="AudioStream" uid="uid://c4dkfpn3356xi" path="res://audio/ground_slam.mp3" id="20_18p7g"]
+[ext_resource type="AudioStream" uid="uid://debpjghshuf0q" path="res://assets/sounds/entities/player/player_attack.mp3" id="19_6u2ft"]
+[ext_resource type="AudioStream" uid="uid://boae1onlv7peu" path="res://assets/sounds/entities/player/player_ground_slam.mp3" id="21_7nfft"]
 [ext_resource type="Script" uid="uid://wcdhekspynba" path="res://scripts/entities/player/state_machine/states/death.gd" id="22_7dqom"]
-[ext_resource type="AudioStream" uid="uid://bojjyg4eo5k8" path="res://audio/bass_hit.wav" id="23_go8vc"]
-[ext_resource type="AudioStream" uid="uid://bkr5e46gger4q" path="res://audio/player_death.mp3" id="24_wghkl"]
+[ext_resource type="AudioStream" uid="uid://oxadu8ehajt2" path="res://assets/sounds/entities/player/player_death_2.wav" id="23_brjyi"]
+[ext_resource type="AudioStream" uid="uid://cs7qs4bg2tjw6" path="res://assets/sounds/entities/player/player_death.mp3" id="24_bnv2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xy2vv"]
 size = Vector2(10, 19)
@@ -290,7 +290,6 @@ libraries/ = SubResource("AnimationLibrary_ovg4i")
 autoplay = &"Idle"
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1879214983]
-stream = ExtResource("23_go8vc")
 volume_db = -15.0
 
 [node name="AudioStreamPlayer2D2" type="AudioStreamPlayer2D" parent="." unique_id=558922466]
@@ -353,12 +352,12 @@ script = ExtResource("4_nh4ur")
 [node name="Run" type="Node2D" parent="StateMachine" unique_id=484747963]
 unique_name_in_owner = true
 script = ExtResource("5_bjvvg")
-run_audio = ExtResource("7_5sj0x")
+run_audio = ExtResource("7_wghkl")
 
 [node name="Jump" type="Node2D" parent="StateMachine" unique_id=2103292242]
 unique_name_in_owner = true
 script = ExtResource("6_8akj5")
-jump_audio = ExtResource("3_1murt")
+jump_audio = ExtResource("9_yk2xr")
 
 [node name="Fall" type="Node2D" parent="StateMachine" unique_id=1820267303]
 unique_name_in_owner = true
@@ -367,12 +366,12 @@ script = ExtResource("7_1murt")
 [node name="Slide" type="Node2D" parent="StateMachine" unique_id=1568579618]
 unique_name_in_owner = true
 script = ExtResource("10_ovg4i")
-slide_audio = ExtResource("12_fg2wu")
+slide_audio = ExtResource("12_vs62q")
 
 [node name="Dash" type="Node2D" parent="StateMachine" unique_id=1793400825]
 unique_name_in_owner = true
 script = ExtResource("13_xy2vv")
-dash_audio = ExtResource("13_knby6")
+dash_audio = ExtResource("14_qko2e")
 
 [node name="CrouchIdle" type="Node2D" parent="StateMachine" unique_id=108638333]
 unique_name_in_owner = true
@@ -381,7 +380,7 @@ script = ExtResource("14_r4dfn")
 [node name="WallJump" type="Node2D" parent="StateMachine" unique_id=992792567]
 unique_name_in_owner = true
 script = ExtResource("15_70kwc")
-jump_audio = ExtResource("3_1murt")
+jump_audio = ExtResource("9_yk2xr")
 
 [node name="CrouchWalk" type="Node2D" parent="StateMachine" unique_id=214125629]
 unique_name_in_owner = true
@@ -390,16 +389,16 @@ script = ExtResource("16_yywfu")
 [node name="Attack" type="Node2D" parent="StateMachine" unique_id=873882073]
 unique_name_in_owner = true
 script = ExtResource("18_w3p2j")
-attack_audio = ExtResource("17_w3p2j")
+attack_audio = ExtResource("19_6u2ft")
 
 [node name="GroundSlam" type="Node2D" parent="StateMachine" unique_id=2103208001]
 unique_name_in_owner = true
 script = ExtResource("18_knby6")
 shake_intensity = 6.0
-slam_audio = ExtResource("20_18p7g")
+slam_audio = ExtResource("21_7nfft")
 
 [node name="Death" type="Node2D" parent="StateMachine" unique_id=1184092310]
 unique_name_in_owner = true
 script = ExtResource("22_7dqom")
-death_audio_2 = ExtResource("23_go8vc")
-death_audio_1 = ExtResource("24_wghkl")
+death_audio_2 = ExtResource("23_brjyi")
+death_audio_1 = ExtResource("24_bnv2y")

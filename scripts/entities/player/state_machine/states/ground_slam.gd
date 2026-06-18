@@ -1,7 +1,7 @@
 class_name PlayerGroundSlamState extends PlayerState
 
 @export var ground_slam_speed : float = 700
-const SLAM_EFFECT = preload("res://scenes/entities/player/slam_effect.tscn")
+const SLAM_EFFECT = preload("res://scenes/entities/player/effects/slam_effect.tscn")
 
 @export var shake_intensity: float = 4.0
 @export var shake_duration: float = 0.15

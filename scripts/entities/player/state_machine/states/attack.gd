@@ -1,6 +1,6 @@
 class_name PlayerAttackState extends PlayerState
 
-const SLASH_EFFECT = preload("res://scenes/entities/player/slash_effect.tscn")
+const SLASH_EFFECT = preload("res://scenes/entities/player/effects/slash_effect.tscn")
 var attack_finished: bool = false
 var speed: int = 200
 var acceleration: int = 20

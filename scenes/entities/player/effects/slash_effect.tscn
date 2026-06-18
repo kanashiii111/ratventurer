@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://c063uhc3x5sni"]
 
-[ext_resource type="Script" uid="uid://bvm73atcw1wr6" path="res://scenes/entities/player/slash.gd" id="1_n6ho7"]
+[ext_resource type="Script" uid="uid://bvm73atcw1wr6" path="res://scripts/entities/player/effects/slash.gd" id="1_n6ho7"]
 [ext_resource type="Texture2D" uid="uid://b501b5hqhg1t6" path="res://assets/sprites/entities/player/slash.png" id="2_pjw4v"]
 
 [sub_resource type="Animation" id="Animation_pjw4v"]
