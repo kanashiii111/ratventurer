@@ -5,6 +5,8 @@ var attack_finished: bool = false
 var speed: int = 200
 var acceleration: int = 20
 
+@export var attack_audio : AudioStream
+
 func _ready() -> void:
 	pass 
 
@@ -16,6 +18,7 @@ func init():
 
 func enter():
 	player.anim_player.play("Attack")
+	player.play_audio(attack_audio)
 	spawn_slash_effect()
 
 	#for body in player.attack_collision_area.get_overlapping_bodies():

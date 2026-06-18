@@ -6,16 +6,19 @@
 [ext_resource type="Script" uid="uid://lxfx5p0d83l4" path="res://scripts/entities/skeleton/state_machine/states/idle.gd" id="3_yvqff"]
 [ext_resource type="Script" uid="uid://c1urotshfiju3" path="res://scripts/entities/skeleton/state_machine/states/walk.gd" id="4_rb0rj"]
 [ext_resource type="Script" uid="uid://crbl5kykatbjb" path="res://scripts/entities/skeleton/state_machine/states/chase.gd" id="5_d4gqi"]
+[ext_resource type="AudioStream" uid="uid://bs2n03l2w4r1s" path="res://audio/skeleton_walk.mp3" id="6_brsed"]
 [ext_resource type="Script" uid="uid://hb2bv67vl160" path="res://scripts/entities/skeleton/state_machine/states/attack.gd" id="6_n7mv8"]
 [ext_resource type="Script" uid="uid://b6a46a6k4detf" path="res://scripts/entities/skeleton/state_machine/states/fall.gd" id="8_d4gqi"]
+[ext_resource type="AudioStream" uid="uid://b7wi3rq86ym2j" path="res://audio/skeleton_attack.mp3" id="9_6gwcx"]
 [ext_resource type="Script" uid="uid://dj8qdg4kikbrf" path="res://scripts/entities/skeleton/state_machine/states/death.gd" id="9_n7mv8"]
+[ext_resource type="AudioStream" uid="uid://hc3owvyfi6sw" path="res://audio/bone_break.mp3" id="10_rurc7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_py50p"]
 size = Vector2(14, 30)
 
 [sub_resource type="Animation" id="Animation_brsed"]
 resource_name = "Attack"
-length = 0.12
+length = 0.15
 step = 0.05
 tracks/0/type = "value"
 tracks/0/imported = false
@@ -119,6 +122,9 @@ texture = ExtResource("2_d4gqi")
 hframes = 6
 vframes = 4
 
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=216276862]
+volume_db = -5.0
+
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=2075356365]
 position = Vector2(2, 1)
 shape = SubResource("RectangleShape2D_py50p")
@@ -127,6 +133,7 @@ shape = SubResource("RectangleShape2D_py50p")
 libraries/ = SubResource("AnimationLibrary_rurc7")
 
 [node name="VerticalVelocityLabel" type="Label" parent="." unique_id=675077586]
+visible = false
 offset_left = -40.0
 offset_top = -109.0
 offset_right = 39.0
@@ -134,12 +141,14 @@ offset_bottom = -85.0
 text = "y vel"
 
 [node name="HorizontalVelocityLabel" type="Label" parent="." unique_id=1798350027]
+visible = false
 offset_left = -40.0
 offset_top = -86.0
 offset_bottom = -63.0
 text = "x vel"
 
 [node name="PrevStateLabel" type="Label" parent="." unique_id=1590741989]
+visible = false
 offset_left = -40.0
 offset_top = -65.0
 offset_right = 39.0
@@ -147,6 +156,7 @@ offset_bottom = -39.0
 text = "Prev State"
 
 [node name="CurrStateLabel" type="Label" parent="." unique_id=825697242]
+visible = false
 offset_left = -39.0
 offset_top = -44.0
 offset_right = 40.0
@@ -157,7 +167,7 @@ text = "Curr State"
 collision_mask = 4
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="PlayerAttackArea" unique_id=1607296068]
-position = Vector2(-11.999999, 0)
+position = Vector2(-12, 0)
 scale = Vector2(3, 3)
 shape = SubResource("RectangleShape2D_thk0v")
 debug_color = Color(0.27417794, 0.6325208, 1.92523e-07, 0.41960785)
@@ -172,6 +182,7 @@ script = ExtResource("3_yvqff")
 [node name="Walk" type="Node2D" parent="StateMachine" unique_id=1545445381]
 unique_name_in_owner = true
 script = ExtResource("4_rb0rj")
+walk_audio = ExtResource("6_brsed")
 
 [node name="Chase" type="Node2D" parent="StateMachine" unique_id=707874838]
 unique_name_in_owner = true
@@ -180,6 +191,7 @@ script = ExtResource("5_d4gqi")
 [node name="Attack" type="Node2D" parent="StateMachine" unique_id=429606831]
 unique_name_in_owner = true
 script = ExtResource("6_n7mv8")
+attack_audio = ExtResource("9_6gwcx")
 
 [node name="Fall" type="Node2D" parent="StateMachine" unique_id=2104975681]
 unique_name_in_owner = true
@@ -188,6 +200,7 @@ script = ExtResource("8_d4gqi")
 [node name="Death" type="Node2D" parent="StateMachine" unique_id=476980779]
 unique_name_in_owner = true
 script = ExtResource("9_n7mv8")
+death_audio = ExtResource("10_rurc7")
 
 [node name="RightWallRay" type="RayCast2D" parent="." unique_id=1919270545]
 position = Vector2(12, 0)

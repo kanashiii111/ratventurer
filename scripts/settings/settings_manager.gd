@@ -49,10 +49,14 @@ signal sfx_volume_changed(value: float)
 signal fullscreen_changed(value: bool)
 signal language_changed(locale: String)
 
-const SAVE_PATH: String = "user://settings.cfg"
+var SAVE_PATH: String
 
 
 func _ready() -> void:
+	if OS.has_feature("editor"):
+		SAVE_PATH = ProjectSettings.globalize_path("user://") + "settings.cfg"
+	else:
+		SAVE_PATH = OS.get_executable_path().get_base_dir() + "/settings.cfg"
 	_setup_audio_buses()
 	load_settings()
 	apply_all()

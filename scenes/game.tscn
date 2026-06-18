@@ -4,8 +4,7 @@
 [ext_resource type="PackedScene" uid="uid://c30kx0wo5x7pj" path="res://scenes/menus/pause_menu/pause_menu.tscn" id="6_fg3d2"]
 [ext_resource type="Script" uid="uid://brrlcxqswo7yk" path="res://scripts/game/game.gd" id="7_w4hs8"]
 [ext_resource type="PackedScene" path="res://scenes/ui/hud/hud.tscn" id="8_mq2gv"]
-[ext_resource type="PackedScene" path="res://scenes/ui/level_complete/level_complete.tscn" id="9_mw3gx"]
-[ext_resource type="PackedScene" uid="uid://blfpmgbcnh7yo" path="res://scenes/ui/tutorial/tutorial_popup.tscn" id="10_tutorial"]
+[ext_resource type="PackedScene" uid="uid://iityrm7xr4du" path="res://scenes/ui/level_complete/level_complete.tscn" id="9_mw3gx"]
 
 [node name="Game" type="Node2D" unique_id=1950023242]
 script = ExtResource("7_w4hs8")
@@ -17,7 +16,8 @@ position = Vector2(160, -48)
 
 [node name="camera" type="Camera2D" parent="Player" unique_id=217313846]
 position = Vector2(0, -8)
-zoom = Vector2(2, 2)
+offset = Vector2(0, -20)
+zoom = Vector2(4.5, 4.5)
 
 [node name="LevelContainer" type="Node2D" parent="." unique_id=1987223323]
 
@@ -26,5 +26,3 @@ zoom = Vector2(2, 2)
 [node name="HUD" parent="." unique_id=734784278 instance=ExtResource("8_mq2gv")]
 
 [node name="LevelComplete" parent="." unique_id=2138813531 instance=ExtResource("9_mw3gx")]
-
-[node name="TutorialPopup" parent="." unique_id=1708695940 instance=ExtResource("10_tutorial")]

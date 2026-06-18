@@ -1,10 +1,13 @@
 class_name SkeletonAttackState extends SkeletonState
 
+@export var attack_audio: AudioStream
+
 func _ready() -> void:
 	pass
 
 func enter() -> void:
 	skeleton.animation_player.play("Attack")
+	skeleton.play_audio(attack_audio)
 	#for body in skeleton.player_attack_area.get_overlapping_bodies():
 		#if body is Player:
 			##body.queue_free()
@@ -18,6 +21,6 @@ func physics_process(_delta: float) -> SkeletonState:
 	if not skeleton.animation_player.is_playing():
 		for body in skeleton.player_attack_area.get_overlapping_bodies():
 			if body is Player:
-				get_tree().call_deferred("reload_current_scene")
+				body.die()
 		return chase
 	return null

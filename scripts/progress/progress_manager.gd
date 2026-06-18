@@ -1,10 +1,14 @@
 extends Node
 
-const SAVE_PATH: String = "user://progress.cfg"
+var SAVE_PATH: String
 
 var _data: Dictionary = {}
 
 func _ready() -> void:
+	if OS.has_feature("editor"):
+		SAVE_PATH = ProjectSettings.globalize_path("user://") + "progress.cfg"
+	else:
+		SAVE_PATH = OS.get_executable_path().get_base_dir() + "/progress.cfg"
 	load_progress()
 
 func load_progress() -> void:

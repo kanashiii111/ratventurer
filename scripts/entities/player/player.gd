@@ -4,6 +4,7 @@ class_name Player extends CharacterBody2D
 @onready var sprite: Sprite2D = $Sprite
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_player = $AudioStreamPlayer2D
+@onready var audio_player_2 = $AudioStreamPlayer2D2
 @onready var wall_detector = $WallDetector
 @onready var ledge_detector = $LedgeDetector
 @onready var player_collider : CollisionShape2D = $CollisionShape
@@ -23,13 +24,16 @@ const AFTER_SLIDE_POSITION_Y: float = 1.75
 func _ready() -> void:
 	add_to_group("player")
 	player_state_machine.init( self )
+	
+	sprite.rotation = 0
+	player_collider.shape.size.y = AFTER_SLIDE_SHAPE_SIZE_Y
+	player_collider.position.y = AFTER_SLIDE_POSITION_Y
 
 #func _on_attack_collision_area_body_entered(body: Node2D) -> void:
 	#if body is Skeleton and player_state_machine.is_state(%Attack):
 		#print("yo")
 		
 func _physics_process( _delta: float ) -> void:
-	$Label.text = "curr: " + player_state_machine.curr_state.name
 	$Label2.text = str(player_state_machine.player.velocity.x)
 	$Label3.text = str(player_state_machine.player.velocity.y)
 	$Label4.text = "prev: " + player_state_machine.prev_state.name
@@ -48,6 +52,8 @@ func is_at_ledge() -> bool:
 	return wall_detector.is_colliding() and not ledge_detector.is_colliding()
 
 func gravity( _delta: float ):
+	if player_state_machine.curr_state.name == "Death":
+		return
 	if player_state_machine.curr_state.name == "Latch":
 		velocity = Vector2.ZERO
 		return
@@ -100,8 +106,15 @@ func update_animation_rotation():
 	else:
 		sprite.rotation = 0
 
+func die() -> void:
+	player_state_machine.change_state(%Death)
+
 func play_audio( audio : AudioStream ):
-	if audio == null:
-		return
+	if audio == null: return
 	audio_player.stream = audio
 	audio_player.play()
+
+func play_sfx(audio : AudioStream):
+	if audio == null: return
+	audio_player_2.stream = audio
+	audio_player_2.play()

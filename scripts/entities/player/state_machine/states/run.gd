@@ -4,12 +4,14 @@ class_name PlayerRunState extends PlayerState
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 20
 @export var run_audio : AudioStream
 
+var footstep_cooldown: float = 0.0
+
 func init():
 	pass
 
 func enter():
 	player.anim_player.play( "Run" )
-	pass
+	footstep_cooldown = 0.0
 
 func exit():
 	pass
@@ -44,4 +46,9 @@ func physics_process( _delta: float ) -> PlayerState:
 		return null
 	
 	player.update_velocity(target_vel, acceleration)
+	
+	footstep_cooldown -= _delta
+	if footstep_cooldown <= 0:
+		player.play_audio(run_audio)
+		footstep_cooldown = 0.27   # интервал между шагами (сек)
 	return null

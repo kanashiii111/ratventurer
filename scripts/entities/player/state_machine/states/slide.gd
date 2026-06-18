@@ -4,8 +4,11 @@ class_name PlayerSlideState extends PlayerState
 
 var slide_timer : float
 
+@export var slide_audio : AudioStream
+
 func enter():
 	player.anim_player.play( "Slide" )
+	player.play_audio(slide_audio)
 	player.velocity.x += direction.x * 50
 	slide_timer = slide_time
 	player.player_collider.shape.size.y = player.SLIDE_SHAPE_SIZE_Y
@@ -25,6 +28,10 @@ func exit():
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState: 
+	if _event.is_action_pressed("Dash"):
+		if player.is_ceiling_above():
+			return crouch_idle
+		return dash
 	if _event.is_action_pressed( "Jump" ):
 		if player.is_ceiling_above():
 			return crouch_idle

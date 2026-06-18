@@ -32,6 +32,7 @@ func _create_card(level_id: String, _data: Dictionary) -> PanelContainer:
 	style.corner_radius_top_right = 8
 	style.corner_radius_bottom_left = 8
 	style.corner_radius_bottom_right = 8
+	style.content_margin_top = 8
 	outer.add_theme_stylebox_override("panel", style)
 
 	var card := VBoxContainer.new()
@@ -73,7 +74,11 @@ func _create_card(level_id: String, _data: Dictionary) -> PanelContainer:
 			GameManager.current_level = level_id
 			get_tree().change_scene_to_file("res://scenes/game.tscn")
 		)
-		card.add_child(play_btn)
+		var btn_container := CenterContainer.new()
+		btn_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
+		btn_container.size_flags_vertical = Control.SIZE_EXPAND_FILL
+		btn_container.add_child(play_btn)
+		card.add_child(btn_container)
 	else:
 		var locked_label := Label.new()
 		locked_label.horizontal_alignment = HORIZONTAL_ALIGNMENT_CENTER

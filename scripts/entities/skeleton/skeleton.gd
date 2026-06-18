@@ -4,6 +4,7 @@ class_name Skeleton extends CharacterBody2D
 @onready var skeleton_collider : CollisionShape2D = $CollisionShape
 @onready var player_attack_area : Area2D = $PlayerAttackArea
 @onready var animation_player: AnimationPlayer = $AnimationPlayer
+@onready var audio_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
 
 @onready var chase_state: SkeletonState = $StateMachine/Chase
 @onready var idle_state: SkeletonState = $StateMachine/Idle
@@ -18,6 +19,8 @@ class_name Skeleton extends CharacterBody2D
 func _ready() -> void:
 	skeleton_state_machine.init( self )
 	skeleton_state_machine.change_state(walk_state)
+	audio_player.max_distance = 230
+	audio_player.attenuation = 0.5
 	#player_detection_area.body_entered.connect(_on_player_detection_area_body_entered)
 	#player_detection_area.body_exited.connect(_on_player_detection_area_body_exited)
 	#player_attack_area.body_entered.connect(_on_player_attack_area_body_entered)
@@ -68,3 +71,9 @@ func update_animation_direction():
 	if self.velocity.x < 0:
 		player_attack_area.scale.x = 1
 		sprite.flip_h = false
+
+func play_audio( audio : AudioStream ):
+	if audio == null:
+		return
+	audio_player.stream = audio
+	audio_player.play()

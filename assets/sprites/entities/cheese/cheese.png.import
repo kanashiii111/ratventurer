@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://bsgot2ggyg7oy"
-path="res://.godot/imported/SewerTiles(1).png-bc8fa50821bcd29b75a52a1f1e36c136.ctex"
+uid="uid://do6o6boasx7f1"
+path="res://.godot/imported/cheese.png-e0a6d84665e4defb80e451bcebdfd4eb.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/sprites/world/SewerTiles(1).png"
-dest_files=["res://.godot/imported/SewerTiles(1).png-bc8fa50821bcd29b75a52a1f1e36c136.ctex"]
+source_file="res://assets/sprites/entities/cheese/cheese.png"
+dest_files=["res://.godot/imported/cheese.png-e0a6d84665e4defb80e451bcebdfd4eb.ctex"]
 
 [params]
 

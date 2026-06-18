@@ -1,7 +1,10 @@
 class_name SkeletonDeathState extends SkeletonState
 
+@export var death_audio : AudioStream
+
 func enter():
 	skeleton.animation_player.play("Death")
+	skeleton.play_audio(death_audio)
 	skeleton.velocity = Vector2.ZERO
 	skeleton.animation_player.animation_finished.connect(_on_animation_finished)
 

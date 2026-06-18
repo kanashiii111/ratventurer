@@ -1,16 +1,19 @@
 class_name PlayerDashState extends PlayerState
 
 @export var dash_speed: float = 300.0
-@export var dash_duration: float = 0.2
+@export var dash_duration: float = 0.3
 
 var dash_timer: float = 0.0
 var dash_direction: Vector2 = Vector2.ZERO
+
+@export var dash_audio : AudioStream
 
 func init():
 	pass
 
 func enter():
 	player.anim_player.play("Dash")
+	player.play_audio(dash_audio)
 	
 	dash_direction = direction if direction.x != 0 else Vector2(-1 if player.sprite.flip_h else 1, 0)
 	if abs(player.velocity.x) > dash_speed:
@@ -25,6 +28,8 @@ func exit():
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState: 
+	if _event.is_action_pressed("GroundSlam"):
+		return ground_slam
 	if _event.is_action_pressed("Attack"):
 		return attack
 	if _event.is_action_pressed("Jump"):

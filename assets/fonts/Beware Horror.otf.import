@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://o4gsjg3fx7u3"
-path="res://.godot/imported/Beware Horror.otf-c991de0e58f320af2d9854d8e47d4dbc.fontdata"
+path="res://.godot/imported/Beware Horror.otf-6b1cfde0bf22811d3f3732d7b8edeef3.fontdata"
 
 [deps]
 
-source_file="res://assets/font/Beware Horror.otf"
-dest_files=["res://.godot/imported/Beware Horror.otf-c991de0e58f320af2d9854d8e47d4dbc.fontdata"]
+source_file="res://assets/fonts/Beware Horror.otf"
+dest_files=["res://.godot/imported/Beware Horror.otf-6b1cfde0bf22811d3f3732d7b8edeef3.fontdata"]
 
 [params]
 

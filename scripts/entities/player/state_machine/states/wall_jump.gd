@@ -7,6 +7,7 @@ class_name PlayerWallJumpState extends PlayerState
 @export var ground_slam_time : float = 0.1
 
 var wall_normal: Vector2
+@export var jump_audio: AudioStream
 
 func init():
 	pass
@@ -16,6 +17,7 @@ func enter():
 	player.velocity.x = wall_normal.x * horizontal_push
 	player.velocity.y = -jump_velocity
 	player.anim_player.play("Jump")
+	player.play_audio(jump_audio)
 	player.rotation = 0
 
 func exit():

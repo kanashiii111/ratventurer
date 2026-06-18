@@ -1,19 +1,20 @@
 [gd_scene format=3 uid="uid://blfpmgbcnh7yo"]
 
 [ext_resource type="Script" uid="uid://cxk84d4mrp08p" path="res://scripts/ui/tutorial/tutorial_popup.gd" id="1_okm7s"]
+[ext_resource type="FontFile" uid="uid://cqotfm2u0qadt" path="res://assets/fonts/Pixel_sans.ttf" id="2_06v8a"]
 
-[node name="TutorialPopup" type="Control" unique_id=1708695940]
+[node name="TutorialPopup" type="Node2D" unique_id=701358464]
 visible = false
-layout_mode = 3
-anchors_preset = 0
 script = ExtResource("1_okm7s")
 
 [node name="Label" type="Label" parent="." unique_id=2139919329]
-layout_mode = 0
+anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
+theme_override_fonts/font = ExtResource("2_06v8a")
+theme_override_font_sizes/font_size = 16
 horizontal_alignment = 1
 vertical_alignment = 1

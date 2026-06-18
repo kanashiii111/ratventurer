@@ -15,6 +15,7 @@ static var direction: Vector2
 @onready var wall_jump: PlayerWallJumpState = %WallJump
 @onready var attack: PlayerAttackState = %Attack
 @onready var ground_slam: PlayerGroundSlamState = %GroundSlam
+@onready var death: PlayerDeathState = %Death
 
 func _ready() -> void:
 	pass 
