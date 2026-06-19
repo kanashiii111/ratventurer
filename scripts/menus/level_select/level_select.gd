@@ -88,5 +88,9 @@ func _create_card(level_id: String, _data: Dictionary) -> PanelContainer:
 
 	return outer
 
+func _unhandled_input(event: InputEvent) -> void:
+	if event.is_action_pressed("Pause"):
+		_on_back()
+
 func _on_back() -> void:
 	get_tree().change_scene_to_file("res://scenes/menus/main_menu/main_menu.tscn")

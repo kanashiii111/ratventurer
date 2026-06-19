@@ -1,76 +1,126 @@
 [gd_scene format=3 uid="uid://iityrm7xr4du"]
 
 [ext_resource type="Script" uid="uid://dnyitg6s6h4sn" path="res://scripts/ui/level_complete/level_complete.gd" id="1_lk7ds"]
+[ext_resource type="FontFile" uid="uid://o4gsjg3fx7u3" path="res://assets/fonts/Beware Horror.otf" id="2_6re3c"]
 
-[node name="LevelComplete" type="CanvasLayer" unique_id=802851912]
+[node name="LevelComplete" type="CanvasLayer" unique_id=1010538255]
 layer = 2
 script = ExtResource("1_lk7ds")
 
-[node name="Background" type="ColorRect" parent="." unique_id=1721923603]
+[node name="Background" type="ColorRect" parent="." unique_id=1577398868]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
 color = Color(0, 0, 0, 0.7)
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=2098394239]
-anchors_preset = 8
-anchor_left = 0.5
-anchor_top = 0.5
-anchor_right = 0.5
-anchor_bottom = 0.5
-offset_left = -150.0
-offset_top = -120.0
-offset_right = 150.0
-offset_bottom = 120.0
-
-[node name="TimeLabel" type="Label" parent="VBoxContainer" unique_id=708145927]
-layout_mode = 2
+[node name="InfoVBox" type="VBoxContainer" parent="." unique_id=1575282034]
+offset_left = 836.0
+offset_top = 315.0
+offset_right = 1084.0
+offset_bottom = 419.0
 size_flags_horizontal = 4
+
+[node name="TimeLabel" type="Label" parent="InfoVBox" unique_id=183874187]
+layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 36
 text = "Time: 00:00.00"
-horizontal_alignment = 1
 
-[node name="CheeseLabel" type="Label" parent="VBoxContainer" unique_id=2097536373]
+[node name="CheeseLabel" type="Label" parent="InfoVBox" unique_id=1920588298]
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 36
 text = "Cheese: 0 / 0"
-horizontal_alignment = 1
 
-[node name="RankLabel" type="Label" parent="VBoxContainer" unique_id=573453543]
-layout_mode = 2
-size_flags_horizontal = 4
-theme_override_colors/font_color = Color(1, 1, 1, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 2
-text = "Rank: -"
-horizontal_alignment = 1
-
-[node name="NewRecordLabel" type="Label" parent="VBoxContainer" unique_id=628170421]
+[node name="NewRecordLabel" type="Label" parent="InfoVBox" unique_id=1915510751]
 visible = false
 layout_mode = 2
-size_flags_horizontal = 4
 theme_override_colors/font_color = Color(1, 0.8, 0, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 48
 text = "NEW RECORD!"
-horizontal_alignment = 1
 
-[node name="NextButton" type="Button" parent="VBoxContainer" unique_id=1946975391]
+[node name="RankHBox" type="HBoxContainer" parent="." unique_id=1143879783]
+offset_left = 872.0
+offset_top = 423.0
+offset_right = 1047.0
+offset_bottom = 598.0
+size_flags_horizontal = 4
+size_flags_vertical = 3
+
+[node name="RankLabel" type="Label" parent="RankHBox" unique_id=1073885990]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 1, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 2
+theme_override_font_sizes/font_size = 36
+text = "Rank:"
+vertical_alignment = 1
+
+[node name="Spacer" type="Control" parent="RankHBox" unique_id=512289471]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 4
+
+[node name="RankLetter" type="Label" parent="RankHBox" unique_id=1758808700]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_colors/font_color = Color(1, 0.84, 0, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 4
+theme_override_fonts/font = ExtResource("2_6re3c")
+theme_override_font_sizes/font_size = 128
+text = "S"
+horizontal_alignment = 2
+vertical_alignment = 1
+
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2007820930]
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -58.0
+offset_right = 212.0
+grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="MenuButton" type="Button" parent="MarginContainer" unique_id=998203303]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
+text = "main_menu"
+
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=505299688]
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -182.0
+offset_top = -120.0
+grow_horizontal = 0
+grow_vertical = 0
+theme_override_constants/margin_right = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="ButtonsVBox" type="VBoxContainer" parent="MarginContainer2" unique_id=1902101366]
 layout_mode = 2
 size_flags_horizontal = 4
+size_flags_vertical = 3
+theme_override_constants/separation = 20
+alignment = 1
+
+[node name="NextButton" type="Button" parent="MarginContainer2/ButtonsVBox" unique_id=1499327349]
+layout_mode = 2
+theme_override_font_sizes/font_size = 36
 text = "next_level"
 
-[node name="RetryButton" type="Button" parent="VBoxContainer" unique_id=1533613815]
+[node name="RetryButton" type="Button" parent="MarginContainer2/ButtonsVBox" unique_id=2146923464]
 layout_mode = 2
-size_flags_horizontal = 4
+theme_override_font_sizes/font_size = 36
 text = "restart"
-
-[node name="MenuButton" type="Button" parent="VBoxContainer" unique_id=1535774027]
-layout_mode = 2
-size_flags_horizontal = 4
-text = "main_menu"

@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-@onready var time_label: Label = $TimeLabel
-@onready var cheese_label: Label = $CheeseLabel
-@onready var best_time_label: Label = $BestTimeLabel
+@onready var time_label: Label = $VBoxContainer/TimeLabel
+@onready var cheese_label: Label = $VBoxContainer/HBoxContainer/CheeseLabel
+@onready var best_time_label: Label = $VBoxContainer/BestTimeLabel
 
 func _ready() -> void:
 	GameManager.time_updated.connect(_on_time_updated)

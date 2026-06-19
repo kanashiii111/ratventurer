@@ -32,7 +32,7 @@ func handle_input( _event: InputEvent) -> PlayerState:
 		return ground_slam
 	if _event.is_action_pressed("Attack"):
 		return attack
-	if _event.is_action_pressed("Jump"):
+	if _event.is_action_pressed("Jump") and player.is_on_floor():
 		player.velocity.x *= 1.2
 		return jump
 	return null

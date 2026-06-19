@@ -45,11 +45,18 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	var face_left = player.velocity.x < 0
+	var face_left: bool
+	if direction.x != 0:
+		face_left = direction.x < 0
+	elif player.velocity.x != 0:
+		face_left = player.velocity.x < 0
+	else:
+		face_left = player.sprite.flip_h
+
 	player.sprite.flip_h = face_left
 	player.player_collider.position.x = -4 if face_left else 4
-	player.ledge_detector.position.x = -15 if face_left else 15
 	player.wall_detector.rotation = PI if face_left else 0.0
+	#player.update_animation_direction()
 	
 	var target_vel = direction.x * speed
 	

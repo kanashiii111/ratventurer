@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bqum0hawuf6a"]
 
 [ext_resource type="Script" uid="uid://11i65t8dtr6u" path="res://scripts/menus/level_select/level_select.gd" id="1_s8k9s"]
+[ext_resource type="Texture2D" uid="uid://bgqum0uetnl6y" path="res://assets/menus/background_no_rat.png" id="2_ca7kh"]
 
 [node name="LevelSelect" type="Control" unique_id=114249874]
 layout_mode = 3
@@ -40,6 +41,7 @@ theme_override_constants/separation = 16
 
 [node name="Background" type="ColorRect" parent="." unique_id=1574470972]
 show_behind_parent = true
+z_index = -1
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -47,6 +49,17 @@ grow_horizontal = 2
 grow_vertical = 2
 mouse_filter = 2
 color = Color(0.1, 0.1, 0.15, 1)
+
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=10566242]
+modulate = Color(1, 1, 1, 0.49019608)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+texture = ExtResource("2_ca7kh")
 
 [node name="BackButton" type="Button" parent="." unique_id=1473884070]
 layout_mode = 0

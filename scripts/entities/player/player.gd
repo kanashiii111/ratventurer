@@ -5,8 +5,7 @@ class_name Player extends CharacterBody2D
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
 @onready var audio_player = $AudioStreamPlayer2D
 @onready var audio_player_2 = $AudioStreamPlayer2D2
-@onready var wall_detector = $WallDetector
-@onready var ledge_detector = $LedgeDetector
+@onready var wall_detector : RayCast2D = $WallDetector
 @onready var player_collider : CollisionShape2D = $CollisionShape
 @onready var attack_marker: Marker2D = $AttackSpawn
 @onready var ground_slam_timer: Timer = $GroundSlamTimer
@@ -47,9 +46,6 @@ func is_ceiling_above() -> bool:
 	# Смещаем проверку чуть вверх от текущей позиции
 	var check_distance = abs(AFTER_SLIDE_POSITION_Y - SLIDE_POSITION_Y) + 2
 	return test_move(global_transform, Vector2(0, -check_distance))
-
-func is_at_ledge() -> bool:	
-	return wall_detector.is_colliding() and not ledge_detector.is_colliding()
 
 func gravity( _delta: float ):
 	if player_state_machine.curr_state.name == "Death":
@@ -94,7 +90,6 @@ func update_animation_direction():
 		return
 
 	player_collider.position.x = -4 if face_left else 4
-	ledge_detector.position.x = -15 if face_left else 15
 	wall_detector.rotation = PI if face_left else 0.0
 	sprite.flip_h = face_left
 

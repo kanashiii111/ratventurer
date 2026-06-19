@@ -1,12 +1,13 @@
 extends CanvasLayer
 
-@onready var time_label: Label = $VBoxContainer/TimeLabel
-@onready var cheese_label: Label = $VBoxContainer/CheeseLabel
-@onready var rank_label: Label = $VBoxContainer/RankLabel
-@onready var new_record_label: Label = $VBoxContainer/NewRecordLabel
-@onready var next_button: Button = $VBoxContainer/NextButton
-@onready var retry_button: Button = $VBoxContainer/RetryButton
-@onready var menu_button: Button = $VBoxContainer/MenuButton
+@onready var time_label: Label = $InfoVBox/TimeLabel
+@onready var cheese_label: Label = $InfoVBox/CheeseLabel
+@onready var new_record_label: Label = $InfoVBox/NewRecordLabel
+@onready var rank_label: Label = $RankHBox/RankLabel
+@onready var rank_letter_label: Label = $RankHBox/RankLetter
+@onready var next_button: Button = $MarginContainer2/ButtonsVBox/NextButton
+@onready var retry_button: Button = $MarginContainer2/ButtonsVBox/RetryButton
+@onready var menu_button: Button = $MarginContainer/MenuButton
 
 func _ready() -> void:
 	hide()
@@ -21,7 +22,8 @@ func _ready() -> void:
 func _on_level_completed(time: float, cheese_collected: int, cheese_total: int, rank: String, is_new_record: bool) -> void:
 	time_label.text = tr("time") + ": " + GameManager.format_time(time)
 	cheese_label.text = tr("cheese") + ": " + str(cheese_collected) + " / " + str(cheese_total)
-	rank_label.text = tr("rank") + ": " + rank
+	rank_label.text = tr("rank") + ":"
+	rank_letter_label.text = rank
 	new_record_label.text = tr("new_record")
 
 	new_record_label.visible = is_new_record

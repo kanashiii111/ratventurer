@@ -10,6 +10,7 @@ func enter():
 	player.anim_player.play( "Slide" )
 	player.play_audio(slide_audio)
 	player.velocity.x += direction.x * 50
+	if player.velocity.x < 250: player.velocity.x = direction.x * 250
 	slide_timer = slide_time
 	player.player_collider.shape.size.y = player.SLIDE_SHAPE_SIZE_Y
 	player.player_collider.position.y = player.SLIDE_POSITION_Y
@@ -17,7 +18,6 @@ func enter():
 	if player.velocity.x != 0:
 		var face_left = player.velocity.x < 0
 		player.player_collider.position.x = -4 if face_left else 4
-		player.ledge_detector.position.x = -15 if face_left else 15
 		player.wall_detector.rotation = PI if face_left else 0.0
 		player.sprite.flip_h = face_left
 	

@@ -25,6 +25,9 @@ func _ready() -> void:
 
 func _unhandled_input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
+		var lc = get_node_or_null("/root/Game/LevelComplete")
+		if lc and lc.visible:
+			return
 		if visible:
 			resume()
 		else:

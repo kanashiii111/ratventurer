@@ -21,6 +21,7 @@
 [ext_resource type="Script" uid="uid://bscor7s8robuv" path="res://scripts/entities/player/state_machine/states/attack.gd" id="18_w3p2j"]
 [ext_resource type="AudioStream" uid="uid://debpjghshuf0q" path="res://assets/sounds/entities/player/player_attack.mp3" id="19_6u2ft"]
 [ext_resource type="AudioStream" uid="uid://boae1onlv7peu" path="res://assets/sounds/entities/player/player_ground_slam.mp3" id="21_7nfft"]
+[ext_resource type="AudioStream" uid="uid://ctee6thha6xa6" path="res://assets/sounds/entities/player/player_spinning.mp3" id="21_yk2xr"]
 [ext_resource type="Script" uid="uid://wcdhekspynba" path="res://scripts/entities/player/state_machine/states/death.gd" id="22_7dqom"]
 [ext_resource type="AudioStream" uid="uid://oxadu8ehajt2" path="res://assets/sounds/entities/player/player_death_2.wav" id="23_brjyi"]
 [ext_resource type="AudioStream" uid="uid://cs7qs4bg2tjw6" path="res://assets/sounds/entities/player/player_death.mp3" id="24_bnv2y"]
@@ -333,14 +334,7 @@ offset_bottom = -42.0
 text = "prev_state"
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=210708464]
-enabled = false
-target_position = Vector2(33, 0)
-
-[node name="LedgeDetector" type="RayCast2D" parent="." unique_id=2145148695]
-position = Vector2(15, -36)
-enabled = false
-target_position = Vector2(0, 16)
-hit_from_inside = true
+target_position = Vector2(11, 0)
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=227961872]
 script = ExtResource("3_58kc7")
@@ -395,6 +389,7 @@ attack_audio = ExtResource("19_6u2ft")
 unique_name_in_owner = true
 script = ExtResource("18_knby6")
 shake_intensity = 6.0
+spin_audio = ExtResource("21_yk2xr")
 slam_audio = ExtResource("21_7nfft")
 
 [node name="Death" type="Node2D" parent="StateMachine" unique_id=1184092310]

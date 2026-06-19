@@ -6,6 +6,8 @@ const SLAM_EFFECT = preload("res://scenes/entities/player/effects/slam_effect.ts
 @export var shake_intensity: float = 4.0
 @export var shake_duration: float = 0.15
 
+@export var spin_audio: AudioStream
+var spin_cooldown: float = 0.0
 @export var slam_audio: AudioStream
 
 var prev_collision_layer: int
@@ -15,12 +17,15 @@ func init():
 
 func enter():
 	player.anim_player.play("GroundSlam")
+	spin_cooldown = 0.0
+	
 	prev_collision_layer = player.collision_layer
 	player.collision_layer = 1
 	player.velocity.y = ground_slam_speed
 	player.rotation = 0
 
 func exit():
+	player.audio_player.stop()
 	player.play_sfx(slam_audio)
 	player.collision_layer = prev_collision_layer
 	for body in player.ground_slam_hitbox.get_overlapping_bodies():
@@ -40,6 +45,11 @@ func process(_delta: float) -> PlayerState:
 
 func physics_process(_delta: float) -> PlayerState:
 	player.velocity.x = 0
+	
+	spin_cooldown -= _delta
+	if spin_cooldown <= 0:
+		player.play_audio(spin_audio)
+		spin_cooldown = 0.13
 	
 	if player.is_on_floor():
 		if player.get_floor_normal().x != 0:

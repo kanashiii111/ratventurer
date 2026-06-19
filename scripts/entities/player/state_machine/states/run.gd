@@ -1,7 +1,7 @@
 class_name PlayerRunState extends PlayerState
 
 @export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var speed: float = 200
-@export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 20
+@export_custom( PROPERTY_HINT_NONE, "suffix:px/s" ) var acceleration: float = 40
 @export var run_audio : AudioStream
 
 var footstep_cooldown: float = 0.0
@@ -20,11 +20,13 @@ func handle_input( _event: InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("Attack"):
 		return attack
 	if _event.is_action_pressed("Dash"):
-		return dash
+		if not player.wall_detector.is_colliding():
+			return dash
 	if _event.is_action_pressed( "Jump" ):
 		return jump
-	if _event.is_action_pressed( "Slide" ) and abs(player.velocity.x) > 150:
-		return slide
+	if _event.is_action_pressed( "Slide" ) and direction.x != 0:
+		if not player.wall_detector.is_colliding():
+			return slide
 	return null
 
 func process( _delta: float ) -> PlayerState:
