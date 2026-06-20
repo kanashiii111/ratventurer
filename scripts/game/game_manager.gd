@@ -129,13 +129,13 @@ func _calculate_rank(time: float, cheese_ratio: float) -> String:
 	return order[max(time_idx, cheese_idx)]
 
 func restart_level() -> void:
-	get_tree().reload_current_scene()
+	LoadingScreen.reload_current_scene()
 
 func load_next_level() -> void:
 	var next_id: String = LEVEL_DATA[current_level]["next"]
 	if next_id != "":
 		current_level = next_id
-		get_tree().change_scene_to_file("res://scenes/game.tscn")
+		LoadingScreen.switch_scene("res://scenes/game.tscn")
 
 func format_time(seconds: float) -> String:
 	var total_ms: int = int(seconds * 100)

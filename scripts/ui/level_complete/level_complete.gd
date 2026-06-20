@@ -44,4 +44,4 @@ func _on_retry() -> void:
 
 func _on_menu() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/menus/main_menu/main_menu.tscn")
+	LoadingScreen.switch_scene("res://scenes/menus/main_menu/main_menu.tscn")

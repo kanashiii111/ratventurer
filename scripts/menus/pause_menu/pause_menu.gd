@@ -44,15 +44,15 @@ func resume() -> void:
 
 func _on_restart() -> void:
 	hide()
-	get_tree().call_deferred("reload_current_scene")
 	get_tree().paused = false
+	LoadingScreen.reload_current_scene()
 
 func _on_resume() -> void:
 	resume()
 
 func _on_main_menu() -> void:
 	get_tree().paused = false
-	get_tree().change_scene_to_file("res://scenes/menus/main_menu/main_menu.tscn")
+	LoadingScreen.switch_scene("res://scenes/menus/main_menu/main_menu.tscn")
 
 func _on_settings() -> void:
 	var settings = preload("res://scenes/menus/settings_menu/settings_menu.tscn").instantiate()

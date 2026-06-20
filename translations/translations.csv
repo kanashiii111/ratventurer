@@ -37,4 +37,5 @@ dash_popup, Use V to dash, Используй V\nчтобы выполнить �
 attack_popup, "Be careful, there's a skeleton!\nPress RMB to swing your knife at him!", "Осторожно, тут скелет!\n Нажми ПКМ чтобы атаковать его."
 slam_popup, "I think there's a skeleton down there...\n Try pressing S midair, it might kill him", "Мне кажется внизу скелет...\nПопробуй нажать S в воздухе, вдруг поможет"
 double_jump_popup, "Oops, forgot about a reward back there\nTry jumping from the walls to get back up there", "Ой, забыл про награду\nПопробуй забраться наверх прыгая от стен"
+loading,Loading...,Загрузка...
 interact, "E - Enter", "Е - Войти"

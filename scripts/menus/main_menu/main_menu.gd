@@ -10,6 +10,7 @@ extends Control
 const font_size = 40
 
 func _ready() -> void:
+	LoadingScreen.hide_loading()
 	play_button.add_theme_font_size_override("font_size", font_size)
 	settings_button.add_theme_font_size_override("font_size", font_size)
 	quit_button.add_theme_font_size_override("font_size", font_size)

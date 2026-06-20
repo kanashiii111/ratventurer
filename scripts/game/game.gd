@@ -10,6 +10,7 @@ var player_in_exit: bool = false
 var label: Label
 
 func _ready() -> void:
+	LoadingScreen.hide_loading()
 	var level_id: String = GameManager.current_level
 	if level_id == "":
 		level_id = "level_1"

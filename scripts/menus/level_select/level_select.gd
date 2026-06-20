@@ -74,7 +74,7 @@ func _create_card(level_id: String, _data: Dictionary) -> PanelContainer:
 		play_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		play_btn.pressed.connect(func():
 			GameManager.current_level = level_id
-			get_tree().change_scene_to_file("res://scenes/game.tscn")
+			LoadingScreen.switch_scene("res://scenes/game.tscn")
 		)
 		var btn_container := CenterContainer.new()
 		btn_container.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -95,4 +95,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_back()
 
 func _on_back() -> void:
-	back_pressed.emit()
+	LoadingScreen.switch_scene("res://scenes/menus/main_menu/main_menu.tscn")
