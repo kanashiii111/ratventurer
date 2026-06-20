@@ -77,6 +77,8 @@ func _create_card(level_id: String, _data: Dictionary) -> PanelContainer:
 		play_btn.theme = button_theme
 		play_btn.custom_minimum_size = Vector2(200, 100)
 		play_btn.text = "play"
+		var font_size = 32
+		play_btn.add_theme_font_size_override("font_size", font_size)
 		play_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		play_btn.pressed.connect(func():
 			GameManager.current_level = level_id

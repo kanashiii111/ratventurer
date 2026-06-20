@@ -4,10 +4,23 @@ extends CanvasLayer
 @onready var cheese_label: Label = $MarginContainer3/InfoVBox/CheeseLabel
 @onready var new_record_label: Label = $MarginContainer3/InfoVBox/NewRecordLabel
 @onready var rank_label: Label = $RankHBox/RankLabel
-@onready var rank_letter_label: Label = $RankHBox/RankLetter
+@onready var rank_letter: TextureRect = $RankHBox/RankLetter
 @onready var next_button: Button = $MarginContainer2/ButtonsVBox/NextButton
 @onready var retry_button: Button = $MarginContainer2/ButtonsVBox/RetryButton
 @onready var menu_button: Button = $MarginContainer/MenuButton
+
+var RANK_TEXTURES := {
+	"S": _make_atlas(Rect2(144, 0, 48, 48)),
+	"A": _make_atlas(Rect2(192, 0, 48, 48)),
+	"B": _make_atlas(Rect2(144, 48, 48, 48)),
+	"C": _make_atlas(Rect2(192, 48, 48, 48)),
+}
+
+static func _make_atlas(region: Rect2) -> AtlasTexture:
+	var atlas := AtlasTexture.new()
+	atlas.atlas = preload("res://assets/sprites/ui/ui.png")
+	atlas.region = region
+	return atlas
 
 func _ready() -> void:
 	hide()
@@ -23,7 +36,7 @@ func _on_level_completed(time: float, cheese_collected: int, cheese_total: int, 
 	time_label.text = tr("time") + ": " + GameManager.format_time(time)
 	cheese_label.text = tr("cheese") + ": " + str(cheese_collected) + " / " + str(cheese_total)
 	rank_label.text = tr("rank") + ":"
-	rank_letter_label.text = rank
+	rank_letter.texture = RANK_TEXTURES.get(rank)
 	new_record_label.text = tr("new_record")
 
 	new_record_label.visible = is_new_record

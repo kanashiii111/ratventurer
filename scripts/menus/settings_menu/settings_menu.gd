@@ -9,7 +9,10 @@ signal back_pressed
 @onready var fullscreen_checkbox: CheckBox = $TabContainer/General/GeneralRow/FullscreenCheckBox
 @onready var ru_button: Button = $TabContainer/Language/LanguageRow/RuButton
 @onready var en_button: Button = $TabContainer/Language/LanguageRow/EnButton
-@onready var back_button: Button = $BackButton
+@onready var back_button: Button = $MarginContainer/BackButton
+@onready var master_percent: Label = $TabContainer/Sound/MasterRow/Label
+@onready var music_percent: Label = $TabContainer/Sound/MusicRow/Label
+@onready var sfx_percent: Label = $TabContainer/Sound/SfxRow/Label
 
 @onready var labels := {
 	fullscreen = $TabContainer/General/GeneralRow/FullscreenLabel,
@@ -17,7 +20,7 @@ signal back_pressed
 	music = $TabContainer/Sound/MusicRow/MusicLabel,
 	sfx = $TabContainer/Sound/SfxRow/SfxLabel,
 	language = $TabContainer/Language/LanguageRow/LanguageLabel,
-	back = $BackButton,
+	back = $MarginContainer/BackButton,
 }
 
 const strings := {
@@ -51,10 +54,14 @@ const strings := {
 func _ready() -> void:
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
-	var label_size: int = 36
+	var label_size: int = 64
 	var control_size: int = 50
 	var tab_size: int = 26
 	var back_size: int = 28
+	
+	master_percent.text = str(int(SettingsManager.master_volume * 100)) + "%"
+	music_percent.text = str(int(SettingsManager.music_volume * 100)) + "%"
+	sfx_percent.text = str(int(SettingsManager.sfx_volume * 100)) + "%"
 	
 	var panel_style := StyleBoxFlat.new()
 	panel_style.bg_color = Color(0.25, 0.25, 0.25)
@@ -67,20 +74,20 @@ func _ready() -> void:
 	master_slider.max_value = 1.0
 	master_slider.step = 0.01
 	master_slider.value = SettingsManager.master_volume
-	master_slider.custom_minimum_size = Vector2(400, 40)
+	master_slider.custom_minimum_size = Vector2(400, 30)
 	
 
 	music_slider.min_value = 0.0
 	music_slider.max_value = 1.0
 	music_slider.step = 0.01
 	music_slider.value = SettingsManager.music_volume
-	music_slider.custom_minimum_size = Vector2(400, 40)
+	music_slider.custom_minimum_size = Vector2(400, 30)
 
 	sfx_slider.min_value = 0.0
 	sfx_slider.max_value = 1.0
 	sfx_slider.step = 0.01
 	sfx_slider.value = SettingsManager.sfx_volume
-	sfx_slider.custom_minimum_size = Vector2(400, 40)
+	sfx_slider.custom_minimum_size = Vector2(400, 30)
 	
 	fullscreen_checkbox.add_theme_font_size_override("font_size", control_size)
 	fullscreen_checkbox.button_pressed = SettingsManager.fullscreen
@@ -113,9 +120,21 @@ func _ready() -> void:
 	_update_language_buttons()
 	_update_translations()
 
-	master_slider.value_changed.connect(func(v): SettingsManager.master_volume = v)
-	music_slider.value_changed.connect(func(v): SettingsManager.music_volume = v)
-	sfx_slider.value_changed.connect(func(v): SettingsManager.sfx_volume = v)
+	master_slider.value_changed.connect(func(v):
+		SettingsManager.master_volume = v
+		master_percent.text = str(int(v * 100)) + "%"
+	)
+	
+	music_slider.value_changed.connect(func(v): 
+		SettingsManager.music_volume = v
+		music_percent.text = str(int(v * 100)) + "%"
+	)
+	
+	sfx_slider.value_changed.connect(func(v):
+		SettingsManager.sfx_volume = v
+		sfx_percent.text = str(int(v * 100)) + "%"
+	)
+	
 	fullscreen_checkbox.toggled.connect(func(v): SettingsManager.fullscreen = v)
 
 	ru_button.pressed.connect(func(): SettingsManager.language = "ru")

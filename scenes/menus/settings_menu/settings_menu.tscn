@@ -1,6 +1,10 @@
 [gd_scene format=3 uid="uid://bd72fq5mlyf6q"]
 
-[ext_resource type="Script" uid="uid://n4puc1arv38i" path="res://scenes/menus/settings_menu/settings_menu.gd" id="1"]
+[ext_resource type="Script" uid="uid://n4puc1arv38i" path="res://scripts/menus/settings_menu/settings_menu.gd" id="1"]
+[ext_resource type="Texture2D" uid="uid://bgqum0uetnl6y" path="res://assets/menus/background_no_rat.png" id="2_clh75"]
+[ext_resource type="Theme" uid="uid://bslv7aavfdx6i" path="res://assets/sprites/ui/checkbox_1.tres" id="3_hvlft"]
+[ext_resource type="FontFile" uid="uid://cqotfm2u0qadt" path="res://assets/fonts/Pixel_sans.ttf" id="3_tlkng"]
+[ext_resource type="Theme" uid="uid://upfbnf8s3qvi" path="res://assets/sprites/ui/slider.tres" id="5_h44vs"]
 
 [node name="SettingsMenu" type="Control" unique_id=580857]
 layout_mode = 3
@@ -18,6 +22,16 @@ anchor_bottom = 1.0
 mouse_filter = 2
 color = Color(0.08, 0.08, 0.08, 1)
 
+[node name="TextureRect" type="TextureRect" parent="Background" unique_id=390377369]
+modulate = Color(1, 1, 1, 0.09803922)
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("2_clh75")
+
 [node name="TabContainer" type="TabContainer" parent="." unique_id=1510802544]
 layout_mode = 1
 anchors_preset = -1
@@ -25,9 +39,10 @@ anchor_left = 0.1
 anchor_top = 0.08
 anchor_right = 0.9
 anchor_bottom = 0.88
-current_tab = 0
+current_tab = 1
 
 [node name="General" type="VBoxContainer" parent="TabContainer" unique_id=660805354]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 24
 metadata/_tab_index = 0
@@ -41,13 +56,16 @@ layout_mode = 2
 [node name="FullscreenLabel" type="Label" parent="TabContainer/General/GeneralRow" unique_id=1652683803]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_tlkng")
 horizontal_alignment = 2
 
 [node name="FullscreenCheckBox" type="CheckBox" parent="TabContainer/General/GeneralRow" unique_id=1154113327]
+custom_minimum_size = Vector2(60, 40)
 layout_mode = 2
+theme = ExtResource("3_hvlft")
 
 [node name="Sound" type="VBoxContainer" parent="TabContainer" unique_id=1700423271]
-visible = false
 layout_mode = 2
 theme_override_constants/separation = 24
 metadata/_tab_index = 1
@@ -61,12 +79,19 @@ layout_mode = 2
 [node name="MasterLabel" type="Label" parent="TabContainer/Sound/MasterRow" unique_id=916920848]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_tlkng")
 horizontal_alignment = 2
 
 [node name="MasterSlider" type="HSlider" parent="TabContainer/Sound/MasterRow" unique_id=1912073861]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 10
 size_flags_vertical = 4
+theme = ExtResource("5_h44vs")
+
+[node name="Label" type="Label" parent="TabContainer/Sound/MasterRow" unique_id=420893972]
+layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="MusicRow" type="HBoxContainer" parent="TabContainer/Sound" unique_id=1174257642]
 layout_mode = 2
@@ -77,12 +102,19 @@ layout_mode = 2
 [node name="MusicLabel" type="Label" parent="TabContainer/Sound/MusicRow" unique_id=1883663600]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_tlkng")
 horizontal_alignment = 2
 
 [node name="MusicSlider" type="HSlider" parent="TabContainer/Sound/MusicRow" unique_id=1268999417]
 layout_mode = 2
-size_flags_horizontal = 6
+size_flags_horizontal = 10
 size_flags_vertical = 4
+theme = ExtResource("5_h44vs")
+
+[node name="Label" type="Label" parent="TabContainer/Sound/MusicRow" unique_id=165397772]
+layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="SfxRow" type="HBoxContainer" parent="TabContainer/Sound" unique_id=1488018800]
 layout_mode = 2
@@ -93,12 +125,19 @@ layout_mode = 2
 [node name="SfxLabel" type="Label" parent="TabContainer/Sound/SfxRow" unique_id=459973862]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_tlkng")
 horizontal_alignment = 2
 
 [node name="SfxSlider" type="HSlider" parent="TabContainer/Sound/SfxRow" unique_id=72318431]
 layout_mode = 2
-size_flags_horizontal = 6
-size_flags_vertical = 4
+size_flags_horizontal = 10
+size_flags_vertical = 8
+theme = ExtResource("5_h44vs")
+
+[node name="Label" type="Label" parent="TabContainer/Sound/SfxRow" unique_id=1945413566]
+layout_mode = 2
+size_flags_horizontal = 2
 
 [node name="Language" type="VBoxContainer" parent="TabContainer" unique_id=222532545]
 visible = false
@@ -115,6 +154,8 @@ layout_mode = 2
 [node name="LanguageLabel" type="Label" parent="TabContainer/Language/LanguageRow" unique_id=1995063737]
 layout_mode = 2
 size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_tlkng")
 horizontal_alignment = 2
 
 [node name="RuButton" type="Button" parent="TabContainer/Language/LanguageRow" unique_id=479329055]
@@ -123,13 +164,16 @@ layout_mode = 2
 [node name="EnButton" type="Button" parent="TabContainer/Language/LanguageRow" unique_id=181141847]
 layout_mode = 2
 
-[node name="BackButton" type="Button" parent="." unique_id=1216975886]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1676714120]
 layout_mode = 1
 anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -50.0
-offset_right = 120.0
-offset_bottom = -10.0
+offset_top = -40.0
+offset_right = 40.0
 grow_vertical = 0
+theme_override_constants/margin_left = 60
+theme_override_constants/margin_bottom = 60
+
+[node name="BackButton" type="Button" parent="MarginContainer" unique_id=1216975886]
+layout_mode = 2

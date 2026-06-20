@@ -1,0 +1,22 @@
+[gd_resource type="Theme" format=3 uid="uid://upfbnf8s3qvi"]
+
+[ext_resource type="Texture2D" uid="uid://bc5ijsnhryf83" path="res://assets/sprites/entities/cheese/cheese_4x.png" id="1_inj7b"]
+[ext_resource type="Texture2D" uid="uid://degnwy5vwyehl" path="res://assets/sprites/entities/cheese/cheese_3x.png" id="2_bk3tv"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_bk3tv"]
+bg_color = Color(0.8980392, 0.72156864, 0.09803922, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_inj7b"]
+bg_color = Color(0.99684256, 0.8920868, 0.6035648, 1)
+
+[resource]
+HSlider/constants/center_grabber = 0
+HSlider/constants/grabber_offset = 0
+HSlider/constants/tick_offset = 0
+HSlider/icons/grabber = ExtResource("2_bk3tv")
+HSlider/icons/grabber_disabled = ExtResource("2_bk3tv")
+HSlider/icons/grabber_highlight = ExtResource("1_inj7b")
+HSlider/icons/tick = null
+HSlider/styles/grabber_area = SubResource("StyleBoxFlat_bk3tv")
+HSlider/styles/grabber_area_highlight = SubResource("StyleBoxFlat_inj7b")
+HSlider/styles/slider = null

@@ -1,7 +1,11 @@
 [gd_scene format=3 uid="uid://iityrm7xr4du"]
 
 [ext_resource type="Script" uid="uid://dnyitg6s6h4sn" path="res://scripts/ui/level_complete/level_complete.gd" id="1_lk7ds"]
-[ext_resource type="FontFile" uid="uid://o4gsjg3fx7u3" path="res://assets/fonts/Beware Horror.otf" id="2_6re3c"]
+[ext_resource type="Texture2D" uid="uid://digusymbrg0v1" path="res://assets/sprites/ui/ui.png" id="2_6re3c"]
+
+[sub_resource type="AtlasTexture" id="AtlasTexture_wsdog"]
+atlas = ExtResource("2_6re3c")
+region = Rect2(144, 0, 48, 48)
 
 [node name="LevelComplete" type="CanvasLayer" unique_id=1010538255]
 layer = 2
@@ -62,9 +66,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -98.5
+offset_left = -140.0
 offset_top = -87.5
-offset_right = 98.5
+offset_right = 140.0
 offset_bottom = 87.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -86,17 +90,11 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 4
 
-[node name="RankLetter" type="Label" parent="RankHBox" unique_id=1758808700]
+[node name="RankLetter" type="TextureRect" parent="RankHBox" unique_id=991133131]
+custom_minimum_size = Vector2(96, 96)
 layout_mode = 2
-size_flags_horizontal = 0
-theme_override_colors/font_color = Color(1, 0.84, 0, 1)
-theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
-theme_override_constants/outline_size = 4
-theme_override_fonts/font = ExtResource("2_6re3c")
-theme_override_font_sizes/font_size = 128
-text = "S"
-horizontal_alignment = 2
-vertical_alignment = 1
+texture = SubResource("AtlasTexture_wsdog")
+expand_mode = 3
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=2007820930]
 anchors_preset = 2
