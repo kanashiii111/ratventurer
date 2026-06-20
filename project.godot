@@ -11,7 +11,9 @@ config_version=5
 [application]
 
 config/name="Ratventurer"
-run/main_scene="uid://c8r1j14lxe78y"
+run/main_scene="res://scenes/menus/splash/splash.tscn"
+boot_splash/show_image=false
+boot_splash/fullsize=true
 config/features=PackedStringArray("4.7", "Forward Plus")
 config/icon="uid://bx75k1a527h54"
 

@@ -34,3 +34,6 @@ func switch_scene(path: String) -> void:
 	await RenderingServer.frame_post_draw
 	get_tree().change_scene_to_file(path)
 	visible = false
+
+func reload_current_scene() -> void:
+	switch_scene(get_tree().current_scene.scene_file_path)
