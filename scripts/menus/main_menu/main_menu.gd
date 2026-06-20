@@ -31,7 +31,14 @@ func _remove_settings() -> void:
 		s.queue_free()
 
 func _on_play_pressed() -> void:
-	get_tree().change_scene_to_file("res://scenes/menus/level_select/level_select.tscn")
+	var level_select = preload("res://scenes/menus/level_select/level_select.tscn").instantiate()
+	level_select.back_pressed.connect(_remove_level_select)
+	add_child(level_select)
+
+func _remove_level_select() -> void:
+	var s = get_node_or_null("LevelSelect")
+	if s:
+		s.queue_free()
 
 func _on_quit_pressed() -> void:
 	get_tree().quit()

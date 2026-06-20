@@ -1,5 +1,7 @@
 extends Control
 
+signal back_pressed
+
 @onready var container: HBoxContainer = $HBoxContainer
 @onready var back_button: Button = $BackButton
 
@@ -93,4 +95,4 @@ func _unhandled_input(event: InputEvent) -> void:
 		_on_back()
 
 func _on_back() -> void:
-	get_tree().change_scene_to_file("res://scenes/menus/main_menu/main_menu.tscn")
+	back_pressed.emit()
