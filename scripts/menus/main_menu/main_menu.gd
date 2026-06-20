@@ -2,12 +2,12 @@ extends Control
 
 @export_file("*.tscn") var first_level_scene: String = "res://scenes/game.tscn"
 
-@onready var play_button: Button = $VBoxContainer/PlayButton
-@onready var settings_button: Button = $VBoxContainer/SettingsButton
-@onready var quit_button: Button = $VBoxContainer/QuitButton
+@onready var play_button: Button = $MarginContainer2/VBoxContainer/PlayButton
+@onready var settings_button: Button = $MarginContainer2/VBoxContainer/SettingsButton
+@onready var quit_button: Button = $MarginContainer2/VBoxContainer/QuitButton
 
 
-const font_size = 40
+const font_size = 64
 
 func _ready() -> void:
 	LoadingScreen.hide_loading()

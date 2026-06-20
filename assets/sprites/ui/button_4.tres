@@ -1456,14 +1456,17 @@ expand_margin_right = 2.0
 expand_margin_bottom = 2.0
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_5dbch"]
+content_margin_bottom = 30.0
 texture = ExtResource("1_wi1t5")
 region_rect = Rect2(0, 48, 32, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_o8s7e"]
+content_margin_bottom = 15.0
 texture = ExtResource("1_wi1t5")
 region_rect = Rect2(0, 48, 32, 16)
 
 [sub_resource type="StyleBoxTexture" id="StyleBoxTexture_wi1t5"]
+content_margin_bottom = 15.0
 texture = ExtResource("1_wi1t5")
 region_rect = Rect2(32, 48, 32, 16)
 
@@ -1484,7 +1487,7 @@ Button/colors/icon_pressed_color = Color(1, 1, 1, 1)
 Button/constants/align_to_largest_stylebox = 0
 Button/constants/h_separation = 4
 Button/constants/icon_max_width = 0
-Button/constants/outline_size = 0
+Button/constants/outline_size = 10
 Button/font_sizes/font_size = 16
 Button/fonts/font = SubResource("FontFile_fvyty")
 Button/styles/disabled = SubResource("StyleBoxFlat_5gy7r")

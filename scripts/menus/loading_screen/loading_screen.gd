@@ -28,12 +28,13 @@ func _ready() -> void:
 func hide_loading() -> void:
 	visible = false
 
+func reload_current_scene() -> void:
+	switch_scene(get_tree().current_scene.scene_file_path)
+
 func switch_scene(path: String) -> void:
 	_label.text = tr("loading")
 	visible = true
 	await RenderingServer.frame_post_draw
 	get_tree().change_scene_to_file(path)
+	get_tree().paused = false
 	visible = false
-
-func reload_current_scene() -> void:
-	switch_scene(get_tree().current_scene.scene_file_path)

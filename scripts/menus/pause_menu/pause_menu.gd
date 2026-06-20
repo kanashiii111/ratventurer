@@ -9,6 +9,7 @@ extends CanvasLayer
 const font_size = 40
 
 func _ready() -> void:
+	layer = 2
 	process_mode = Node.PROCESS_MODE_ALWAYS
 
 	resume_button.add_theme_font_size_override("font_size", font_size)
@@ -44,14 +45,12 @@ func resume() -> void:
 
 func _on_restart() -> void:
 	hide()
-	get_tree().paused = false
 	LoadingScreen.reload_current_scene()
 
 func _on_resume() -> void:
 	resume()
 
 func _on_main_menu() -> void:
-	get_tree().paused = false
 	LoadingScreen.switch_scene("res://scenes/menus/main_menu/main_menu.tscn")
 
 func _on_settings() -> void:

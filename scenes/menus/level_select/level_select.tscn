@@ -2,6 +2,7 @@
 
 [ext_resource type="Script" uid="uid://11i65t8dtr6u" path="res://scripts/menus/level_select/level_select.gd" id="1_s8k9s"]
 [ext_resource type="Texture2D" uid="uid://bgqum0uetnl6y" path="res://assets/menus/background_no_rat.png" id="2_ca7kh"]
+[ext_resource type="Theme" uid="uid://diivi438femhj" path="res://assets/sprites/ui/button_4.tres" id="3_v2d52"]
 
 [node name="LevelSelect" type="Control" unique_id=114249874]
 layout_mode = 3
@@ -28,15 +29,18 @@ text = "level_select"
 horizontal_alignment = 1
 
 [node name="HBoxContainer" type="HBoxContainer" parent="." unique_id=792578491]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -320.0
-offset_top = -100.0
-offset_right = 320.0
-offset_bottom = 100.0
+offset_left = -500.0
+offset_top = -150.0
+offset_right = 500.0
+offset_bottom = 150.0
+grow_horizontal = 2
+grow_vertical = 2
 theme_override_constants/separation = 16
 
 [node name="Background" type="ColorRect" parent="." unique_id=1574470972]
@@ -60,13 +64,20 @@ grow_vertical = 2
 mouse_filter = 2
 texture = ExtResource("2_ca7kh")
 
-[node name="BackButton" type="Button" parent="." unique_id=1473884070]
-layout_mode = 0
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=2143482636]
+layout_mode = 1
+anchors_preset = 2
 anchor_top = 1.0
 anchor_bottom = 1.0
-offset_left = 20.0
-offset_top = -50.0
-offset_right = 120.0
-offset_bottom = -10.0
+offset_top = -40.0
+offset_right = 45.0
 grow_vertical = 0
+theme_override_constants/margin_left = 50
+theme_override_constants/margin_bottom = 50
+
+[node name="BackButton" type="Button" parent="MarginContainer" unique_id=1473884070]
+custom_minimum_size = Vector2(400, 200)
+layout_mode = 2
+theme = ExtResource("3_v2d52")
+theme_override_font_sizes/font_size = 36
 text = "back"

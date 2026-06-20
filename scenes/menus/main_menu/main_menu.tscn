@@ -35,32 +35,39 @@ grow_vertical = 2
 texture = ExtResource("2_gm7d7")
 expand_mode = 1
 
-[node name="VBoxContainer" type="VBoxContainer" parent="." unique_id=653556238]
+[node name="MarginContainer2" type="MarginContainer" parent="." unique_id=1441138125]
 layout_mode = 1
 anchors_preset = 8
 anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
+offset_left = -200.0
+offset_top = -225.0
+offset_right = 200.0
+offset_bottom = 225.0
 grow_horizontal = 2
 grow_vertical = 2
-pivot_offset_ratio = Vector2(0.5, 0.5)
-theme_override_constants/separation = 10
+theme_override_constants/margin_top = 200
 
-[node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=97877298]
-custom_minimum_size = Vector2(400, 100)
+[node name="VBoxContainer" type="VBoxContainer" parent="MarginContainer2" unique_id=653556238]
+layout_mode = 2
+theme_override_constants/separation = 0
+
+[node name="PlayButton" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=97877298]
+custom_minimum_size = Vector2(400, 150)
 layout_mode = 2
 theme = ExtResource("3_peecx")
 text = "play"
 
-[node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=2047914685]
-custom_minimum_size = Vector2(0, 100)
+[node name="SettingsButton" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=2047914685]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme = ExtResource("4_x31ro")
 text = "settings"
 
-[node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1568656196]
-custom_minimum_size = Vector2(0, 100)
+[node name="QuitButton" type="Button" parent="MarginContainer2/VBoxContainer" unique_id=1568656196]
+custom_minimum_size = Vector2(0, 150)
 layout_mode = 2
 theme = ExtResource("5_0jpat")
 text = "quit"

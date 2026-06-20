@@ -35,13 +35,10 @@ func _on_level_completed(time: float, cheese_collected: int, cheese_total: int, 
 	get_tree().paused = true
 
 func _on_next() -> void:
-	get_tree().paused = false
 	GameManager.load_next_level()
 
 func _on_retry() -> void:
-	get_tree().paused = false
 	GameManager.restart_level()
 
 func _on_menu() -> void:
-	get_tree().paused = false
 	LoadingScreen.switch_scene("res://scenes/menus/main_menu/main_menu.tscn")

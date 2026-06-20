@@ -3,7 +3,8 @@ extends Control
 signal back_pressed
 
 @onready var container: HBoxContainer = $HBoxContainer
-@onready var back_button: Button = $BackButton
+@onready var back_button: Button = $MarginContainer/BackButton
+@onready var panel_theme = "res://assets/sprites/ui/panel_container.tres"
 
 const LEVEL_ORDER: Array[String] = [
 	"level_tutorial",
@@ -23,19 +24,21 @@ func _ready() -> void:
 
 func _create_card(level_id: String, _data: Dictionary) -> PanelContainer:
 	var outer := PanelContainer.new()
-	outer.custom_minimum_size = Vector2(140, 130)
+	var card_theme = preload("res://assets/sprites/ui/panel_container.tres")
+	outer.theme = card_theme
+	outer.custom_minimum_size = Vector2(200, 300)
 	outer.size_flags_horizontal = Control.SIZE_EXPAND_FILL
 	outer.size_flags_vertical = Control.SIZE_EXPAND_FILL
 	outer.mouse_filter = Control.MOUSE_FILTER_IGNORE
 
-	var style := StyleBoxFlat.new()
-	style.bg_color = Color(0.15, 0.15, 0.2, 1)
-	style.corner_radius_top_left = 8
-	style.corner_radius_top_right = 8
-	style.corner_radius_bottom_left = 8
-	style.corner_radius_bottom_right = 8
-	style.content_margin_top = 8
-	outer.add_theme_stylebox_override("panel", style)
+	#var style := StyleBoxFlat.new()
+	#style.bg_color = Color(0.15, 0.15, 0.2, 1)
+	#style.corner_radius_top_left = 8
+	#style.corner_radius_top_right = 8
+	#style.corner_radius_bottom_left = 8
+	#style.corner_radius_bottom_right = 8
+	#style.content_margin_top = 8
+	#outer.add_theme_stylebox_override("panel", style)
 
 	var card := VBoxContainer.new()
 	card.size_flags_horizontal = Control.SIZE_EXPAND_FILL
@@ -70,6 +73,9 @@ func _create_card(level_id: String, _data: Dictionary) -> PanelContainer:
 		card.add_child(time_label)
 
 		var play_btn := Button.new()
+		var button_theme = preload("res://assets/sprites/ui/button_4.tres")
+		play_btn.theme = button_theme
+		play_btn.custom_minimum_size = Vector2(200, 100)
 		play_btn.text = "play"
 		play_btn.size_flags_horizontal = Control.SIZE_SHRINK_CENTER
 		play_btn.pressed.connect(func():
