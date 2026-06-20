@@ -1,15 +1,11 @@
 [gd_scene format=3 uid="uid://c8r1j14lxe78y"]
 
-[ext_resource type="Script" uid="uid://dotk5ouowiyew" path="res://scenes/menus/main_menu/main_menu.gd" id="1_flk2s"]
-[ext_resource type="Texture2D" uid="uid://cyeddu4px6oyf" path="res://scenes/menus/main_menu/background.png" id="2_gm7d7"]
-[ext_resource type="FontFile" uid="uid://o4gsjg3fx7u3" path="res://assets/font/Beware Horror.otf" id="3_gm7d7"]
-
-[sub_resource type="LabelSettings" id="LabelSettings_flk2s"]
-font = ExtResource("3_gm7d7")
-font_size = 90
-font_color = Color(0.5132329, 0.5132329, 0.5132329, 1)
-outline_size = 20
-outline_color = Color(0, 0, 0, 1)
+[ext_resource type="Script" uid="uid://dotk5ouowiyew" path="res://scripts/menus/main_menu/main_menu.gd" id="1_flk2s"]
+[ext_resource type="Texture2D" uid="uid://cyeddu4px6oyf" path="res://assets/menus/background.png" id="2_gm7d7"]
+[ext_resource type="FontFile" uid="uid://o4gsjg3fx7u3" path="res://assets/fonts/Beware Horror.otf" id="3_gm7d7"]
+[ext_resource type="Theme" uid="uid://nxqqniu1ouv3" path="res://assets/sprites/ui/button_1.tres" id="3_peecx"]
+[ext_resource type="Theme" uid="uid://76eo0o3601ny" path="res://assets/sprites/ui/button_2.tres" id="4_x31ro"]
+[ext_resource type="Theme" uid="uid://c0lhtvga3pa23" path="res://assets/sprites/ui/button_3.tres" id="5_0jpat"]
 
 [node name="MainMenu" type="Control" unique_id=366439912]
 layout_mode = 3
@@ -52,28 +48,44 @@ pivot_offset_ratio = Vector2(0.5, 0.5)
 theme_override_constants/separation = 10
 
 [node name="PlayButton" type="Button" parent="VBoxContainer" unique_id=97877298]
+custom_minimum_size = Vector2(400, 100)
 layout_mode = 2
+theme = ExtResource("3_peecx")
 text = "play"
 
 [node name="SettingsButton" type="Button" parent="VBoxContainer" unique_id=2047914685]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme = ExtResource("4_x31ro")
 text = "settings"
 
 [node name="QuitButton" type="Button" parent="VBoxContainer" unique_id=1568656196]
+custom_minimum_size = Vector2(0, 100)
 layout_mode = 2
+theme = ExtResource("5_0jpat")
 text = "quit"
 
-[node name="Label" type="Label" parent="." unique_id=129781510]
+[node name="MarginContainer" type="MarginContainer" parent="." unique_id=1054085610]
 layout_mode = 1
-anchors_preset = 5
+anchors_preset = 8
 anchor_left = 0.5
+anchor_top = 0.5
 anchor_right = 0.5
-offset_left = -284.0
-offset_top = 94.0
-offset_right = 282.0
-offset_bottom = 202.0
+anchor_bottom = 0.5
+offset_left = -47.0
+offset_top = -20.0
+offset_right = 47.0
+offset_bottom = 20.0
 grow_horizontal = 2
-size_flags_horizontal = 4
-size_flags_vertical = 1
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_bottom = 600
+
+[node name="Label" type="Label" parent="MarginContainer" unique_id=1072888830]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.49411765, 0.49411765, 0.49411765, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("3_gm7d7")
+theme_override_font_sizes/font_size = 128
 text = "Ratventurer"
-label_settings = SubResource("LabelSettings_flk2s")

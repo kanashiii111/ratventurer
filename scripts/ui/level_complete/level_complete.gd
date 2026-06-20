@@ -1,8 +1,8 @@
 extends CanvasLayer
 
-@onready var time_label: Label = $InfoVBox/TimeLabel
-@onready var cheese_label: Label = $InfoVBox/CheeseLabel
-@onready var new_record_label: Label = $InfoVBox/NewRecordLabel
+@onready var time_label: Label = $MarginContainer3/InfoVBox/TimeLabel
+@onready var cheese_label: Label = $MarginContainer3/InfoVBox/CheeseLabel
+@onready var new_record_label: Label = $MarginContainer3/InfoVBox/NewRecordLabel
 @onready var rank_label: Label = $RankHBox/RankLabel
 @onready var rank_letter_label: Label = $RankHBox/RankLetter
 @onready var next_button: Button = $MarginContainer2/ButtonsVBox/NextButton
