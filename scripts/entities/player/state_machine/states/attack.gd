@@ -18,12 +18,8 @@ func init():
 
 func enter():
 	player.anim_player.play("Attack")
-	player.play_audio(attack_audio)
+	player.play_oneshot_sfx(attack_audio)
 	spawn_slash_effect()
-
-	#for body in player.attack_collision_area.get_overlapping_bodies():
-		#if body is Skeleton:
-			#body.queue_free()
 
 func exit():
 	pass
@@ -37,7 +33,7 @@ func handle_input(_event: InputEvent) -> PlayerState:
 				return null
 			player.has_dash = false
 		return dash
-	if _event.is_action_pressed("Jump"):
+	if _event.is_action_pressed("Jump") and player.is_on_floor():
 		return jump
 	return null
 	

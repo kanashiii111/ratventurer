@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://c8r1j14lxe78y"]
 
 [ext_resource type="Script" uid="uid://dotk5ouowiyew" path="res://scripts/menus/main_menu/main_menu.gd" id="1_flk2s"]
+[ext_resource type="AudioStream" uid="uid://4tncbaxkt8e3" path="res://assets/sounds/ui/button.mp3" id="2_0jpat"]
 [ext_resource type="Texture2D" uid="uid://cyeddu4px6oyf" path="res://assets/menus/background.png" id="2_gm7d7"]
 [ext_resource type="FontFile" uid="uid://o4gsjg3fx7u3" path="res://assets/fonts/Beware Horror.otf" id="3_gm7d7"]
 [ext_resource type="Theme" uid="uid://nxqqniu1ouv3" path="res://assets/sprites/ui/button_1.tres" id="3_peecx"]
@@ -15,6 +16,9 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_flk2s")
+button_audio = ExtResource("2_0jpat")
+
+[node name="SFXAudioPlayer" type="AudioStreamPlayer2D" parent="." unique_id=396037661]
 
 [node name="Background" type="ColorRect" parent="." unique_id=1314967727]
 layout_mode = 1

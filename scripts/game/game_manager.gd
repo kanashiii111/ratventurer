@@ -15,6 +15,7 @@ const LEVEL_DATA := {
 		"name": "Tutorial",
 		"next": "level_1",
 		"scene": "res://scenes/levels/level_tutorial.tscn",
+		"music": preload("res://assets/sounds/music/tutorial.mp3"),
 		"time_s": 15.0,
 		"time_a": 30.0,
 		"time_b": 50.0

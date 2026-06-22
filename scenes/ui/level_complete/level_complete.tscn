@@ -2,6 +2,10 @@
 
 [ext_resource type="Script" uid="uid://dnyitg6s6h4sn" path="res://scripts/ui/level_complete/level_complete.gd" id="1_lk7ds"]
 [ext_resource type="Texture2D" uid="uid://digusymbrg0v1" path="res://assets/sprites/ui/ui.png" id="2_6re3c"]
+[ext_resource type="FontFile" uid="uid://cqotfm2u0qadt" path="res://assets/fonts/Pixel_sans.ttf" id="2_mmr4q"]
+[ext_resource type="Theme" uid="uid://diivi438femhj" path="res://assets/sprites/ui/button_4.tres" id="3_0wamp"]
+[ext_resource type="Theme" uid="uid://83ylyrfnbotl" path="res://assets/sprites/ui/button_5.tres" id="4_mmr4q"]
+[ext_resource type="Theme" uid="uid://bmjvnod2326ph" path="res://assets/sprites/ui/button_6.tres" id="5_duq0b"]
 
 [sub_resource type="AtlasTexture" id="AtlasTexture_wsdog"]
 atlas = ExtResource("2_6re3c")
@@ -23,10 +27,10 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -124.0
-offset_top = -52.0
-offset_right = 124.0
-offset_bottom = 52.0
+offset_left = -147.5
+offset_top = -275.0
+offset_right = 147.5
+offset_bottom = 275.0
 grow_horizontal = 2
 grow_vertical = 2
 theme_override_constants/margin_bottom = 400
@@ -40,7 +44,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("2_mmr4q")
+theme_override_font_sizes/font_size = 72
 text = "Time: 00:00.00"
 
 [node name="CheeseLabel" type="Label" parent="MarginContainer3/InfoVBox" unique_id=1920588298]
@@ -48,7 +53,8 @@ layout_mode = 2
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("2_mmr4q")
+theme_override_font_sizes/font_size = 72
 text = "Cheese: 0 / 0"
 
 [node name="NewRecordLabel" type="Label" parent="MarginContainer3/InfoVBox" unique_id=1915510751]
@@ -66,9 +72,9 @@ anchor_left = 0.5
 anchor_top = 0.5
 anchor_right = 0.5
 anchor_bottom = 0.5
-offset_left = -140.0
+offset_left = -148.0
 offset_top = -87.5
-offset_right = 140.0
+offset_right = 148.0
 offset_bottom = 87.5
 grow_horizontal = 2
 grow_vertical = 2
@@ -81,7 +87,8 @@ size_flags_horizontal = 0
 theme_override_colors/font_color = Color(1, 1, 1, 1)
 theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
 theme_override_constants/outline_size = 2
-theme_override_font_sizes/font_size = 36
+theme_override_fonts/font = ExtResource("2_mmr4q")
+theme_override_font_sizes/font_size = 72
 text = "Rank:"
 vertical_alignment = 1
 
@@ -107,8 +114,10 @@ theme_override_constants/margin_left = 50
 theme_override_constants/margin_bottom = 50
 
 [node name="MenuButton" type="Button" parent="MarginContainer" unique_id=998203303]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme = ExtResource("3_0wamp")
+theme_override_font_sizes/font_size = 48
 text = "main_menu"
 
 [node name="MarginContainer2" type="MarginContainer" parent="." unique_id=505299688]
@@ -132,11 +141,15 @@ theme_override_constants/separation = 20
 alignment = 1
 
 [node name="NextButton" type="Button" parent="MarginContainer2/ButtonsVBox" unique_id=1499327349]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme = ExtResource("4_mmr4q")
+theme_override_font_sizes/font_size = 48
 text = "next_level"
 
 [node name="RetryButton" type="Button" parent="MarginContainer2/ButtonsVBox" unique_id=2146923464]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
-theme_override_font_sizes/font_size = 36
+theme = ExtResource("5_duq0b")
+theme_override_font_sizes/font_size = 48
 text = "restart"

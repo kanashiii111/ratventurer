@@ -33,18 +33,6 @@ func handle_input(_event: InputEvent) -> PlayerState:
 		player.want_to_uncrouch = false
 	
 	return null
-	#if _event.is_action_released("Slide"):
-		#if player.is_ceiling_above():
-			#need_no_uncrouch = true
-			#return null
-		#else:
-			#return idle
-	#if state_machine.prev_state.name == "Slide" and not player.is_ceiling_above():
-		#return idle
-	#if not player.is_ceiling_above() and need_no_uncrouch:
-		#need_no_uncrouch = false
-		#return idle
-	#return null
 
 func process(_delta: float) -> PlayerState:
 	return null
@@ -60,8 +48,6 @@ func physics_process(_delta: float) -> PlayerState:
 		player.want_to_uncrouch = false
 		return idle
 	
-	#var target_speed = direction.x * 100
-	#player.update_velocity( target_speed, 20 )
 	player.update_velocity( 0, 20 )
 	
 	if not player.is_on_floor():

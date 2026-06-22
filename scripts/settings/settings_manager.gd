@@ -64,11 +64,11 @@ func _ready() -> void:
 
 func _setup_audio_buses() -> void:
 	if AudioServer.get_bus_index("Music") == -1:
-		AudioServer.add_bus()
+		AudioServer.add_bus(1)
 		AudioServer.set_bus_name(AudioServer.get_bus_count() - 1, "Music")
 
 	if AudioServer.get_bus_index("SFX") == -1:
-		AudioServer.add_bus()
+		AudioServer.add_bus(2)
 		AudioServer.set_bus_name(AudioServer.get_bus_count() - 1, "SFX")
 
 

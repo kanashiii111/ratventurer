@@ -8,7 +8,7 @@ var slide_timer : float
 
 func enter():
 	player.anim_player.play( "Slide" )
-	player.play_audio(slide_audio)
+	player.play_oneshot_sfx(slide_audio)
 	player.velocity.x += direction.x * 50
 	if player.velocity.x < 250: player.velocity.x = direction.x * 250
 	slide_timer = slide_time
@@ -72,7 +72,7 @@ func physics_process(_delta: float) -> PlayerState:
 		if same_dir and moving_up:
 			slide_timer -= _delta
 			
-		if moving_down: #player.velocity.x = move_toward(player.velocity.x, player.velocity.x * 1.5, 100 * _delta)
+		if moving_down:
 			var slope_acceleration = 200.0 
 			if input_dir != 0:
 				player.velocity.x = move_toward(player.velocity.x, direction.x * 600, slope_acceleration * _delta)

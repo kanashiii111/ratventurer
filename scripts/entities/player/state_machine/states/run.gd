@@ -51,6 +51,6 @@ func physics_process( _delta: float ) -> PlayerState:
 	
 	footstep_cooldown -= _delta
 	if footstep_cooldown <= 0:
-		player.play_audio(run_audio)
-		footstep_cooldown = 0.27   # интервал между шагами (сек)
+		player.play_looping_sfx(run_audio)
+		footstep_cooldown = 0.27
 	return null

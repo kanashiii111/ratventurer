@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://bd72fq5mlyf6q"]
 
 [ext_resource type="Script" uid="uid://n4puc1arv38i" path="res://scripts/menus/settings_menu/settings_menu.gd" id="1"]
+[ext_resource type="AudioStream" uid="uid://4tncbaxkt8e3" path="res://assets/sounds/ui/button.mp3" id="2_01fv2"]
 [ext_resource type="Texture2D" uid="uid://bgqum0uetnl6y" path="res://assets/menus/background_no_rat.png" id="2_clh75"]
 [ext_resource type="Theme" uid="uid://bslv7aavfdx6i" path="res://assets/sprites/ui/checkbox_1.tres" id="3_hvlft"]
 [ext_resource type="FontFile" uid="uid://cqotfm2u0qadt" path="res://assets/fonts/Pixel_sans.ttf" id="3_tlkng"]
@@ -14,6 +15,7 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1")
+button_audio = ExtResource("2_01fv2")
 
 [node name="Background" type="ColorRect" parent="." unique_id=385399053]
 layout_mode = 0
@@ -177,3 +179,8 @@ theme_override_constants/margin_bottom = 60
 
 [node name="BackButton" type="Button" parent="MarginContainer" unique_id=1216975886]
 layout_mode = 2
+
+[node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1324189265]
+
+[connection signal="tab_clicked" from="TabContainer" to="." method="_on_tab_container_tab_clicked"]
+[connection signal="pressed" from="MarginContainer/BackButton" to="." method="_on_back_button_pressed"]

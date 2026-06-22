@@ -48,9 +48,6 @@ func init( _player : Player) -> void:
 	if states.size() == 0:
 		return
 	
-	#curr_state.player = player
-	#curr_state.state_machine = self
-	
 	for state in states:
 		state.player = player
 		state.state_machine = self

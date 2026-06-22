@@ -24,6 +24,10 @@ func _ready() -> void:
 	var level_path: String = GameManager.LEVEL_DATA[level_id]["scene"]
 	var level: Node = load(level_path).instantiate()
 	level_container.add_child(level)
+	
+	var level_data = GameManager.LEVEL_DATA[level_id]
+	if level_data.has("music"):
+		player.play_music(level_data["music"])
 
 	var spawn: Marker2D = level.get_node_or_null("PlayerSpawn")
 	if spawn:

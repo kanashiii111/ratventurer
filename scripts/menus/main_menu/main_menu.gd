@@ -1,11 +1,13 @@
 extends Control
 
 @export_file("*.tscn") var first_level_scene: String = "res://scenes/game.tscn"
+@export var button_audio: AudioStream
+
+@onready var sfx_player: AudioStreamPlayer2D = $SFXAudioPlayer
 
 @onready var play_button: Button = $MarginContainer2/VBoxContainer/PlayButton
 @onready var settings_button: Button = $MarginContainer2/VBoxContainer/SettingsButton
 @onready var quit_button: Button = $MarginContainer2/VBoxContainer/QuitButton
-
 
 const font_size = 64
 
@@ -19,9 +21,12 @@ func _ready() -> void:
 	settings_button.pressed.connect(_on_settings_pressed)
 	quit_button.pressed.connect(_on_quit_pressed)
 	
+	sfx_player.stream = button_audio
+	
 	Engine.time_scale = 1.0
 
 func _on_settings_pressed() -> void:
+	sfx_player.play()
 	var settings = preload("res://scenes/menus/settings_menu/settings_menu.tscn").instantiate()
 	settings.back_pressed.connect(_remove_settings)
 	add_child(settings)
@@ -32,6 +37,7 @@ func _remove_settings() -> void:
 		s.queue_free()
 
 func _on_play_pressed() -> void:
+	sfx_player.play()
 	var level_select = preload("res://scenes/menus/level_select/level_select.tscn").instantiate()
 	level_select.back_pressed.connect(_remove_level_select)
 	add_child(level_select)
@@ -42,4 +48,5 @@ func _remove_level_select() -> void:
 		s.queue_free()
 
 func _on_quit_pressed() -> void:
+	sfx_player.play()
 	get_tree().quit()

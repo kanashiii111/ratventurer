@@ -1,6 +1,11 @@
 [gd_scene format=3 uid="uid://c30kx0wo5x7pj"]
 
 [ext_resource type="Script" uid="uid://cwl7fxsi88hct" path="res://scripts/menus/pause_menu/pause_menu.gd" id="1_lde4l"]
+[ext_resource type="Theme" uid="uid://diivi438femhj" path="res://assets/sprites/ui/button_4.tres" id="2_j1dl3"]
+[ext_resource type="Theme" uid="uid://76eo0o3601ny" path="res://assets/sprites/ui/button_2.tres" id="3_hp7xe"]
+[ext_resource type="Theme" uid="uid://bmjvnod2326ph" path="res://assets/sprites/ui/button_6.tres" id="4_kluy1"]
+[ext_resource type="Theme" uid="uid://83ylyrfnbotl" path="res://assets/sprites/ui/button_5.tres" id="5_64nit"]
+[ext_resource type="FontFile" uid="uid://o4gsjg3fx7u3" path="res://assets/fonts/Beware Horror.otf" id="6_hp7xe"]
 
 [node name="PauseMenu" type="CanvasLayer" unique_id=1954457689]
 script = ExtResource("1_lde4l")
@@ -11,7 +16,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
-color = Color(0, 0, 0, 0.3137255)
+color = Color(0, 0, 0, 0.78431374)
 
 [node name="VBoxContainer" type="VBoxContainer" parent="Background" unique_id=473916977]
 layout_mode = 1
@@ -27,17 +32,44 @@ pivot_offset_ratio = Vector2(0, 0.5)
 theme_override_constants/separation = 10
 
 [node name="ResumeButton" type="Button" parent="Background/VBoxContainer" unique_id=1683797522]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+theme = ExtResource("2_j1dl3")
 text = "resume"
 
 [node name="RestartButton" type="Button" parent="Background/VBoxContainer" unique_id=179866714]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+theme = ExtResource("3_hp7xe")
 text = "restart"
 
 [node name="SettingsButton" type="Button" parent="Background/VBoxContainer" unique_id=42585074]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+theme = ExtResource("4_kluy1")
 text = "settings"
 
 [node name="MainMenuButton" type="Button" parent="Background/VBoxContainer" unique_id=1452347489]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+theme = ExtResource("5_64nit")
 text = "main_menu"
+
+[node name="MarginContainer" type="MarginContainer" parent="Background" unique_id=736966597]
+layout_mode = 1
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 40.0
+grow_horizontal = 2
+theme_override_constants/margin_top = 100
+
+[node name="Label" type="Label" parent="Background/MarginContainer" unique_id=578555969]
+layout_mode = 2
+theme_override_colors/font_color = Color(0.4117647, 0.41568628, 0.41568628, 1)
+theme_override_constants/outline_size = 40
+theme_override_fonts/font = ExtResource("6_hp7xe")
+theme_override_font_sizes/font_size = 128
+text = "Ratventurer"

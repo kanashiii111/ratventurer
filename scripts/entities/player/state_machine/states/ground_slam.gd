@@ -25,8 +25,8 @@ func enter():
 	player.rotation = 0
 
 func exit():
-	player.audio_player.stop()
-	player.play_sfx(slam_audio)
+	player.sfx_looping_player.stop()
+	player.play_oneshot_sfx(slam_audio)
 	player.collision_layer = prev_collision_layer
 	for body in player.ground_slam_hitbox.get_overlapping_bodies():
 		if body is Skeleton:
@@ -48,7 +48,7 @@ func physics_process(_delta: float) -> PlayerState:
 	
 	spin_cooldown -= _delta
 	if spin_cooldown <= 0:
-		player.play_audio(spin_audio)
+		player.play_looping_sfx(spin_audio)
 		spin_cooldown = 0.13
 	
 	if player.is_on_floor():

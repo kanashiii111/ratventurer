@@ -15,14 +15,14 @@ func init():
 func enter():
 	player.rotation = 0
 	player.anim_player.play( "Fall" )
-	player.play_audio( fall_audio )
+	player.play_looping_sfx( fall_audio )
 	coyote_timer = coyote_time 
 	if state_machine.prev_state == jump or state_machine.prev_state == wall_jump:
 		coyote_timer = 0
 	pass
 
 func exit():
-	player.audio_player.stop()
+	player.sfx_looping_player.stop()
 	pass
 
 func handle_input( _event: InputEvent ) -> PlayerState:
@@ -33,18 +33,11 @@ func handle_input( _event: InputEvent ) -> PlayerState:
 			return null
 		player.has_dash = false
 		return dash
-	#if player.is_on_wall():
 	if _event.is_action_pressed("GroundSlam"):
 		return ground_slam
-		#if player.ground_slam_timer.is_stopped():
-			#player.ground_slam_timer.start(ground_slam_time)
-		#else:
-			#player.ground_slam_timer.stop()
-			#return ground_slam
-	#if player.is_on_wall() and _event.is_action_pressed("Jump"):
 	if player.wall_detector.is_colliding() and _event.is_action_pressed("Jump"):
 		return wall_jump
-	if coyote_timer > 0:
+	if coyote_timer > 0 and not player.player_state_machine.prev_state.name == "Attack":
 		if _event.is_action_pressed( "Jump" ):
 			return jump 
 	return null
@@ -53,16 +46,10 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	#player.update_animation_direction()
-	#coyote_timer -= _delta
-	#
-	#player.update_velocity( direction.x * speed, acceleration )
-	
 	player.update_animation_direction()
 	coyote_timer -= _delta
 	
 	var target_vel = direction.x * speed
-	# Проверка на сохранение высокой скорости в воздухе
 	if direction.x != 0 and sign(direction.x) == sign(player.velocity.x) and abs(player.velocity.x) > speed:
 		target_vel = player.velocity.x
 		

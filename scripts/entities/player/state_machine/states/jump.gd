@@ -9,8 +9,7 @@ class_name PlayerJumpState extends PlayerState
 
 func enter():
 	player.anim_player.play( "Jump" )
-	player.play_audio(jump_audio)
-	#player.global_position.y -= 1
+	player.play_oneshot_sfx(jump_audio)
 	player.velocity.y += -jump_velocity
 	player.sprite.rotation = 0
 	pass
@@ -26,14 +25,8 @@ func handle_input(_event: InputEvent) -> PlayerState:
 			return null
 		player.has_dash = false
 		return dash
-	#if player.is_on_wall():
 	if _event.is_action_pressed("GroundSlam"):
 		return ground_slam
-		#if player.ground_slam_timer.is_stopped():
-			#player.ground_slam_timer.start(ground_slam_time)
-		#else:
-			#player.ground_slam_timer.stop()
-			#return ground_slam
 	if _event.is_action_released("Jump"):
 		player.velocity.y *= 0.5
 		return fall 
@@ -43,9 +36,6 @@ func process(_delta: float) -> PlayerState:
 	return null
 
 func physics_process(_delta: float) -> PlayerState:
-	#player.update_animation_direction()
-	#player.update_velocity( player.velocity.x, acceleration ) # direction.x *
-	
 	player.update_animation_direction()
 	var target_vel = direction.x * speed
 	
@@ -57,8 +47,6 @@ func physics_process(_delta: float) -> PlayerState:
 	
 	player.update_velocity(target_vel, acceleration)
 	
-	#if player.is_on_floor():
-		#return idle
 	if player.velocity.y >= 0:
 		return fall
 	return null

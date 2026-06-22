@@ -17,7 +17,7 @@ func enter():
 	player.velocity.x = wall_normal.x * horizontal_push
 	player.velocity.y = -jump_velocity
 	player.anim_player.play("Jump")
-	player.play_audio(jump_audio)
+	player.play_oneshot_sfx(jump_audio)
 	player.rotation = 0
 
 func exit():
@@ -26,11 +26,6 @@ func exit():
 func handle_input( _event: InputEvent ) -> PlayerState:
 	if _event.is_action_pressed("GroundSlam"):
 		return ground_slam
-		#if player.ground_slam_timer.is_stopped():
-			#player.ground_slam_timer.start(ground_slam_time)
-		#else:
-			#player.ground_slam_timer.stop()
-			#return ground_slam
 	if _event.is_action_pressed("Dash"):
 		if not player.has_dash:
 			return null
@@ -56,7 +51,6 @@ func physics_process(_delta: float) -> PlayerState:
 	player.sprite.flip_h = face_left
 	player.player_collider.position.x = -4 if face_left else 4
 	player.wall_detector.rotation = PI if face_left else 0.0
-	#player.update_animation_direction()
 	
 	var target_vel = direction.x * speed
 	

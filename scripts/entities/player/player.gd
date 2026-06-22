@@ -3,8 +3,14 @@ class_name Player extends CharacterBody2D
 @onready var player_state_machine : PlayerStateMachine = $StateMachine
 @onready var sprite: Sprite2D = $Sprite
 @onready var anim_player: AnimationPlayer = $AnimationPlayer
-@onready var audio_player = $AudioStreamPlayer2D
-@onready var audio_player_2 = $AudioStreamPlayer2D2
+
+@onready var master_player = $MasterStreamPlayer
+
+@onready var sfx_looping_player = $SFXLoopingStreamPlayer
+@onready var sfx_oneshot_player = $SFXOneShotStreamPlayer
+
+@onready var music_player = $MusicStreamPlayer
+
 @onready var wall_detector : RayCast2D = $WallDetector
 @onready var player_collider : CollisionShape2D = $CollisionShape
 @onready var attack_marker: Marker2D = $AttackSpawn
@@ -23,15 +29,12 @@ const AFTER_SLIDE_POSITION_Y: float = 1.75
 func _ready() -> void:
 	add_to_group("player")
 	player_state_machine.init( self )
+	music_player.finished.connect(music_player.play)
 	
 	sprite.rotation = 0
 	player_collider.shape.size.y = AFTER_SLIDE_SHAPE_SIZE_Y
 	player_collider.position.y = AFTER_SLIDE_POSITION_Y
 
-#func _on_attack_collision_area_body_entered(body: Node2D) -> void:
-	#if body is Skeleton and player_state_machine.is_state(%Attack):
-		#print("yo")
-		
 func _physics_process( _delta: float ) -> void:
 	$Label2.text = str(player_state_machine.player.velocity.x)
 	$Label3.text = str(player_state_machine.player.velocity.y)
@@ -42,8 +45,6 @@ func _physics_process( _delta: float ) -> void:
 		has_dash = true
 
 func is_ceiling_above() -> bool:
-	# Проверяем, впишется ли ВЫСОКИЙ коллайдер в пространство над нами
-	# Смещаем проверку чуть вверх от текущей позиции
 	var check_distance = abs(AFTER_SLIDE_POSITION_Y - SLIDE_POSITION_Y) + 2
 	return test_move(global_transform, Vector2(0, -check_distance))
 
@@ -61,24 +62,12 @@ func gravity( _delta: float ):
 		velocity.y += get_gravity().y * _delta
 
 func update_velocity( _to_velocity: float, _acceleration: float) -> void:
-	#velocity.x = move_toward(velocity.x, _to_velocity, _acceleration)
 	if sign(_to_velocity) != 0 and sign(velocity.x) != sign(_to_velocity):
-		# резкое торможение при развороте (acceleration * 5)
 		velocity.x = move_toward(velocity.x, _to_velocity, _acceleration * 5)
 	else:
 		velocity.x = move_toward(velocity.x, _to_velocity, _acceleration)
 	
 func update_animation_direction():
-	#if self.velocity.x < 0 or sign(Input.get_axis("MoveLeft", "MoveRight")) == -1:
-		#player_collider.position.x = -4
-		#ledge_detector.position.x = -15
-		#wall_detector.rotation = PI
-		#sprite.flip_h = true
-	#elif sign(Input.get_axis("MoveLeft", "MoveRight")) == 1 or self.velocity.x > 0: # or self.velocity.x > 0 or
-		#player_collider.position.x = 4
-		#ledge_detector.position.x = 15
-		#wall_detector.rotation = 0
-		#sprite.flip_h = false
 	var input_dir = sign(Input.get_axis("MoveLeft", "MoveRight"))
 	
 	var face_left: bool
@@ -106,10 +95,20 @@ func die() -> void:
 
 func play_audio( audio : AudioStream ):
 	if audio == null: return
-	audio_player.stream = audio
-	audio_player.play()
+	master_player.stream = audio
+	master_player.play()
 
-func play_sfx(audio : AudioStream):
+func play_looping_sfx(audio : AudioStream):
 	if audio == null: return
-	audio_player_2.stream = audio
-	audio_player_2.play()
+	sfx_looping_player.stream = audio
+	sfx_looping_player.play()
+
+func play_oneshot_sfx(audio: AudioStream):
+	if audio == null: return
+	sfx_oneshot_player.stream = audio
+	sfx_oneshot_player.play()
+
+func play_music(audio : AudioStream):
+	if audio == null: return
+	music_player.stream = audio
+	music_player.play()

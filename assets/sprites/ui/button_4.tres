@@ -3,17 +3,9 @@
 [ext_resource type="FontFile" uid="uid://cqotfm2u0qadt" path="res://assets/fonts/Pixel_sans.ttf" id="1_5dbch"]
 [ext_resource type="Texture2D" uid="uid://digusymbrg0v1" path="res://assets/sprites/ui/ui.png" id="1_wi1t5"]
 
-[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_5gy7r"]
-content_margin_left = 4.0
-content_margin_top = 4.0
-content_margin_right = 4.0
-content_margin_bottom = 4.0
-bg_color = Color(0.1, 0.1, 0.1, 0.3)
-corner_radius_top_left = 3
-corner_radius_top_right = 3
-corner_radius_bottom_right = 3
-corner_radius_bottom_left = 3
-corner_detail = 5
+[sub_resource type="StyleBoxTexture" id="StyleBoxTexture_h44vs"]
+texture = ExtResource("1_wi1t5")
+region_rect = Rect2(64, 48, 32, 16)
 
 [sub_resource type="StyleBoxFlat" id="StyleBoxFlat_2uduj"]
 content_margin_left = 4.0
@@ -71,7 +63,7 @@ Button/constants/icon_max_width = 0
 Button/constants/outline_size = 10
 Button/font_sizes/font_size = 16
 Button/fonts/font = ExtResource("1_5dbch")
-Button/styles/disabled = SubResource("StyleBoxFlat_5gy7r")
+Button/styles/disabled = SubResource("StyleBoxTexture_h44vs")
 Button/styles/focus = SubResource("StyleBoxFlat_2uduj")
 Button/styles/hover = SubResource("StyleBoxTexture_5dbch")
 Button/styles/normal = SubResource("StyleBoxTexture_o8s7e")

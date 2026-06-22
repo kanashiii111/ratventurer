@@ -17,7 +17,6 @@ func enter():
 	player.set_physics_process(false)
 	player.anim_player.play("Death")
 
-	# CanvasLayer — чтобы было поверх всего
 	var canvas := CanvasLayer.new()
 	canvas.layer = 128
 	fade = ColorRect.new()
@@ -45,7 +44,7 @@ func process(_delta: float) -> PlayerState:
 	var current_frame: int = player.sprite.frame
 	if current_frame >= 32 and current_frame != _last_frame:
 		_last_frame = current_frame
-		player.play_sfx(death_audio_1) if current_frame == 32 else player.play_sfx(death_audio_2)
+		player.play_oneshot_sfx(death_audio_1) if current_frame == 32 else player.play_oneshot_sfx(death_audio_2)
 	return null
 
 func physics_process(_delta: float) -> PlayerState:

@@ -6,7 +6,7 @@ extends CanvasLayer
 @onready var restart_button: Button = $Background/VBoxContainer/RestartButton
 @onready var background: ColorRect = $Background
 
-const font_size = 40
+const font_size = 64
 
 func _ready() -> void:
 	layer = 2

@@ -2,6 +2,9 @@ extends Control
 
 signal back_pressed
 
+@onready var sfx_player: AudioStreamPlayer2D = $AudioStreamPlayer2D
+@export var button_audio: AudioStream
+
 @onready var tab_container: TabContainer = $TabContainer
 @onready var master_slider: HSlider = $TabContainer/Sound/MasterRow/MasterSlider
 @onready var music_slider: HSlider = $TabContainer/Sound/MusicRow/MusicSlider
@@ -59,6 +62,8 @@ func _ready() -> void:
 	var tab_size: int = 26
 	var back_size: int = 28
 	
+	sfx_player.stream = button_audio
+	
 	master_percent.text = str(int(SettingsManager.master_volume * 100)) + "%"
 	music_percent.text = str(int(SettingsManager.music_volume * 100)) + "%"
 	sfx_percent.text = str(int(SettingsManager.sfx_volume * 100)) + "%"
@@ -110,12 +115,16 @@ func _ready() -> void:
 		$TabContainer/Language/LanguageRow/LanguageLabel,
 	]:
 		node.add_theme_font_size_override("font_size", label_size)
-		node.custom_minimum_size.x = 350
+		node.custom_minimum_size.x = 400
 		node.horizontal_alignment = HORIZONTAL_ALIGNMENT_LEFT
 		node.add_theme_constant_override("margin_left", 100)
 
 	for node: Button in [ru_button, en_button]:
 		node.add_theme_font_size_override("font_size", control_size)
+		var button_theme_4 = preload("res://assets/sprites/ui/button_4.tres")
+		var button_theme_5 = preload("res://assets/sprites/ui/button_5.tres")
+		if node == ru_button: node.theme = button_theme_4
+		else: node.theme = button_theme_5
 
 	_update_language_buttons()
 	_update_translations()
@@ -145,6 +154,7 @@ func _ready() -> void:
 
 
 func _on_language_changed(_locale: String) -> void:
+	sfx_player.play()
 	_update_language_buttons()
 	_update_translations()
 
@@ -169,10 +179,13 @@ func _update_translations() -> void:
 
 
 func _on_back() -> void:
+	sfx_player.play()
 	back_pressed.emit()
-
 
 func _input(event: InputEvent) -> void:
 	if event.is_action_pressed("Pause"):
 		back_pressed.emit()
 		get_viewport().set_input_as_handled()
+
+func _on_tab_container_tab_clicked(_tab: int) -> void:
+	sfx_player.play()

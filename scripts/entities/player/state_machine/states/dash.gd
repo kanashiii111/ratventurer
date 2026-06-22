@@ -13,7 +13,7 @@ func init():
 
 func enter():
 	player.anim_player.play("Dash")
-	player.play_audio(dash_audio)
+	player.play_oneshot_sfx(dash_audio)
 	
 	dash_direction = direction if direction.x != 0 else Vector2(-1 if player.sprite.flip_h else 1, 0)
 	if abs(player.velocity.x) > dash_speed:
