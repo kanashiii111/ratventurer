@@ -121,7 +121,10 @@ func _calculate_rank(time: float, cheese_ratio: float) -> String:
 	var order := ["S", "A", "B", "C"]
 	var time_idx := order.find(time_rank)
 	var cheese_idx := order.find(cheese_rank)
-	return order[floori(time_idx + cheese_idx / 2.0)] # max(time_idx, cheese_idx)
+	
+	var rank_idx = ceili(time_idx + cheese_idx / 2.0)
+	if rank_idx >= 3: return "C"
+	return order[rank_idx]
 
 func restart_level() -> void:
 	LoadingScreen.reload_current_scene()

@@ -28,7 +28,7 @@ tutorial_dash,Press V to dash,V — рывок
 tutorial_attack,Press E to attack,E — атака
 tutorial_cheese,Collect cheese!,Собери сыр!
 level_select,Level Select,Выбор уровня
-locked,Locked,Заблокировано
+locked,Locked\nFinish level 2 to unlock,Заблокировано\nПройди 2 уровень чтобы открыть
 no_record,No record,Нет рекорда
 wasd_popup, Use A/D to move left and right, Используй A/D для\n передвижения влево/вправо
 jump_popup, Use SPACE to jump, Используй ПРОБЕЛ чтобы прыгнуть

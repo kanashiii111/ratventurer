@@ -40,8 +40,6 @@ func handle_input(_event: InputEvent) -> PlayerState:
 
 func process(_delta: float) -> PlayerState:
 	if not player.anim_player.is_playing() or player.anim_player.current_animation != "Attack":
-		if Input.is_action_pressed("Attack"):
-			return self
 		if direction.x != 0: 
 			return run
 		return idle

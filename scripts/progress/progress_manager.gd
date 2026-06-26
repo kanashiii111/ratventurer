@@ -37,7 +37,6 @@ func _init_defaults() -> void:
 		"level_tutorial": { "best_time": 0.0, "best_rank": "", "unlocked": true },
 		"level_1": { "best_time": 0.0, "best_rank": "", "unlocked": true },
 		"level_2": { "best_time": 0.0, "best_rank": "", "unlocked": false },
-		"level_3": { "best_time": 0.0, "best_rank": "", "unlocked": false }
 	}
 
 func is_level_unlocked(level_id: String) -> bool:
