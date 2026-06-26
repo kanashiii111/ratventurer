@@ -27,7 +27,7 @@
 [ext_resource type="AudioStream" uid="uid://cs7qs4bg2tjw6" path="res://assets/sounds/entities/player/player_death.mp3" id="24_bnv2y"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_xy2vv"]
-size = Vector2(10, 19)
+size = Vector2(11, 19)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_yywfu"]
 size = Vector2(59, 5.75)
@@ -274,7 +274,7 @@ region_rect = Rect2(0, 0, 224, 186)
 position = Vector2(20, 0)
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=1509042990]
-position = Vector2(3, 1.75)
+position = Vector2(2.5, 1.75)
 shape = SubResource("RectangleShape2D_xy2vv")
 
 [node name="GroundSlamHitbox" type="Area2D" parent="." unique_id=152981618]
@@ -295,12 +295,15 @@ volume_db = -15.0
 
 [node name="MusicStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1950631174]
 volume_db = -15.0
+bus = &"Music"
 
 [node name="SFXOneShotStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=1751785951]
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="SFXLoopingStreamPlayer" type="AudioStreamPlayer2D" parent="." unique_id=558922466]
 volume_db = -15.0
+bus = &"SFX"
 
 [node name="GroundSlamTimer" type="Timer" parent="." unique_id=667600937]
 
@@ -340,7 +343,7 @@ offset_bottom = -42.0
 text = "prev_state"
 
 [node name="WallDetector" type="RayCast2D" parent="." unique_id=210708464]
-target_position = Vector2(11, 0)
+target_position = Vector2(12, 0)
 
 [node name="StateMachine" type="Node2D" parent="." unique_id=227961872]
 script = ExtResource("3_58kc7")

@@ -124,6 +124,7 @@ vframes = 4
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=216276862]
 volume_db = -5.0
+bus = &"SFX"
 
 [node name="CollisionShape" type="CollisionShape2D" parent="." unique_id=2075356365]
 position = Vector2(2, 1)

@@ -9,8 +9,11 @@ var slide_timer : float
 func enter():
 	player.anim_player.play( "Slide" )
 	player.play_oneshot_sfx(slide_audio)
-	player.velocity.x += direction.x * 50
-	if player.velocity.x < 250: player.velocity.x = direction.x * 250
+	if direction.x != 0:
+		player.velocity.x += direction.x * 50
+		if abs(player.velocity.x) < 300:
+			player.velocity.x = direction.x * 300
+	
 	slide_timer = slide_time
 	player.player_collider.shape.size.y = player.SLIDE_SHAPE_SIZE_Y
 	player.player_collider.position.y = player.SLIDE_POSITION_Y
@@ -28,9 +31,13 @@ func exit():
 	pass
 
 func handle_input( _event: InputEvent) -> PlayerState: 
+	if _event.is_action_pressed("Attack"):
+		if player.is_ceiling_above():
+			return null
+		return attack
 	if _event.is_action_pressed("Dash"):
 		if player.is_ceiling_above():
-			return crouch_idle
+			return null
 		return dash
 	if _event.is_action_pressed( "Jump" ):
 		if player.is_ceiling_above():
@@ -76,6 +83,8 @@ func physics_process(_delta: float) -> PlayerState:
 			var slope_acceleration = 200.0 
 			if input_dir != 0:
 				player.velocity.x = move_toward(player.velocity.x, direction.x * 600, slope_acceleration * _delta)
+			else: 
+				player.velocity.x = move_toward(player.velocity.x, sign(player.velocity.x) * 600, slope_acceleration * _delta)
 		
 		if input_dir == 0 and moving_up:
 			player.velocity.x = move_toward(player.velocity.x, 0, 500 * _delta)

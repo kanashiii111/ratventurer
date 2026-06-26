@@ -55,7 +55,7 @@ func physics_process(_delta: float) -> PlayerState:
 		if player.get_floor_normal().x != 0:
 			var normal = player.get_floor_normal()
 			var downhill = Vector2.DOWN.slide(normal).normalized()
-			player.velocity = downhill * ground_slam_speed / 4
+			player.velocity = downhill * ground_slam_speed / 2
 			player.velocity.y = max(player.velocity.y, 0)
 			return slide
 		spawn_slam_effect()

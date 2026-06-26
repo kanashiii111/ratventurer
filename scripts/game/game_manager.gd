@@ -17,33 +17,27 @@ const LEVEL_DATA := {
 		"scene": "res://scenes/levels/level_tutorial.tscn",
 		"music": preload("res://assets/sounds/music/tutorial.mp3"),
 		"time_s": 15.0,
-		"time_a": 30.0,
-		"time_b": 50.0
+		"time_a": 17.0,
+		"time_b": 20.0
 	},
 	"level_1": {
 		"name": "Castle",
 		"next": "level_2",
 		"scene": "res://scenes/levels/level_1.tscn",
-		"time_s": 30.0,
-		"time_a": 60.0,
-		"time_b": 90.0
+		"music": preload("res://assets/sounds/music/emmraan-action-fighting-theme-background-motivate-retro-518719.mp3"),
+		"time_s": 20.0,
+		"time_a": 25.0,
+		"time_b": 35.0
 	},
 	"level_2": {
-		"name": "Sewers",
-		"next": "level_3",
-		"scene": "res://scenes/levels/level_2.tscn",
-		"time_s": 45.0,
-		"time_a": 80.0,
-		"time_b": 110.0
-	},
-	"level_3": {
-		"name": "Castle Keep",
+		"name": "Free",
 		"next": "",
-		"scene": "res://scenes/levels/level_3.tscn",
-		"time_s": 35.0,
-		"time_a": 65.0,
-		"time_b": 95.0
-	}
+		"scene": "res://scenes/levels/level_2.tscn",
+		"music": preload("res://assets/sounds/music/emmraan-enemies-270516.mp3"),
+		"time_s": 20.0,
+		"time_a": 25.0,
+		"time_b": 35.0
+	},
 }
 
 func start_level(level_id: String) -> void:
@@ -94,8 +88,8 @@ static func _is_new_best(prev_time: float, prev_rank: String, new_time: float, n
 		return true
 
 	var order := ["S", "A", "B", "C"]
-	var prev_idx: int = max(order.find(prev_rank), order.size())
-	var new_idx: int = max(order.find(new_rank), order.size())
+	var prev_idx: int = order.find(prev_rank)
+	var new_idx: int = order.find(new_rank)
 
 	if new_idx < prev_idx:
 		return true
@@ -127,7 +121,7 @@ func _calculate_rank(time: float, cheese_ratio: float) -> String:
 	var order := ["S", "A", "B", "C"]
 	var time_idx := order.find(time_rank)
 	var cheese_idx := order.find(cheese_rank)
-	return order[max(time_idx, cheese_idx)]
+	return order[floori(time_idx + cheese_idx / 2.0)] # max(time_idx, cheese_idx)
 
 func restart_level() -> void:
 	LoadingScreen.reload_current_scene()

@@ -10,7 +10,6 @@ const LEVEL_ORDER: Array[String] = [
 	"level_tutorial",
 	"level_1",
 	"level_2",
-	"level_3",
 ]
 
 func _ready() -> void:

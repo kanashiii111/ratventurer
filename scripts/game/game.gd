@@ -20,7 +20,7 @@ func _ready() -> void:
 	if not label: return
 
 	GameManager.start_level(level_id)
-
+	
 	var level_path: String = GameManager.LEVEL_DATA[level_id]["scene"]
 	var level: Node = load(level_path).instantiate()
 	level_container.add_child(level)
@@ -60,7 +60,12 @@ func _set_camera_limits(level: Node) -> void:
 	var map_pos := ground.global_position
 
 	var camera: Camera2D = player.get_node("camera")
-	camera.limit_top = -300#int(map_pos.y + used_rect.position.y * tile_size.y)
+	if GameManager.current_level == "level_tutorial":
+		camera.limit_top = -300
+	elif GameManager.current_level == "level_2":
+		camera.limit_top = -750
+	else:
+		camera.limit_top = int(map_pos.y + used_rect.position.y * tile_size.y)
 	#print(camera.limit_top)
 	camera.limit_left   = int(map_pos.x + used_rect.position.x * tile_size.x)
 	camera.limit_right  = int(map_pos.x + (used_rect.position.x + used_rect.size.x) * tile_size.x)
