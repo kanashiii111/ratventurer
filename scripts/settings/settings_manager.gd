@@ -48,6 +48,9 @@ signal music_volume_changed(value: float)
 signal sfx_volume_changed(value: float)
 signal fullscreen_changed(value: bool)
 signal language_changed(locale: String)
+signal controls_changed(action: String)
+
+var controls: Dictionary = {}
 
 var SAVE_PATH: String
 
@@ -83,6 +86,13 @@ func load_settings() -> void:
 	fullscreen = cfg.get_value("display", "fullscreen", false)
 	language = cfg.get_value("locale", "language", "ru")
 
+	var saved_controls = cfg.get_value("controls", "actions", {})
+	for action in saved_controls:
+		controls[action] = saved_controls[action]
+		var event = _dict_to_event(saved_controls[action])
+		if event:
+			_apply_action_event(action, event)
+
 
 func save() -> void:
 	var cfg := ConfigFile.new()
@@ -92,6 +102,7 @@ func save() -> void:
 	cfg.set_value("audio", "sfx_volume", sfx_volume)
 	cfg.set_value("display", "fullscreen", fullscreen)
 	cfg.set_value("locale", "language", language)
+	cfg.set_value("controls", "actions", controls)
 
 	cfg.save(SAVE_PATH)
 
@@ -106,3 +117,50 @@ func apply_all() -> void:
 
 func _clamp_volume(v: float) -> float:
 	return maxf(v, 0.001)
+
+
+func set_action_event(action: String, event: InputEvent) -> void:
+	_apply_action_event(action, event)
+	controls[action] = _event_to_dict(event)
+	save()
+	controls_changed.emit(action)
+
+
+func _apply_action_event(action: String, event: InputEvent) -> void:
+	for e in InputMap.action_get_events(action):
+		InputMap.action_erase_event(action, e)
+	InputMap.action_add_event(action, event)
+
+
+func _event_to_dict(event: InputEvent) -> Dictionary:
+	var dict = {}
+	if event is InputEventKey:
+		dict["type"] = "key"
+		dict["keycode"] = event.keycode
+		dict["physical_keycode"] = event.physical_keycode
+		dict["ctrl"] = event.ctrl_pressed
+		dict["alt"] = event.alt_pressed
+		dict["shift"] = event.shift_pressed
+		dict["meta"] = event.meta_pressed
+	elif event is InputEventMouseButton:
+		dict["type"] = "mouse"
+		dict["button_index"] = event.button_index
+	return dict
+
+
+func _dict_to_event(dict: Dictionary) -> InputEvent:
+	match dict.get("type"):
+		"key":
+			var event = InputEventKey.new()
+			event.keycode = dict.get("keycode", 0)
+			event.physical_keycode = dict.get("physical_keycode", 0)
+			event.ctrl_pressed = dict.get("ctrl", false)
+			event.alt_pressed = dict.get("alt", false)
+			event.shift_pressed = dict.get("shift", false)
+			event.meta_pressed = dict.get("meta", false)
+			return event
+		"mouse":
+			var event = InputEventMouseButton.new()
+			event.button_index = dict.get("button_index", 0)
+			return event
+	return null
