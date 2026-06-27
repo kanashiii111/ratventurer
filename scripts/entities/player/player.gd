@@ -19,6 +19,7 @@ class_name Player extends CharacterBody2D
 
 var has_dash: bool = true
 var want_to_uncrouch: bool = false
+var is_invulnerable: bool = false
 
 const SLIDE_SHAPE_SIZE_Y: int = 12
 const SLIDE_POSITION_Y: float = 5.2
@@ -91,6 +92,8 @@ func update_animation_rotation():
 		sprite.rotation = 0
 
 func die() -> void:
+	if is_invulnerable:
+		return
 	player_state_machine.change_state(%Death)
 
 func play_audio( audio : AudioStream ):

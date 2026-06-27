@@ -13,6 +13,7 @@
 [ext_resource type="Texture2D" uid="uid://dew36r3rlqwlu" path="res://assets/sprites/world/Background layers_layer 3.png" id="15_p4se4"]
 [ext_resource type="Texture2D" uid="uid://chtwnih5ykbp8" path="res://assets/sprites/world/Background layers_layer 2.png" id="16_sibr7"]
 [ext_resource type="Texture2D" uid="uid://b5ibd7657y8xs" path="res://assets/sprites/world/Background layers_layer 1.png" id="17_lkn2k"]
+[ext_resource type="PackedScene" path="res://scenes/entities/checkpoint/checkpoint.tscn" id="18_gw1l3"]
 [ext_resource type="PackedScene" uid="uid://ilq10rtcvc0m" path="res://scenes/entities/cheese/cheese.tscn" id="res_cheese"]
 [ext_resource type="PackedScene" uid="uid://bddf7n1fdsah6" path="res://scenes/entities/skeleton/skeleton.tscn" id="res_skeleton"]
 [ext_resource type="Texture2D" uid="uid://bevjhjs2qics0" path="res://assets/sprites/world/CastleTiles.png" id="tex_castle"]
@@ -5924,8 +5925,6 @@ scale = Vector2(2, 2)
 position = Vector2(351, 64)
 
 [node name="AudioStreamPlayer2D" parent="Skeletons/Skeleton" index="1" unique_id=216276862]
-bus = &"Master"
-
 [node name="Walk" parent="Skeletons/Skeleton/StateMachine" parent_id_path=PackedInt32Array(836459823, 48309751) index="1" unique_id=1545445381]
 max_left = -20.0
 max_right = 20.0
@@ -5934,8 +5933,6 @@ max_right = 20.0
 position = Vector2(519, -96)
 
 [node name="AudioStreamPlayer2D" parent="Skeletons/Skeleton2" index="1" unique_id=216276862]
-bus = &"Master"
-
 [node name="Walk" parent="Skeletons/Skeleton2/StateMachine" parent_id_path=PackedInt32Array(947627601, 48309751) index="1" unique_id=1545445381]
 max_left = -20.0
 max_right = 20.0
@@ -5944,8 +5941,6 @@ max_right = 20.0
 position = Vector2(941, -256)
 
 [node name="AudioStreamPlayer2D" parent="Skeletons/Skeleton3" index="1" unique_id=216276862]
-bus = &"Master"
-
 [node name="Walk" parent="Skeletons/Skeleton3/StateMachine" parent_id_path=PackedInt32Array(173140107, 48309751) index="1" unique_id=1545445381]
 max_left = -30.0
 max_right = 30.0
@@ -6086,6 +6081,40 @@ collision_mask = 15
 [node name="CollisionShape2D" type="CollisionShape2D" parent="LightArea" unique_id=438987852]
 position = Vector2(0.28000975, 14.960005)
 shape = SubResource("RectangleShape2D_wsdog")
+
+[node name="Checkpoints" type="Node" parent="." unique_id=828084407]
+
+[node name="Checkpoint" parent="Checkpoints" unique_id=2141588441 instance=ExtResource("18_gw1l3")]
+visible = true
+position = Vector2(575, 48)
+
+[node name="Checkpoint2" parent="Checkpoints" unique_id=1150293492 instance=ExtResource("18_gw1l3")]
+visible = true
+position = Vector2(320, -16)
+
+[node name="Checkpoint3" parent="Checkpoints" unique_id=563375151 instance=ExtResource("18_gw1l3")]
+visible = true
+position = Vector2(566, -102)
+
+[node name="Checkpoint4" parent="Checkpoints" unique_id=1087385251 instance=ExtResource("18_gw1l3")]
+visible = true
+position = Vector2(992, -256)
+
+[node name="Checkpoint5" parent="Checkpoints" unique_id=1823890305 instance=ExtResource("18_gw1l3")]
+visible = true
+position = Vector2(1822, -82)
+
+[node name="Checkpoint6" parent="Checkpoints" unique_id=453350781 instance=ExtResource("18_gw1l3")]
+visible = true
+position = Vector2(2311, -20)
+
+[node name="Checkpoint7" parent="Checkpoints" unique_id=747663858 instance=ExtResource("18_gw1l3")]
+visible = true
+position = Vector2(2710, -98)
+
+[node name="Checkpoint8" parent="Checkpoints" unique_id=918822669 instance=ExtResource("18_gw1l3")]
+visible = true
+position = Vector2(2716, -266)
 
 [connection signal="body_entered" from="LightArea" to="." method="_on_light_area_body_entered"]
 [connection signal="body_exited" from="LightArea" to="." method="_on_light_area_body_exited"]

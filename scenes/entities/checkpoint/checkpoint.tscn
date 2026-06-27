@@ -1,0 +1,14 @@
+[gd_scene format=3]
+
+[ext_resource type="Script" path="res://scripts/entities/checkpoint/checkpoint.gd" id="1_vxxdl"]
+
+[sub_resource type="RectangleShape2D" id="RectShape_checkpoint"]
+size = Vector2(32, 64)
+
+[node name="Checkpoint" type="Area2D"]
+visible = false
+collision_mask = 4
+script = ExtResource("1_vxxdl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+shape = SubResource("RectShape_checkpoint")

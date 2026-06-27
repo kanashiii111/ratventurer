@@ -11,7 +11,7 @@ var popup_pos = {
 	"slide_popup": Vector2(372.0, -104.0),
 	"dash_popup": Vector2(670.0, -104.0),
 	"attack_popup": Vector2(906.0, -190.0),
-	"slam_popup": Vector2(1100.0, -168.0),
+	"slam_popup": Vector2(1050.0, -200.0),
 	"double_jump_popup": Vector2(1255.0, 92.0)
 }
 

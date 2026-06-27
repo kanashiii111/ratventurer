@@ -10,6 +10,9 @@ var cheese_collected: int = 0
 var cheese_total: int = 0
 var is_completed: bool = false
 
+var _checkpoint_position: Vector2 = Vector2.ZERO
+var _has_checkpoint: bool = false
+
 const LEVEL_DATA := {
 	"level_tutorial": {
 		"name": "Tutorial",
@@ -46,6 +49,8 @@ func start_level(level_id: String) -> void:
 	cheese_collected = 0
 	cheese_total = 0
 	is_completed = false
+	_has_checkpoint = false
+	_checkpoint_position = Vector2.ZERO
 	time_updated.emit(0.0)
 	cheese_changed.emit(0, 0)
 
@@ -141,3 +146,18 @@ func format_time(seconds: float) -> String:
 	var s: int = (total_ms / 100) % 60
 	var ms: int = total_ms % 100
 	return "%02d:%02d.%02d" % [m, s, ms]
+
+func set_checkpoint(position: Vector2) -> void:
+	print(position)
+	_checkpoint_position = position
+	_has_checkpoint = true
+
+func clear_checkpoint() -> void:
+	_has_checkpoint = false
+	_checkpoint_position = Vector2.ZERO
+
+func has_checkpoint() -> bool:
+	return _has_checkpoint
+
+func get_checkpoint_position() -> Vector2:
+	return _checkpoint_position

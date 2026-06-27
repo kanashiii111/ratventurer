@@ -82,7 +82,7 @@ func _ready() -> void:
 	var label_size: int = 64
 	var control_size: int = 50
 	var tab_size: int = 26
-	var back_size: int = 28
+	var back_size: int = 64
 	
 	sfx_player.stream = button_audio
 	

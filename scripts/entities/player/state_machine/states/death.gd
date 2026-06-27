@@ -3,6 +3,7 @@ class_name PlayerDeathState extends PlayerState
 var fade: ColorRect
 var _has_died: bool = false
 var _last_frame: int = -1
+var _fade_canvas: CanvasLayer
 @export var death_audio_2: AudioStream
 @export var death_audio_1: AudioStream
 
@@ -17,21 +18,38 @@ func enter():
 	player.set_physics_process(false)
 	player.anim_player.play("Death")
 
-	var canvas := CanvasLayer.new()
-	canvas.layer = 128
+	_fade_canvas = CanvasLayer.new()
+	_fade_canvas.layer = 128
 	fade = ColorRect.new()
 	fade.color = Color.BLACK
 	fade.modulate = Color.TRANSPARENT
 	fade.size = get_viewport().get_visible_rect().size
 	fade.mouse_filter = Control.MOUSE_FILTER_IGNORE
-	canvas.add_child(fade)
-	get_tree().current_scene.add_child(canvas)
+	_fade_canvas.add_child(fade)
+	get_tree().current_scene.add_child(_fade_canvas)
 
 	var tween = create_tween()
 	tween.tween_interval(1.0)
 	tween.tween_property(fade, "modulate", Color.BLACK, 0.5)
 	tween.tween_callback(func():
-		GameManager.restart_level()
+		if GameManager.has_checkpoint():
+			_respawn_at_checkpoint()
+		else:
+			GameManager.restart_level()
+	)
+
+func _respawn_at_checkpoint():
+	player.is_invulnerable = true
+	player.global_position = GameManager.get_checkpoint_position()
+	player.collision_layer = 4
+	player.set_physics_process(true)
+	state_machine.change_state(idle)
+
+	var fade_tween = create_tween()
+	fade_tween.tween_property(fade, "modulate", Color.TRANSPARENT, 0.3)
+	fade_tween.tween_callback(func():
+		_fade_canvas.queue_free()
+		player.is_invulnerable = false
 	)
 
 func exit():

@@ -6,6 +6,7 @@
 [ext_resource type="Theme" uid="uid://bslv7aavfdx6i" path="res://assets/sprites/ui/checkbox_1.tres" id="3_hvlft"]
 [ext_resource type="FontFile" uid="uid://cqotfm2u0qadt" path="res://assets/fonts/Pixel_sans.ttf" id="3_tlkng"]
 [ext_resource type="Theme" uid="uid://upfbnf8s3qvi" path="res://assets/sprites/ui/slider.tres" id="5_h44vs"]
+[ext_resource type="Theme" uid="uid://diivi438femhj" path="res://assets/sprites/ui/button_4.tres" id="7_kw0lj"]
 
 [node name="SettingsMenu" type="Control" unique_id=580857]
 layout_mode = 3
@@ -40,7 +41,7 @@ anchors_preset = -1
 anchor_left = 0.1
 anchor_top = 0.08
 anchor_right = 0.9
-anchor_bottom = 0.88
+anchor_bottom = 0.8
 current_tab = 1
 
 [node name="General" type="VBoxContainer" parent="TabContainer" unique_id=660805354]
@@ -166,73 +167,74 @@ layout_mode = 2
 [node name="EnButton" type="Button" parent="TabContainer/Language/LanguageRow" unique_id=181141847]
 layout_mode = 2
 
-[node name="Controls" type="VBoxContainer" parent="TabContainer"]
+[node name="Controls" type="VBoxContainer" parent="TabContainer" unique_id=1011463735]
+visible = false
 layout_mode = 2
 theme_override_constants/separation = 24
 metadata/_tab_index = 3
 
-[node name="ControlsRow" type="HBoxContainer" parent="TabContainer/Controls"]
+[node name="ControlsRow" type="HBoxContainer" parent="TabContainer/Controls" unique_id=1768726508]
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="TabContainer/Controls/ControlsRow"]
+[node name="Spacer" type="Control" parent="TabContainer/Controls/ControlsRow" unique_id=1090433780]
 layout_mode = 2
 
-[node name="AttackLabel" type="Label" parent="TabContainer/Controls/ControlsRow"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_tlkng")
-horizontal_alignment = 2
-
-[node name="AttackRebindButton" type="Button" parent="TabContainer/Controls/ControlsRow"]
-layout_mode = 2
-
-[node name="SlideRow" type="HBoxContainer" parent="TabContainer/Controls"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="TabContainer/Controls/SlideRow"]
-layout_mode = 2
-
-[node name="SlideLabel" type="Label" parent="TabContainer/Controls/SlideRow"]
+[node name="AttackLabel" type="Label" parent="TabContainer/Controls/ControlsRow" unique_id=144417577]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_tlkng")
 horizontal_alignment = 2
 
-[node name="SlideRebindButton" type="Button" parent="TabContainer/Controls/SlideRow"]
+[node name="AttackRebindButton" type="Button" parent="TabContainer/Controls/ControlsRow" unique_id=629792066]
 layout_mode = 2
 
-[node name="DashRow" type="HBoxContainer" parent="TabContainer/Controls"]
+[node name="SlideRow" type="HBoxContainer" parent="TabContainer/Controls" unique_id=1436997514]
 layout_mode = 2
 
-[node name="Spacer" type="Control" parent="TabContainer/Controls/DashRow"]
+[node name="Spacer" type="Control" parent="TabContainer/Controls/SlideRow" unique_id=920428833]
 layout_mode = 2
 
-[node name="DashLabel" type="Label" parent="TabContainer/Controls/DashRow"]
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/outline_size = 10
-theme_override_fonts/font = ExtResource("3_tlkng")
-horizontal_alignment = 2
-
-[node name="DashRebindButton" type="Button" parent="TabContainer/Controls/DashRow"]
-layout_mode = 2
-
-[node name="GroundSlamRow" type="HBoxContainer" parent="TabContainer/Controls"]
-layout_mode = 2
-
-[node name="Spacer" type="Control" parent="TabContainer/Controls/GroundSlamRow"]
-layout_mode = 2
-
-[node name="GroundSlamLabel" type="Label" parent="TabContainer/Controls/GroundSlamRow"]
+[node name="SlideLabel" type="Label" parent="TabContainer/Controls/SlideRow" unique_id=796483258]
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/outline_size = 10
 theme_override_fonts/font = ExtResource("3_tlkng")
 horizontal_alignment = 2
 
-[node name="GroundSlamRebindButton" type="Button" parent="TabContainer/Controls/GroundSlamRow"]
+[node name="SlideRebindButton" type="Button" parent="TabContainer/Controls/SlideRow" unique_id=2068586039]
+layout_mode = 2
+
+[node name="DashRow" type="HBoxContainer" parent="TabContainer/Controls" unique_id=1031906090]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabContainer/Controls/DashRow" unique_id=1280844941]
+layout_mode = 2
+
+[node name="DashLabel" type="Label" parent="TabContainer/Controls/DashRow" unique_id=1380318394]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_tlkng")
+horizontal_alignment = 2
+
+[node name="DashRebindButton" type="Button" parent="TabContainer/Controls/DashRow" unique_id=1287975710]
+layout_mode = 2
+
+[node name="GroundSlamRow" type="HBoxContainer" parent="TabContainer/Controls" unique_id=920415876]
+layout_mode = 2
+
+[node name="Spacer" type="Control" parent="TabContainer/Controls/GroundSlamRow" unique_id=1134525008]
+layout_mode = 2
+
+[node name="GroundSlamLabel" type="Label" parent="TabContainer/Controls/GroundSlamRow" unique_id=578051142]
+layout_mode = 2
+size_flags_horizontal = 0
+theme_override_constants/outline_size = 10
+theme_override_fonts/font = ExtResource("3_tlkng")
+horizontal_alignment = 2
+
+[node name="GroundSlamRebindButton" type="Button" parent="TabContainer/Controls/GroundSlamRow" unique_id=13623745]
 layout_mode = 2
 
 [node name="MarginContainer" type="MarginContainer" parent="." unique_id=1676714120]
@@ -247,7 +249,9 @@ theme_override_constants/margin_left = 60
 theme_override_constants/margin_bottom = 60
 
 [node name="BackButton" type="Button" parent="MarginContainer" unique_id=1216975886]
+custom_minimum_size = Vector2(300, 150)
 layout_mode = 2
+theme = ExtResource("7_kw0lj")
 
 [node name="AudioStreamPlayer2D" type="AudioStreamPlayer2D" parent="." unique_id=1324189265]
 

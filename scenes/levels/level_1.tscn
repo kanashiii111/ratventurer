@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://bddf7n1fdsah6" path="res://scenes/entities/skeleton/skeleton.tscn" id="5_6761a"]
 [ext_resource type="PackedScene" uid="uid://ilq10rtcvc0m" path="res://scenes/entities/cheese/cheese.tscn" id="6_sk5k4"]
 [ext_resource type="PackedScene" uid="uid://big6nfp7aaf5h" path="res://scenes/entities/light/light.tscn" id="7_oc4kc"]
+[ext_resource type="PackedScene" path="res://scenes/entities/checkpoint/checkpoint.tscn" id="9_dga24"]
 
 [sub_resource type="RectangleShape2D" id="RectShape_exit"]
 size = Vector2(48, 64)
@@ -3244,8 +3245,6 @@ scale = Vector2(7, 7)
 position = Vector2(520, -256)
 
 [node name="AudioStreamPlayer2D" parent="Skeletons/Skeleton" index="1" unique_id=216276862]
-bus = &"Master"
-
 [node name="Walk" parent="Skeletons/Skeleton/StateMachine" parent_id_path=PackedInt32Array(836459823, 48309751) index="1" unique_id=1545445381]
 max_right = 50.0
 
@@ -3253,8 +3252,6 @@ max_right = 50.0
 position = Vector2(860, -144)
 
 [node name="AudioStreamPlayer2D" parent="Skeletons/Skeleton2" index="1" unique_id=216276862]
-bus = &"Master"
-
 [node name="Walk" parent="Skeletons/Skeleton2/StateMachine" parent_id_path=PackedInt32Array(33553453, 48309751) index="1" unique_id=1545445381]
 max_right = 20.0
 
@@ -3262,8 +3259,6 @@ max_right = 20.0
 position = Vector2(1400, -64)
 
 [node name="AudioStreamPlayer2D" parent="Skeletons/Skeleton3" index="1" unique_id=216276862]
-bus = &"Master"
-
 [node name="Walk" parent="Skeletons/Skeleton3/StateMachine" parent_id_path=PackedInt32Array(1169524472, 48309751) index="1" unique_id=1545445381]
 max_right = 100.0
 
@@ -3271,8 +3266,6 @@ max_right = 100.0
 position = Vector2(1500, -64)
 
 [node name="AudioStreamPlayer2D" parent="Skeletons/Skeleton4" index="1" unique_id=216276862]
-bus = &"Master"
-
 [node name="Walk" parent="Skeletons/Skeleton4/StateMachine" parent_id_path=PackedInt32Array(1162421464, 48309751) index="1" unique_id=1545445381]
 max_right = 1.0
 
@@ -3280,8 +3273,6 @@ max_right = 1.0
 position = Vector2(1976, -320)
 
 [node name="AudioStreamPlayer2D" parent="Skeletons/Skeleton5" index="1" unique_id=216276862]
-bus = &"Master"
-
 [node name="Walk" parent="Skeletons/Skeleton5/StateMachine" parent_id_path=PackedInt32Array(242899902, 48309751) index="1" unique_id=1545445381]
 max_right = 1.0
 
@@ -3411,6 +3402,36 @@ scale = Vector2(4, 4)
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=700609040]
 color = Color(0.63784313, 0.6378432, 0.63784295, 1)
+
+[node name="Checkpoint" type="Node" parent="." unique_id=518215381]
+
+[node name="Checkpoint" parent="Checkpoint" unique_id=1929308324 instance=ExtResource("9_dga24")]
+visible = true
+position = Vector2(150, -130)
+
+[node name="Checkpoint2" parent="Checkpoint" unique_id=1760526572 instance=ExtResource("9_dga24")]
+visible = true
+position = Vector2(432, -48)
+
+[node name="Checkpoint3" parent="Checkpoint" unique_id=1102757329 instance=ExtResource("9_dga24")]
+visible = true
+position = Vector2(584, -352)
+
+[node name="Checkpoint4" parent="Checkpoint" unique_id=2027409907 instance=ExtResource("9_dga24")]
+visible = true
+position = Vector2(944, -160)
+
+[node name="Checkpoint5" parent="Checkpoint" unique_id=132015363 instance=ExtResource("9_dga24")]
+visible = true
+position = Vector2(1296, -80)
+
+[node name="Checkpoint6" parent="Checkpoint" unique_id=1064573204 instance=ExtResource("9_dga24")]
+visible = true
+position = Vector2(1984, -336)
+
+[node name="Checkpoint7" parent="Checkpoint" unique_id=380191627 instance=ExtResource("9_dga24")]
+visible = true
+position = Vector2(2432, -416)
 
 [editable path="Spikes/Spike10"]
 [editable path="Spikes/Spike11"]

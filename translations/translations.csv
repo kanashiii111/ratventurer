@@ -21,21 +21,15 @@ best,Best,Лучшее
 rank,Rank,Ранг
 new_record,NEW RECORD!,НОВЫЙ РЕКОРД!
 next_level,Next Level,Следующий уровень
-tutorial_move,Move with WASD,Двигайся WASD
-tutorial_jump,Press Space to jump,Пробел — прыжок
-tutorial_slide,Press C to slide,C — скольжение
-tutorial_dash,Press V to dash,V — рывок
-tutorial_attack,Press E to attack,E — атака
-tutorial_cheese,Collect cheese!,Собери сыр!
 level_select,Level Select,Выбор уровня
 locked,Locked\nFinish level 2 to unlock,Заблокировано\nПройди 2 уровень чтобы открыть
 no_record,No record,Нет рекорда
-wasd_popup, Use A/D to move left and right, Используй A/D для\n передвижения влево/вправо
-jump_popup, Use SPACE to jump, Используй ПРОБЕЛ чтобы прыгнуть
-slide_popup, Use C to crouch\nor slide if running, Используй C чтобы присесть\nили скользить если бежишь
-dash_popup, Use V to dash, Используй V\nчтобы выполнить деш
+wasd_popup, Press A/D to move left or right, Нажимай A/D для\n передвижения влево/вправо
+jump_popup, Press SPACE to jump, Нажми ПРОБЕЛ чтобы прыгнуть
+slide_popup, Press C to crouch\nor slide if running, Нажми C чтобы присесть\nили скользить если бежишь
+dash_popup, Press V to dash, Нажми V\nчтобы выполнить деш
 attack_popup, "Be careful, there's a skeleton!\nPress RMB to swing your knife at him!", "Осторожно, тут скелет!\n Нажми ПКМ чтобы атаковать его."
-slam_popup, "I think there's a skeleton down there...\n Try pressing S midair, it might kill him", "Мне кажется внизу скелет...\nПопробуй нажать S в воздухе, вдруг поможет"
+slam_popup, "See that picture to your right?\nThat means there's a skeleton further on\nTry pressing S midair\n it might kill him", "Видишь эту картину справа?\nЭто значит, что дальше есть скелет\nПопробуй нажать S в воздухе\nпока падаешь вниз, вдруг это его убьет"
 double_jump_popup, "Oops, forgot about a reward back there\nTry jumping from the walls to get back up there", "Ой, забыл про награду\nПопробуй забраться наверх прыгая от стен"
 loading,Loading...,Загрузка...
 interact, "E - Enter", "Е - Войти"
